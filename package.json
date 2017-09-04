@@ -1,0 +1,39 @@
+{
+  "name": "suilabs",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "backpack-react-scripts": "4.0.7",
+    "node-sass-chokidar": "0.0.3",
+    "proptypes": "^1.1.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2"
+  },
+  "scripts": {
+    "start": "react-scripts start src",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
+    "lint:scss:fix": "stylefmt --recursive 'src/**/*.scss'",
+    "lint:js": "eslint . --ignore-path .gitignore --ext .js,.jsx",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9001",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+  },
+  "devDependencies": {
+    "bpk-component-button": "^1.6.49",
+    "bpk-component-code": "^1.0.10",
+    "bpk-component-grid": "^1.1.16",
+    "bpk-component-text": "^1.0.8",
+    "bpk-mixins": "^16.4.0",
+    "bpk-stylesheets": "^3.2.54",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "@storybook/react": "^3.2.8",
+    "storybook": "0.0.1"
+  }
+}

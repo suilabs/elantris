@@ -1,0 +1,25 @@
+.sui-navbar {
+  padding-top: 1rem;
+  border-bottom: 1px dashed mediumvioletred;
+  left: 50%;
+  display: inline-block; }
+  .sui-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+  .sui-navbar__item {
+    transition: background-color .1s;
+    display: inline; }
+    .sui-navbar__item:first-child {
+      padding-left: 1rem; }
+    .sui-navbar__item:last-child {
+      padding-right: 1rem; }
+    .sui-navbar__item:hover {
+      background-color: rgba(0, 0, 0, 0.2); }
+    .sui-navbar__item__link {
+      text-decoration: none; }
+      .sui-navbar__item__link:visited {
+        color: initial; }
+  .sui-navbar__item-spacer {
+    padding: 0 0.25rem;
+    display: inline; }

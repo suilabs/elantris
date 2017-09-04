@@ -1,0 +1,12 @@
+.sui-page-header {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  margin-top: 1rem;
+
+  .sui-logo {
+    position:relative;
+    left:50%;
+    transform: translateX(-50%);
+  }
+}
