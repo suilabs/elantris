@@ -1,0 +1,27 @@
+@import '../../base.scss';
+
+.sui-image-gallery {
+
+    &--wrapper {
+        position: relative;
+        height: 100%;
+    }
+
+}
+
+.sui-form-field {
+    width: 100%;
+    margin-bottom: $sui-spacing-xlarge;
+
+    label {
+        width: 100%;
+        display: inline-block;
+    }
+
+    input {
+        width: 100%;
+        display: inline-block;
+        border: 0;
+        border-bottom: 1px solid black
+    }
+}

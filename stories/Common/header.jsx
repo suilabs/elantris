@@ -9,4 +9,8 @@ storiesOf('Header', module)
     <BrowserRouter>
       <Header />
     </BrowserRouter>
-  ));
+  )).add('Changing logo', () => {
+    <BrowserRouter>
+      <Header />
+    </BrowserRouter>
+  });

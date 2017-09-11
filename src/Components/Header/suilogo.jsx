@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'proptypes';
 
+import './suilogo.css';
+
 const SuiLogo = (props) => {
-  const { width, height } = props;
+  const { width, height, playfull } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -54,15 +56,16 @@ const SuiLogo = (props) => {
           r="18.6"
           cy="526.79999"
           cx="812.90002"
+          className="sui-logo__vertical-dot"
           transform="translate(-172.49287,212.41933)"
         />
         <circle
           d="m 731.69998,318.5 c 0,10.2725 -8.32751,18.6 -18.6,18.6 -10.2725,0 -18.6,-8.3275 -18.6,-18.6 0,-10.2725 8.3275,-18.6 18.6,-18.6 10.27249,0 18.6,8.3275 18.6,18.6 z"
-          style={{ fill: '#881354' }}
           id="circle3071"
           r="18.6"
           cy="318.5"
           cx="713.09998"
+          className="sui-logo__horizontal-dot"
           transform="translate(-172.49287,212.41933)"
         />
       </g>
@@ -72,13 +75,13 @@ const SuiLogo = (props) => {
 SuiLogo.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
-  scale: PropTypes.number,
+  playfull: PropTypes.bool,
 };
 
 SuiLogo.defaultProps = {
   width: null,
   height: null,
-  scale: 100,
+  playfull: false,
 };
 
 export default SuiLogo;

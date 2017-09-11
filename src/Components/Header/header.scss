@@ -1,8 +1,10 @@
+@import '../../base.scss';
+
 .sui-page-header {
   width: 100%;
   text-align: center;
-  position: fixed;
-  margin-top: 1rem;
+  position: static;
+  margin: $sui-spacing-large 0;
 
   .sui-logo {
     position:relative;

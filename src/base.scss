@@ -8,3 +8,39 @@ $sui-duration-short: 0.3s;
 $sui-duration-medium: 0.6s;
 $sui-duration-long: 1s;
 $sui-duration-xlong: 4s;
+
+$sui-spacing-sm: 0.3rem;
+$sui-spacing-md: 0.6rem;
+$sui-spacing-base: 1rem;
+$sui-spacing-large: 1.3rem;
+$sui-spacing-xlarge: 1.6rem;
+$sui-spacing-xxlarge: 2.5rem;
+
+$sui-media-phone: "only screen and (max-width: 320px)";
+$sui-media-tablet: "only screen and (max-width: 320px)";
+$sui-media-phone: "only screen and (max-width: 320px)";
+
+$break-phone: 320px;
+$break-tablet: 1024px;
+
+@mixin respond-to($media) {
+    @if $media == handhelds {
+        @media only screen and (max-width: $break-phone) { @content; }
+    }
+    @else if $media == medium-screens {
+        @media only screen and (min-width: $break-phone + 1) and (max-width: $break-tablet - 1) { @content; }
+    }
+    @else if $media == wide-screens {
+        @media only screen and (min-width: $break-tablet) { @content; }
+    }
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table
+}
+
+.clearfix:after {
+  clear: both;
+}

@@ -31,8 +31,6 @@
     "bpk-component-text": "^1.0.8",
     "bpk-mixins": "^16.4.0",
     "bpk-stylesheets": "^3.2.54",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "@storybook/react": "^3.2.8",
     "storybook": "0.0.1"
   }

@@ -1,38 +1,71 @@
 @import "../../base.scss";
 
 $dwidth: 200px;
-$dhegith: 200px;
+$dheight: 200px;
+
+@mixin labelBox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: $sui-color-primary-trans;
+  transition: left $sui-duration-short, top $sui-duration-short;  
+  left: 0;
+  top: 0;
+  padding: $sui-spacing-base;
+  box-sizing: border-box;
+}
 
 .sui-image-box {
 
   width: $dwidth;
-  height: $dhegith;
+  height: $dheight;
   overflow: hidden;
   position: relative;
   color: white;
 
+  a {
+    color: inherit;
+
+  }
+
   &__image {
 
     width: auto;
-    height: $dhegith;
+    height: $dheight;
   }
 
-  &__label--horizontal {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: $dwidth;
-    top: 0;
-    background-color: $sui-color-primary-trans;
-    transition: left $sui-duration-short;
+  &__label {
 
-  }
-
-
-  &:hover {
-
-    .sui-image-box__label--horizontal {
-      left: 0;
+    &--horizontal {
+      @include labelBox();
+      left: $dwidth;
     }
+
+    &--vertical {
+      @include labelBox();
+      top: $dheight;
+    }
+
+    &--rotate-270 {
+      transform: rotateZ(270deg);
+    }
+
+    &__text {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+
+  &:hover #{&}__label--horizontal {
+      left: 0;
+  }
+
+  &:hover #{&}__label--vertical {
+    top: 0;
+  }
+
+  h4 {
+    margin: 0;
   }
 }

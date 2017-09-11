@@ -1,2 +1,4 @@
-import Header from './Common/header';
-import Footer from './Common/footer';
+import './Common/header';
+import './Common/footer';
+import './Common/galleryImageBox';
+import './Common/gallery';
