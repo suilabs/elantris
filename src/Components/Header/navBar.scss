@@ -1,6 +1,7 @@
+@import '../../base.scss';
+
 .sui-navbar {
   padding-top: 1rem;
-  border-bottom: 1px dashed mediumvioletred;
   left: 50%;
   display: inline-block;
   //transform: translateX(-50%);
@@ -24,14 +25,15 @@
     }
 
     &:hover {
-      background-color: rgba(0,0,0,0.2);
+      color: $sui-color-primary-intense;
     }
 
     &__link {
       text-decoration: none;
+      color: black;
 
       &:visited {
-        color: initial;
+        color: inherit;
       }
 
     }

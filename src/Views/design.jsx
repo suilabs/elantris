@@ -5,12 +5,12 @@ import ImgKlama from '../assets/projectes/klama/targets.png';
 import ImgLeSense from '../assets/projectes/LeSense/mocklesense.jpg';
 import ImgMercat from '../assets/projectes/mercat montgat/IMG-20170110-WA0005-2.jpg';
 import ImgMiqui from '../assets/projectes/miqui/miquitargets 2.jpg';
-import ImgMiriam from '../assets/projectes/miriam/IMG_20170213_114008.jpg';
+import ImgMiriam from '../assets/projectes/miriam/portada.png';
 import ImgOrigens from '../assets/projectes/origens/etiquetesorigens.jpg';
 import ImgPipeline from '../assets/projectes/pipeline/logo1_blau.jpg';
 import ImgRec from '../assets/projectes/rec/rec-info.jpg';
 
-const createInstance = (title, descr, img, href, tags=['design']) => {
+const createInstance = (title, descr, img, href, tags = ['design']) => {
   return {
     title,
     img,
@@ -18,12 +18,13 @@ const createInstance = (title, descr, img, href, tags=['design']) => {
     descr,
     orientation: 'vertical',
     animationDirection: 'vertical',
-    href
-  }
+    href,
+  };
 }
 
 const Dessign = () => (
   <Gallery
+    size={{ width: 284 }}
     instances={[
       createInstance('Klama Communicació', '', ImgKlama, 'https://www.suilabs.com'),
       createInstance('LeSense', '', ImgLeSense, 'https://www.suilabs.com'),

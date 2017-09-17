@@ -28,11 +28,11 @@ const NavBar = () => (
     <ul>
       <NavBarItem to="/design" label="Design" />
       <NavBarSpacer />
-      <NavBarItem to="\\google.com" label="Google" />
+      <NavBarItem to="/software" label="Software" />
       <NavBarSpacer />
-      <NavBarItem to="\\google.com" label="Google" />
+      <NavBarItem to="/about" label="About us" />
       <NavBarSpacer />
-      <NavBarItem to="\\google.com" label="Google" />
+      <NavBarItem to="/contact" label="Contact" />
     </ul>
   </nav>
 );

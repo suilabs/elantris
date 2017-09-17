@@ -1,46 +1,49 @@
-$sui-color-primary: #AA0700;
-$sui-color-primary-trans: rgba(170, 7, 0, 0.4);
-$sui-color-primary-bright: #FF544C;
-$sui-color-primary-intense: #FF0A00;
-$sui-color-primary-dark: #7F2A26;
+$sui-color-primary: rgba(139, 3, 79, 1);
+$sui-color-primary-trans: rgba(139, 3, 79, .4);
+$sui-color-primary-bright: rgba(159, 34, 95, 1);
+$sui-color-primary-intense: rgba(157, 0, 82, 1);
+$sui-color-primary-dark: rgba(86, 0, 37, 1);;
 
-$sui-duration-short: 0.3s;
-$sui-duration-medium: 0.6s;
+$sui-duration-short: .3s;
+$sui-duration-medium: .6s;
 $sui-duration-long: 1s;
 $sui-duration-xlong: 4s;
 
-$sui-spacing-sm: 0.3rem;
-$sui-spacing-md: 0.6rem;
+$sui-spacing-sm: 3rem;
+$sui-spacing-md: 6rem;
 $sui-spacing-base: 1rem;
 $sui-spacing-large: 1.3rem;
 $sui-spacing-xlarge: 1.6rem;
 $sui-spacing-xxlarge: 2.5rem;
 
-$sui-media-phone: "only screen and (max-width: 320px)";
-$sui-media-tablet: "only screen and (max-width: 320px)";
-$sui-media-phone: "only screen and (max-width: 320px)";
+$sui-media-phone: 'only screen and (max-width: 320px)';
+$sui-media-tablet: 'only screen and (max-width: 320px)';
+$sui-media-phone: 'only screen and (max-width: 320px)';
+
+$dwidth: 284px;
+$dheight: 284px;
 
 $break-phone: 320px;
 $break-tablet: 1024px;
 
 @mixin respond-to($media) {
-    @if $media == handhelds {
-        @media only screen and (max-width: $break-phone) { @content; }
-    }
-    @else if $media == medium-screens {
-        @media only screen and (min-width: $break-phone + 1) and (max-width: $break-tablet - 1) { @content; }
-    }
-    @else if $media == wide-screens {
-        @media only screen and (min-width: $break-tablet) { @content; }
-    }
+  @if $media == handhelds {
+    @media only screen and (max-width: $break-phone) { @content; };
+  } @else if $media == medium-screens {
+    @media only screen and (min-width: $break-phone + 1) and (max-width: $break-tablet - 1) { @content; };
+  } @else if $media == wide-screens {
+    @media only screen and (min-width: $break-tablet) { @content; };
+  }
 }
 
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table
-}
+.clearfix {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
 
-.clearfix:after {
-  clear: both;
+  &::after {
+    clear: both;
+  }
 }

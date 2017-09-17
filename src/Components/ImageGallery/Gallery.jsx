@@ -6,72 +6,77 @@ import { HFlexBox, VFlexBox } from '../Common/FlexBoxes'
 import './Gallery.css';
 
 class Gallery extends Component {
-    constructor (props) {
-        super(props);
+  static filterInstances(instances, filter) {
+    return instances.filter(instance => instance.title.toLowerCase().indexOf(filter) !== -1);
+  }
 
-        this.maxRowElemets = 3;
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            filter: '',
-        };
+    this.maxRowElemets = 3;
 
-        this.onFilterChange = this.onFilterChange.bind(this);
-    }
+    this.state = {
+      filter: '',
+    };
 
-    onFilterChange(event) {
-         this.setState({
-             filter: event.target.value,
-         });
-    }
+    this.onFilterChange = this.onFilterChange.bind(this);
+  }
 
-    filterInstances(instances, filter) {
-        return instances.filter(instance => instance.title.toLowerCase().indexOf(filter) !== -1);
-    }
+  onFilterChange(event) {
+    this.setState({
+      filter: event.target.value,
+    });
+  }
 
-    render() {
-        const { filterable, instances } = this.props;
+  render() {
+    const { filterable, instances, size } = this.props;
 
-        const rows = instances.reduce((ret, instance, index) => {
-            const retIndex = Math.floor(index/this.maxRowElemets);
-            if (!ret[retIndex]) { ret[retIndex] = []; }
-            ret[retIndex].push(instance);
-            return ret;
-        }, {})
-        return (
-            <div className='sui-image-gallery--wrapper'>
-                {
-                    filterable &&
-                    <div className='sui-form-field'>
-                        <label>Search</label>
-                        <input type='text' onChange={this.onFilterChange} />
-                    </div>
-                }
-                <VFlexBox>
-                    {
-                        this.filterInstances(instances, this.state.filter).map(instance => (
-                            <ImageBox
-                                key={instance.title}
-                            {...instance}
-                            />
-                        ))
-                    }
-                </VFlexBox>
-            </div>
-        )
-    }
+    const style = {
+      'max-width': `${(size.width * this.maxRowElemets) + 100}px`,
+    };
+
+    return (
+      <div className="sui-image-gallery--wrapper" style={style}>
+        {
+          filterable &&
+          <div className="sui-form-field">
+            <label htmlFor="filter-input">Search</label>
+            <input id="filter-input" type="text" onChange={this.onFilterChange} />
+          </div>
+        }
+        <VFlexBox>
+          {
+            Gallery.filterInstances(instances, this.state.filter).map(instance => (
+              <ImageBox
+                key={instance.title}
+                {...instance}
+                width={size.width}
+                className={'sui-add-margins'}
+              />
+            ))
+          }
+        </VFlexBox>
+      </div>
+    );
+  }
 }
 
 Gallery.propTypes = {
-    instances: PropTypes.arrayOf(PropTypes.shape({
-        ...ImageBox.propTypes, 
-        tag: PropTypes.arrayOf(PropTypes.string)
-    })),
-    filterable: PropTypes.bool,
-}
+  instances: PropTypes.arrayOf(PropTypes.shape({
+    ...ImageBox.propTypes,
+    tag: PropTypes.arrayOf(PropTypes.string),
+  })),
+  filterable: PropTypes.bool,
+  size: PropTypes.shape({
+    widht: String.number,
+    height: String.number,
+  }),
+};
 
 Gallery.defaultProps = {
-    instances: [],
-    filterable: false,
-}
+  instances: [],
+  filterable: false,
+  size: { width: 200, height: 200 },
+};
 
 export default Gallery;

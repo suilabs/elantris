@@ -12,10 +12,12 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Header/>
-          <Route exact path="/" render={HomeView} />
-          <Route path="/design" render={DessignView} />
-          <Footer/>
+          <Header />
+          <div id="body">
+            <Route exact path="/" render={HomeView} />
+            <Route path="/design" render={DessignView} />
+          </div>
+          <Footer />
         </div>
       </BrowserRouter>
     );

@@ -18,7 +18,7 @@ const Footer = (props) => {
     return '';
   }
   return (
-    <div className="sui-footer">
+    <div id="sui-footer" className="sui-footer">
       <div className="sui-footer__right-container">
         <FooterElement>
           Instagram
