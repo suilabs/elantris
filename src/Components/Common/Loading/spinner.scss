@@ -1,0 +1,34 @@
+@import '../../../base.scss';
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0);
+  }
+
+  45% {
+    transform: rotateZ(180 * 45 / 100 deg);
+  }
+
+  55% {
+    transform: rotateZ(180 * 55 / 100 deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.sui-spinner {
+  text-align: center;
+
+  svg {
+    animation-duration: $sui-duration-long;
+    animation-iteration-count: infinite;
+    animation-name: rotate;
+    animation-timing-function: linear;
+
+    #topCircle {
+      fill: $sui-color-primary;
+    }
+  }
+}

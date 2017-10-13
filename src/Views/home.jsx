@@ -1,10 +1,20 @@
 import React from 'react';
 
 import { VFlexBox } from '../Components/Common/FlexBoxes';
+import ImageBox from '../Components/ImageBox';
 
 import escriptori from '../assets/escriptori.png';
 
 import './home.css';
+
+const CompetenciImageBox = (props) => {
+  return (
+    <div className="sui-home__competencies">
+      <img src={props.img} width={284} />
+      <h3>{props.text}</h3>
+    </div>
+  );
+};
 
 const Home = () => (
   <div className="sui-home--wrapper">
@@ -13,7 +23,7 @@ const Home = () => (
         <img src={escriptori} alt="escriptory treballant" height={284} />
       </div>
       <div className="sui-home__central-column">
-        <h1> <span>Design</span><br /><span>&</span><br /><span>Software</span></h1>
+        <h1>"Design is thinking made visual"</h1>
         <p className="sui-home__introduction-text">
           El nostre objectiu és crear una identitat corporativa que ajudi a potenciar els valors que voleu transmetre com
           empresa i enfocar-nos a aquell target o públic objectiu al qual voleu arribar. Ens agrada treballar d’una manera
@@ -23,8 +33,13 @@ const Home = () => (
         </p>
       </div>
       <div className="sui-home__image-right">
-        <img src={escriptori} alt="escriptory treballant" height={568} />
+        <img src={escriptori} alt="escriptory treballant 2" height={568} />
       </div>
+    </VFlexBox>
+    <VFlexBox>
+      <CompetenciImageBox img="https://suilabs.com/public/img/SuilabsLogo.svg" text="Estrategia de comunicació" />
+      <CompetenciImageBox img="https://suilabs.com/public/img/SuilabsLogo.svg" text="Desenvolupament de Conceptes" />
+      <CompetenciImageBox img="https://suilabs.com/public/img/SuilabsLogo.svg" text="Estrategia de comunicació" />
     </VFlexBox>
   </div>
 );

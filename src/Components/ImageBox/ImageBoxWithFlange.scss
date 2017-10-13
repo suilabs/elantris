@@ -1,0 +1,58 @@
+@import '../../base.scss';
+
+.sui-flange {
+  &--info-wrapper {
+    position: absolute;
+    top: calc(100% - #{$sui-spacing-xxlarge});
+    width: 100%;
+    transition: transform $sui-duration-medium ease;
+  }
+
+  &--button {
+    position: relative;
+    width: 5%;
+    height: $sui-spacing-xlarge;
+    background-color: $sui-color-primary-dark;
+    color: white;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: default;
+    box-sizing: content-box;
+    border: none;
+    font-weight: lighter;
+
+    svg {
+      position: absolute;
+      margin-top: 0;
+      transform: rotateX(180deg) translate(-50%, 50%);
+      transition: transform $sui-duration-medium ease;
+      left: 50%;
+      top: 50%;
+    }
+
+    svg.sui-flange--flipped {
+      transform: rotateX(0deg) translate(-50%, -50%);
+    }
+
+    &:hover {
+      font-weight: normal;
+    }
+  }
+
+  &--appendix {
+    position: relative;
+    width: 100%;
+    background-color: $sui-color-primary-dark;
+    color: white;
+    text-align: center;
+    padding: $sui-spacing-base;
+    box-sizing: border-box;
+  }
+
+  &--wrapper {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: $sui-spacing-base;
+  }
+}

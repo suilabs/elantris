@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'proptypes';
+import RelativeLink from '../Common/Link/RelativeLink';
 
-import './galleryImageBox.css';
+import './ImageBox.css';
 
-const GalleryImageBox = (props) => {
+const ImageBox = (props) => {
   const imageClassName = [props.imageClassName, 'sui-image-box__image'];
   const labelClassName = [props.textClassName.split(' '), `sui-image-box__label--${props.animationDirection}`];
   const className = [props.className, 'sui-image-box'];
@@ -12,7 +13,7 @@ const GalleryImageBox = (props) => {
   }
   return (
     <div className={className.join(' ')}>
-      <a href={props.href}>
+      <RelativeLink to={props.href}>
         <img
           src={props.img}
           className={imageClassName.join(' ')}
@@ -28,13 +29,14 @@ const GalleryImageBox = (props) => {
             </div>
           </div>
         }
-      </a>
+      </RelativeLink>
     </div>
   );
 };
 
-GalleryImageBox.propTypes = {
-  img: PropTypes.oneOfType(PropTypes.string, PropTypes.node).isRequired,
+ImageBox.propTypes = {
+  img: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  href: PropTypes.string,
   title: PropTypes.string,
   descr: PropTypes.string,
   imageClassName: PropTypes.string,
@@ -44,7 +46,7 @@ GalleryImageBox.propTypes = {
   animationDirection: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
-GalleryImageBox.defaultProps = {
+ImageBox.defaultProps = {
   orientation: 'horizontal',
   animationDirection: 'horizontal',
   title: null,
@@ -52,6 +54,7 @@ GalleryImageBox.defaultProps = {
   imageClassName: '',
   textClassName: '',
   className: '',
+  href: '',
 };
 
-export default GalleryImageBox;
+export default ImageBox;

@@ -1,5 +1,6 @@
 $sui-color-primary: rgba(139, 3, 79, 1);
 $sui-color-primary-trans: rgba(139, 3, 79, .4);
+$sui-color-primary-total-trans: rgba(139, 3, 79, 0);
 $sui-color-primary-bright: rgba(159, 34, 95, 1);
 $sui-color-primary-intense: rgba(157, 0, 82, 1);
 $sui-color-primary-dark: rgba(86, 0, 37, 1);;
@@ -20,9 +21,14 @@ $sui-media-phone: 'only screen and (max-width: 320px)';
 $sui-media-tablet: 'only screen and (max-width: 320px)';
 $sui-media-phone: 'only screen and (max-width: 320px)';
 
+$sui-h1: 2em;
+$sui-h2: 1.5em;
+$sui-h3: 1.17em;
+
 $dwidth: 284px;
 $dheight: 284px;
 
+$sui-page-size--destop: $dwidth * 3;
 $break-phone: 320px;
 $break-tablet: 1024px;
 
@@ -46,4 +52,8 @@ $break-tablet: 1024px;
   &::after {
     clear: both;
   }
+}
+
+img {
+  width: 100%; // by default
 }

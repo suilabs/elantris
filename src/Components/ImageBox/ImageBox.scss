@@ -22,7 +22,6 @@
 
   a {
     color: inherit;
-
   }
 
   &__image {
@@ -31,15 +30,18 @@
   }
 
   &__label {
-
     &--horizontal {
-      @include labelBox();
+      @include labelBox;
+
       left: $dwidth;
+      will-change: left;
     }
 
     &--vertical {
-      @include labelBox();
+      @include labelBox;
+
       top: $dheight;
+      will-change: top;
     }
 
     &--rotate-270 {
@@ -52,9 +54,8 @@
     }
   }
 
-
   &:hover #{&}__label--horizontal {
-      left: 0;
+    left: 0;
   }
 
   &:hover #{&}__label--vertical {

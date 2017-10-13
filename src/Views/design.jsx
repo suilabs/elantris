@@ -1,14 +1,13 @@
 import React from 'react';
-import Gallery from '../Components/ImageGallery';
+import PropTypes from 'proptypes';
 
-import ImgKlama from '../assets/projectes/klama/targets.png';
-import ImgLeSense from '../assets/projectes/LeSense/mocklesense.jpg';
-import ImgMercat from '../assets/projectes/mercat montgat/IMG-20170110-WA0005-2.jpg';
-import ImgMiqui from '../assets/projectes/miqui/miquitargets 2.jpg';
-import ImgMiriam from '../assets/projectes/miriam/portada.png';
-import ImgOrigens from '../assets/projectes/origens/etiquetesorigens.jpg';
-import ImgPipeline from '../assets/projectes/pipeline/logo1_blau.jpg';
-import ImgRec from '../assets/projectes/rec/rec-info.jpg';
+import Utils from '../Utils';
+import ProjectsService from '../Services/ProjectService';
+import Loading from '../Components/Common/Loading';
+
+import LayoutDessign from '../Components/ProjectWrapper/LayoutDessign';
+
+import Gallery from '../Components/ImageGallery';
 
 const createInstance = (title, descr, img, href, tags = ['design']) => {
   return {
@@ -22,20 +21,79 @@ const createInstance = (title, descr, img, href, tags = ['design']) => {
   };
 }
 
-const Dessign = () => (
-  <Gallery
-    size={{ width: 284 }}
-    instances={[
-      createInstance('Klama Communicació', '', ImgKlama, 'https://www.suilabs.com'),
-      createInstance('LeSense', '', ImgLeSense, 'https://www.suilabs.com'),
-      createInstance('Mercat Montgat', '', ImgMercat, 'https://www.suilabs.com'),
-      createInstance('Targetes miqui', '', ImgMiqui, 'https://www.suilabs.com'),
-      createInstance('Miriam Manzo', '', ImgMiriam, 'https://www.suilabs.com'),
-      createInstance('Origens', '', ImgOrigens, 'https://www.suilabs.com'),
-      createInstance('Pipeline', '', ImgPipeline, 'https://www.suilabs.com'),
-      createInstance('Rec', '', ImgRec, 'https://www.suilabs.com'),
-    ]}
-  />
-)
+// const projects = {
+//   reccrealo: {
+//     title: 'Recrealo',
+//     type: 'Infografia il·lustrada',
+//     images: [
+//       { url: 'rec/rec-perso2.jpg', text: 'Bla bla bla bla bla bla' },
+//       { url: 'rec/rec-perso2.jpg', text: 'Bla bla bla bla bla bla' },
+//     ],
+//   },
+// }
 
-export default Dessign;
+class Design extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      projects: {},
+    };
+  }
+
+  componentWillMount() {
+    Loading(this, (finished) => {
+      ProjectsService.getProjects().then((projects) => {
+        finished();
+        this.setState({ projects });
+      });
+    });
+  }
+
+  render() {
+    const { projects } = this.state;
+    const { project: selectedProject } = this.props.match.params;
+    if (selectedProject) {
+      const { title, type, images } = projects[selectedProject];
+      return (
+        <div>
+          <LayoutDessign
+            title={title}
+            type={type}
+            images={images}
+          />
+        </div>);
+    }
+    const projectsArray = Object.keys(projects).map((key) => {
+      projects[key].key = key;
+      return projects[key];
+    });
+    return (
+      <div>
+        <Gallery
+          size={{ width: 284 }}
+          instances={
+            projectsArray.map(
+              (p => createInstance(p.title,
+                  p.subTitle,
+                  Utils.getImage(p.coverImage),
+                  p.key)
+              ))
+          }
+        />
+      </div>
+    );
+  }
+}
+
+Design.propTypes = {
+  // location: PropTypes.shape({ hash: PropTypes.string }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      project: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }).isRequired,
+};
+
+export default Design;

@@ -1,27 +1,25 @@
 @import '../../base.scss';
 
 .sui-navbar {
-  padding-top: 1rem;
-  left: 50%;
   display: inline-block;
-  //transform: translateX(-50%);
+  left: 50%;
+  padding-top: 1rem;
 
   ul {
-    list-style-type: none;
     margin: 0;
+    list-style-type: none;
     padding: 0;
   }
 
   &__item {
-    transition: background-color .1s;
     display: inline;
+    transition: border-bottom $sui-duration-medium ease;
+    border-bottom: 2px solid $sui-color-primary-total-trans;
 
-    &:first-child {
-      padding-left: 1rem;
-    }
-
-    &:last-child {
-      padding-right: 1rem;
+    &--active {
+      display: inline;
+      transition: border-bottom $sui-duration-medium ease;
+      border-bottom: 2px solid $sui-color-primary;
     }
 
     &:hover {

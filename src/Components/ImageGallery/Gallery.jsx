@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
-import ImageBox from '../GalleryImageBox';
-import { HFlexBox, VFlexBox } from '../Common/FlexBoxes'
+import ImageBox from '../ImageBox';
+import { HFlexBox, VFlexBox } from '../Common/FlexBoxes';
 
 import './Gallery.css';
 
@@ -32,7 +32,7 @@ class Gallery extends Component {
     const { filterable, instances, size } = this.props;
 
     const style = {
-      'max-width': `${(size.width * this.maxRowElemets) + 100}px`,
+      maxWidth: `${(size.width * this.maxRowElemets) + 100}px`,
     };
 
     return (

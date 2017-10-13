@@ -1,0 +1,13 @@
+{
+  "dev": {
+    "statics": {
+      "hostname": "//localhost:3001",
+      "images": "images"
+    }
+  },
+  "prod": {
+    "statics": {
+      "hostname": "//static.suilabs.com"
+    }
+  }
+}

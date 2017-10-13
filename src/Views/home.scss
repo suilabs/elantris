@@ -2,7 +2,34 @@
 
 .sui-home {
   &--wrapper {
+    .sui-vertical-flexbox {
+      flex-wrap: nowrap;
+    }
+  }
 
+  &__competencies {
+    width: $dwidth;
+    max-height: calc(#{$dheight} + 2rem);
+    margin-top: $sui-spacing-xxlarge;
+    margin-right: $sui-spacing-xxlarge;
+    overflow: hidden;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    img {
+      width: auto;
+      height: 100%;
+      max-height: $dheight;
+    }
+
+    h3 {
+      margin:0;
+      width: 70%;
+      height: 60px;
+      color: $sui-color-primary;
+    }
   }
 
   &__central-column {
@@ -29,8 +56,9 @@
       overflow: hidden;
 
       img {
-        left: -100%;
         position: relative;
+        left: -100%;
+        width: auto;
       }
     }
   }

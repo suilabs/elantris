@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import HomeView from './Views/home';
-import DessignView from './Views/design';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import HomeView from './Views/home';
+import DesignView from './Views/design';
+import SoftwareView from './Views/software';
+import AboutUsView from './Views/about';
+import ContactView from './Views/contact';
+import MiriamManzo from './Views/Design/MiriamManzo';
+
+import NotFound from './Views/NotFound';
 
 import './App.css';
 
@@ -14,8 +20,14 @@ class App extends Component {
         <div>
           <Header />
           <div id="body">
-            <Route exact path="/" render={HomeView} />
-            <Route path="/design" render={DessignView} />
+            <Switch>
+              <Route exact path="/" render={HomeView} />
+              <Route exact path="/design/:project?" component={DesignView} />
+              <Route exact path="/software" render={SoftwareView} />
+              <Route exact path="/about" render={AboutUsView} />
+              <Route exact path="/contact" render={ContactView} />
+              <Route component={NotFound} />
+            </Switch>
           </div>
           <Footer />
         </div>
@@ -23,5 +35,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

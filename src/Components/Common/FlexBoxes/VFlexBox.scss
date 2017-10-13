@@ -16,8 +16,8 @@
             margin-right: 0;
         }
     }
-    
-    * {
+
+    & > * {
         // margin-right: $sui-spacing-base;
         margin-bottom: $sui-spacing-base;
 
