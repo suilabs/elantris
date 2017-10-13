@@ -25,13 +25,15 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
+    "@storybook/react": "^3.2.8",
     "bpk-component-button": "^1.6.49",
     "bpk-component-code": "^1.0.10",
     "bpk-component-grid": "^1.1.16",
     "bpk-component-text": "^1.0.8",
     "bpk-mixins": "^16.4.0",
     "bpk-stylesheets": "^3.2.54",
-    "@storybook/react": "^3.2.8",
-    "storybook": "0.0.1"
+    "css-loader": "^0.28.7",
+    "storybook": "0.0.1",
+    "style-loader": "^0.18.2"
   }
 }
