@@ -4,7 +4,10 @@
 node_modules
 
 # testing
-/coverage
+coverage
+server/.nyc_output
+
+server/storage/database.json
 
 # production
 /build
@@ -18,8 +21,7 @@ node_modules
 
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 
 *.css
 
-.idea
+.idea/*

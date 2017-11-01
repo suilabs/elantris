@@ -1,0 +1,13 @@
+{
+    "dev": {
+        "database": {
+            "root": "storage",
+            "file": "database.json"
+        }
+    },
+    "test": {
+        "database": {
+            "root": ":memory:"
+        }
+    }
+}

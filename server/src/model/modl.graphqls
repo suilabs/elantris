@@ -1,0 +1,32 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+
+}
+
+type Mutation {
+
+}
+
+enum ProjectType {
+  TYPE1
+  TYPE2
+  TYPE3
+}
+
+type ImageBox {
+  url: String!
+  text: String
+}
+
+type Project {
+  key: String!
+  title: String!
+  subTitle: String!
+  coverImage: String!
+  type: ProjectType!
+  images: [ImageBox]
+}
