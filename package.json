@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "backpack-react-scripts": "4.0.7",
+    "graphql-server-express": "^1.2.0",
     "node-sass-chokidar": "0.0.3",
     "proptypes": "^1.1.0",
     "react": "^15.6.1",

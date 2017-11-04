@@ -39,38 +39,46 @@ describe('JSONConnector', () => {
 
   it('inserts an entry', () => {
 
-    const returnProject = JSONConnector.insertProject(project);
+    const returnProject = JSONConnector.insert('projects', project);
 
     expect(writeDBStub.called).to.be.true;
-    expect(returnProject.key).to.be.equal(project.key);
-    expect(returnProject.images.length).to.be.equal(project.images.length);
-
+    expect(returnProject).to.be.equal(project.key);
   });
-
-  it('should return projects ordered', () => {
-
-    const expectedReturn = [{...project, coverImage: 'c1-1', images:['c1-1']},
-      {...project2, coverImage: 'c1-1', images:['c1-1']}];
-
-    JSONConnector.insertProject(project);
-    JSONConnector.insertProject(project2);
-
-    const returnObj = JSONConnector.getOrderedProjects();
-    expect(JSON.stringify(returnObj)).to.be.equal(JSON.stringify(expectedReturn));
+  
+  it('returns the inserted elements not persisting', () => {
+    
+    JSONConnector.insert('projects', project, false);
+    JSONConnector.insert('projects', project2, false);
+    
+    const ret = JSONConnector.get('projects');
+    
+    expect(Object.keys(ret).length).to.be.equal(2);
+    expect(ret[project.key]).to.be.equal(project);
+    expect(ret[project2.key]).to.be.equal(project2);
+    expect(writeDBStub.called).to.be.false;
   });
-
-  it('should set a new order correctly', () => {
-
-    const expectedReturn = ['k2','k1'];
-
-    JSONConnector.insertProject(project);
-    JSONConnector.insertProject(project2);
-
-    const originalOrder = JSONConnector.getOrderedProjects();
-
-    const returnOrder = JSONConnector.setOrder(['k2','k1']);
-
-    expect(JSON.stringify(returnOrder)).to.not.be.equal(JSON.stringify(originalOrder));
-    expect(returnOrder.map((p) => p.key)).to.deep.equal(expectedReturn);
-  })
+  
+  it('returns the inserted elements persisting', () => {
+    
+    JSONConnector.insert('projects', project);
+    JSONConnector.insert('projects', project2);
+    
+    const ret = JSONConnector.get('projects');
+    
+    expect(Object.keys(ret).length).to.be.equal(2);
+    expect(ret[project.key]).to.be.equal(project);
+    expect(ret[project2.key]).to.be.equal(project2);
+    expect(writeDBStub.called).to.be.true;
+  });
+  
+  it('returns only the element that matches k1', () => {
+    
+    JSONConnector.insert('projects', project);
+    JSONConnector.insert('projects', project2);
+    
+    const ret = JSONConnector.get('projects', (e) => e.key === 'k1');
+    
+    expect(Object.keys(ret).length).to.be.equal(1);
+    expect(ret[project.key]).to.be.equal(project);
+  });
 });

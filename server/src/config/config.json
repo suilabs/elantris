@@ -2,7 +2,8 @@
     "dev": {
         "database": {
             "root": "storage",
-            "file": "database.json"
+            "file": "database.json",
+            "schema": "model/model.graphqls"
         }
     },
     "test": {
