@@ -1,3 +1,5 @@
+import APIConnector from '../api/ApiConnector';
+
 const data = {
   reccrealo: {
     title: 'Recrealo',
@@ -30,9 +32,5 @@ const data = {
 };
 
 export default {
-  getProjects: () =>
-    new Promise((resolve) => {
-      setTimeout(() => resolve(data),
-        2000);
-    }),
+  getProjects: () => APIConnector.getProjects()
 };

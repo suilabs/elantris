@@ -24,6 +24,10 @@ const Utils = {
     // TODO implement a true getter
     return 'dev';
   },
+  getAPIPath() {
+    const {hostname, path} = config[this.getEnvironment()].api;
+    return `${hostname}/${path}`;
+  }
 };
 
 export default Utils;

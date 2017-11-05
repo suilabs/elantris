@@ -14,11 +14,13 @@ const ImageBox = (props) => {
   return (
     <div className={className.join(' ')}>
       <RelativeLink to={props.href}>
-        <img
-          src={props.img}
-          className={imageClassName.join(' ')}
-          alt={props.title}
-        />
+        <object className="fallback-image" data="http://maxpixel.freegreatpicture.com/static/photo/1x/Http-News-Html-Error-404-Was-Not-Found-Page-1349562.png" type="image/png">
+          <img
+            src={props.img}
+            className={imageClassName.join(' ')}
+            alt={props.title}
+          />
+        </object>
         { props.title &&
           <div
             className={labelClassName.join(' ')}
