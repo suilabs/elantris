@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import {graphiqlExpress, graphqlExpress} from 'graphql-server-express';
 import {makeExecutableSchema} from 'graphql-tools';
 import GraphQLDefs from './GraphQL';
@@ -10,6 +11,6 @@ const resolvers = GraphQLDefs.resolvers;
 
 const schema = makeExecutableSchema({typeDefs, resolvers});
 const app = express();
-app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
+app.use('/graphql', cors(), bodyParser.json(), graphqlExpress({schema}));
 app.use('/graphiql', graphiqlExpress({endpointURL: '/graphql'}));
 app.listen(4000, () => console.log('Now browse to localhost:4000/graphiql'));
