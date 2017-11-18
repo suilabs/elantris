@@ -7,6 +7,7 @@ import DesignView from './Views/design';
 import SoftwareView from './Views/software';
 import AboutUsView from './Views/about';
 import ContactView from './Views/contact';
+import Admin from './Views/admin';
 import MiriamManzo from './Views/Design/MiriamManzo';
 
 import NotFound from './Views/NotFound';
@@ -26,6 +27,7 @@ class App extends Component {
               <Route exact path="/software" render={SoftwareView} />
               <Route exact path="/about" render={AboutUsView} />
               <Route exact path="/contact" render={ContactView} />
+              <Route exact path="/admin" render={Admin} />
               <Route component={NotFound} />
             </Switch>
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'proptypes';
 import RelativeLink from '../Common/Link/RelativeLink';
+import ImageWithFallback from '../Common/ImageWithFallback';
 
 import './ImageBox.css';
 
@@ -14,13 +15,11 @@ const ImageBox = (props) => {
   return (
     <div className={className.join(' ')}>
       <RelativeLink to={props.href}>
-        <object className="fallback-image" data="http://maxpixel.freegreatpicture.com/static/photo/1x/Http-News-Html-Error-404-Was-Not-Found-Page-1349562.png" type="image/png">
-          <img
-            src={props.img}
-            className={imageClassName.join(' ')}
-            alt={props.title}
-          />
-        </object>
+        <ImageWithFallback
+          src={props.img}
+          className={imageClassName.join(' ')}
+          alt={props.title}
+        />
         { props.title &&
           <div
             className={labelClassName.join(' ')}
