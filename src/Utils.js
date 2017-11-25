@@ -20,8 +20,8 @@ const Utils = {
   },
   getImage(imagePath) {
     console.log(config, this.getEnvironment(), config[this.getEnvironment()]);
-    const { hostname, images } = config[this.getEnvironment()].statics;
-    const url = `${hostname}/${images}/${imagePath.url}`;
+    const { hostname } = config[this.getEnvironment()].statics;
+    const url = `${hostname}/${imagePath}`;
     console.log(url);
     return url;
   },

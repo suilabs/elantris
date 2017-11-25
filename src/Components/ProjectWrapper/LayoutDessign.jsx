@@ -15,10 +15,10 @@ const VerticalImages = props => (
       const url = Utils.getImage(imageObj.url);
       console.log(imageObj.text);
       if (!imageObj.text) {
-        return <ImageBoxWF key={url} img={url} alt={imageObj.alt} />;
+        return <ImageBoxWF key={url} img={url} alt={imageObj.url} />;
       }
       return (
-        <ImageBoxWF key={url} img={url} alt={imageObj.alt} >
+        <ImageBoxWF key={url} img={url} alt={imageObj.url} >
           {imageObj.text}
         </ImageBoxWF>
       );

@@ -32,7 +32,7 @@ class ApiConnector {
       mode: 'cors',
       body: data,
     };
-    return fetch(url, fetchConf);
+    return fetch(url, fetchConf).then((resp) => resp.json());
   };
   
   static getProjects() {
@@ -43,11 +43,33 @@ class ApiConnector {
     return this._fetchApi(query);
   };
   
-  static createProject(projectData) {
+  static createProject(projectData, password) {
     const query = {
       query: GQLMutations.insertProject,
-      variables: {project: projectData}
+      variables: {project: projectData},
+      password
     };
+    return this._fetchApi(query);
+  };
+  
+  static getProjectTypes() {
+    const query = {
+      query: GQLQueries.getTypes
+    };
+    return this._fetchApi(query);
+  }
+  
+  /**
+   *
+   * @param typeData {string} Name of the type
+   */
+  static createProjectType(typeData, password) {
+    const query = {
+      query: GQLMutations.insertType,
+      variables: {type: typeData},
+      password
+    };
+    
     return this._fetchApi(query);
   }
   

@@ -44,12 +44,10 @@ class Design extends React.Component {
 
   componentWillMount() {
     Loading(this, (finished) => {
-      ProjectsService.getProjects().then((projects) => {
-        projects.json().then((pr) => {
-          finished();
-          this.setState({ projects: pr.data.projects });
-        })
-      });
+      ProjectsService.getProjects().then((pr) => {
+        finished();
+        this.setState({ projects: pr });
+      })
     });
   }
 
@@ -57,7 +55,7 @@ class Design extends React.Component {
     const { projects } = this.state;
     const { project: selectedProject } = this.props.match.params;
     if (selectedProject) {
-      const { title, type, images } = projects.filter((proj) => proj.key === selectedProject);
+      const { title, type, images } = projects.filter((proj) => proj.key === selectedProject)[0];
       return (
         <div>
           <LayoutDessign
@@ -75,7 +73,7 @@ class Design extends React.Component {
             projects.map(
               (p => createInstance(p.title,
                   p.subTitle,
-                  Utils.getImage(p.coverImage),
+                  Utils.getImage(p.coverImage.url),
                   p.key)
               ))
           }
