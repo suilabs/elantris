@@ -42,7 +42,7 @@ type Project {
   coverImage: ImageBox!
   types: [String]!
   images: [ImageBox]
-  position: Int!
+  position: Int
 }
 
 type Query {

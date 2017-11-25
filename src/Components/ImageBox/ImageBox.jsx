@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'proptypes';
 import RelativeLink from '../Common/Link/RelativeLink';
+import ImageWithFallback from '../Common/ImageWithFallback';
 
 import './ImageBox.css';
 
@@ -14,7 +15,7 @@ const ImageBox = (props) => {
   return (
     <div className={className.join(' ')}>
       <RelativeLink to={props.href}>
-        <img
+        <ImageWithFallback
           src={props.img}
           className={imageClassName.join(' ')}
           alt={props.title}
