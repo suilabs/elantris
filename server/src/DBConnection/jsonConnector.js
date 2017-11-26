@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import sha1 from 'sha1';
 
-import Utils from 'sui-server/utils/utils';
-import config from 'sui-server/config/config.json';
+import Utils from '../utils/utils';
+import config from '../../config.json';
 
 let dbjson;
 

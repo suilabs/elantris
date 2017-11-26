@@ -24,3 +24,9 @@ yarn-debug.log*
 
 .idea/*
 database.json*
+.gitignore
+build/
+dist/
+script/
+src/api/
+src/config/

@@ -1,4 +1,4 @@
-import DB from 'sui-server/DBConnection/jsonConnector';
+import DB from '../DBConnection/jsonConnector';
 
 class AbstractModelController {
   
