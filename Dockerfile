@@ -4,20 +4,18 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app
+COPY public /usr/src/app/public
 COPY src /usr/src/app/src
 COPY package-lock.json /usr/src/app
-COPY .babelrc /usr/src/app
-COPY config.json /usr/src/app
-
-ENV ENV=dev
 
 RUN npm install
-RUN npm run build:server
+RUN npm run build-css
+RUN npm run build
 
-ENV VIRTUAL_HOST=graphql.suilabs.com
-ENV LETSENCRYPT_HOST=graphql.suilabs.com
+ENV VIRTUAL_HOST=preprod.suilabs.com
+ENV LETSENCRYPT_HOST=preprod.suilabs.com
 ENV LETSENCRYPT_EMAIL=borja.arias.upc@gmail.com
 
-EXPOSE 4000
+EXPOSE 5000
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "serve" ]

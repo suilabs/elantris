@@ -6,8 +6,6 @@ const getCssFromString = () => {
   throw Error('Not Implemented');
 };
 
-const env = 'dev';
-
 const Utils = {
   generateKey(str) {
     return str.replace(/ /g,  '-').toLowerCase();
@@ -27,7 +25,8 @@ const Utils = {
   },
   getEnvironment() {
     // TODO implement a true getter
-    return 'dev';
+    console.log(process.env.NODE_ENV);
+    return process.env.NODE_ENV;
   },
   getAPIPath() {
     const {hostname, path} = config[this.getEnvironment()].api;
