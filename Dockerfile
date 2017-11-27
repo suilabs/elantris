@@ -13,8 +13,8 @@ RUN npm run build-css
 RUN npm run build
 
 ENV VIRTUAL_HOST=preprod.suilabs.com
-ENV LETSENCRYPT_HOST=preprod.suilabs.com
-ENV LETSENCRYPT_EMAIL=borja.arias.upc@gmail.com
+#ENV LETSENCRYPT_HOST=preprod.suilabs.com
+#ENV LETSENCRYPT_EMAIL=borja.arias.upc@gmail.com
 
 EXPOSE 5000
 
