@@ -9,9 +9,13 @@
       "path": "graphql"
     }
   },
-  "prod": {
+  "production": {
     "statics": {
       "hostname": "//static.suilabs.com"
+    },
+    "api": {
+      "hostname": "//graphql.suilabs.com",
+      "path": "/"
     }
   }
 }
