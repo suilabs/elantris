@@ -15,8 +15,8 @@ RUN npm install
 RUN npm run build:server
 
 ENV VIRTUAL_HOST=graphql.suilabs.com
-ENV LETSENCRYPT_HOST=graphql.suilabs.com
-ENV LETSENCRYPT_EMAIL=borja.arias.upc@gmail.com
+#ENV LETSENCRYPT_HOST=graphql.suilabs.com
+#ENV LETSENCRYPT_EMAIL=borja.arias.upc@gmail.com
 
 EXPOSE 4000
 
