@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import _config from './config/config.json';
+import _config from '../config.json';
 import ProjectResolver from './model/Project';
 import ProjectTypeResolver from './model/ProjectType';
 

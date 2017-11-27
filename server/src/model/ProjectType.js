@@ -1,5 +1,5 @@
-import Controller from 'sui-server/ModelController/ProjectType';
-import Utils from 'sui-server/utils/utils';
+import Controller from '../ModelController/ProjectType';
+import Utils from '../utils/utils';
 
 const ProjectTypeResolver = {
   Query: {

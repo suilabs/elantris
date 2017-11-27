@@ -1,4 +1,4 @@
-import Controller from 'sui-server/ModelController/Project';
+import Controller from '../ModelController/Project';
 
 const ProjectResolver = {
   Query: {
