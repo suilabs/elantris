@@ -11,11 +11,12 @@
   },
   "production": {
     "statics": {
-      "hostname": "//static.suilabs.com"
+      "hostname": "//static.suilabs.com",
+      "images": "images"
     },
     "api": {
       "hostname": "//graphql.suilabs.com",
-      "path": "/graphql"
+      "path": "graphql"
     }
   }
 }
