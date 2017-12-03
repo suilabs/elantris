@@ -11,6 +11,7 @@ import Admin from './Views/admin';
 
 import NotFound from './Views/NotFound';
 
+import 'typeface-montserrat';
 import './App.css';
 
 export default () => (

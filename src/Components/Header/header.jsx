@@ -9,12 +9,16 @@ import './header.css';
 
 const Header = () => (
   <div className="sui-page-header">
-    <div className="sui-logo">
-      <Link to="/">
-        <SuiLogo width="100px" />
-      </Link>
+    <div className="sui-page-header__wrapper clearfix">
+      <div className="sui-logo">
+        <Link to="/">
+          <SuiLogo width="100px" />
+        </Link>
+      </div>
+      <div className="sui-navbar-wrapper">
+        <NavBar />
+      </div>
     </div>
-    <NavBar />
   </div>
 );
 
