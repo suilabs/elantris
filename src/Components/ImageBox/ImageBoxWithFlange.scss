@@ -10,25 +10,25 @@
 
   &--button {
     position: relative;
+    left: 50%;
     width: 5%;
     height: $sui-spacing-xlarge;
-    background-color: $sui-color-primary-dark;
-    color: white;
-    text-align: center;
-    left: 50%;
     transform: translateX(-50%);
+    border: none;
+    background-color: $sui-color-primary-dark;
+    color: var(--color-white);
+    font-weight: lighter;
+    text-align: center;
     cursor: default;
     box-sizing: content-box;
-    border: none;
-    font-weight: lighter;
 
     svg {
       position: absolute;
+      top: 50%;
+      left: 50%;
       margin-top: 0;
       transform: rotateX(180deg) translate(-50%, 50%);
       transition: transform $sui-duration-medium ease;
-      left: 50%;
-      top: 50%;
     }
 
     svg.sui-flange--flipped {
@@ -43,16 +43,16 @@
   &--appendix {
     position: relative;
     width: 100%;
-    background-color: $sui-color-primary-dark;
-    color: white;
-    text-align: center;
     padding: $sui-spacing-base;
+    background-color: $sui-color-primary-dark;
+    color: var(--color-white);
+    text-align: center;
     box-sizing: border-box;
   }
 
   &--wrapper {
     position: relative;
-    overflow: hidden;
     margin-bottom: $sui-spacing-base;
+    overflow: hidden;
   }
 }

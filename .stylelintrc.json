@@ -1,3 +1,8 @@
 {
-  "extends": "stylelint-config-skyscanner"
+  "extends": "stylelint-config-skyscanner",
+  "rules": {
+    "selector-max-id": 2,
+    "selector-max-type": 1,
+    "selector-max-compound-selectors": 5
+  }
 }

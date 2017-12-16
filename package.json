@@ -25,7 +25,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9001",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "precommit": "npm run lint"
   },
   "devDependencies": {
     "@storybook/react": "^3.2.8",
@@ -36,6 +37,7 @@
     "bpk-mixins": "^16.4.0",
     "bpk-stylesheets": "^3.2.54",
     "css-loader": "^0.28.7",
+    "husky": "^0.14.3",
     "storybook": "0.0.1",
     "style-loader": "^0.18.2"
   }

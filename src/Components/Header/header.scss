@@ -1,14 +1,27 @@
 @import '../../base.scss';
 
 .sui-page-header {
-  width: 100%;
-  text-align: center;
   position: static;
+  width: 100%;
   margin: $sui-spacing-large 0;
 
+  &__wrapper {
+    position: relative;
+    width: $sui-page-max-width;
+
+    @include h-centered;
+  }
+
   .sui-logo {
-    position:relative;
-    left:50%;
-    transform: translateX(-50%);
+    float: left;
+  }
+
+  .sui-navbar-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    border-bottom: $sui-pixel $sui-color-primary dotted;
+    text-align: right;
   }
 }

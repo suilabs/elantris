@@ -3,29 +3,29 @@ form {
   left: 50%;
   width: 50%;
   transform: translateX(-50%);
-
-  .sui-form-field {
-    display: inherit;
-    margin: .5rem 0;
-
-    input[type=file] {
-      border: 0;
-    }
-
-    select {
-      display: inline-block;
-      width: 100%;
-    }
-  }
-
-  .submit-box {
-    position: relative;
-
-    input[type=submit] {
-      margin-top: 1rem;
-      right: 0;
-      position: absolute;
-    }
-  }
-
 }
+
+.submit-box {
+  position: relative;
+
+  input[type=submit] {
+    position: absolute;
+    right: 0;
+    margin-top: 1rem;
+  }
+}
+
+.sui-form-field {
+  display: inherit;
+  margin: .5rem 0;
+
+  input[type=file] {
+    border: 0;
+  }
+
+  select {
+    display: inline-block;
+    width: 100%;
+  }
+}
+
