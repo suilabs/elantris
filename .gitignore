@@ -28,5 +28,4 @@ database.json*
 build/
 dist/
 script/
-src/api/
 src/config/
