@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import ImageBox from '../ImageBox';
-import { HFlexBox, VFlexBox } from '../Common/FlexBoxes';
+import { VFlexBox } from '../Common/FlexBoxes';
 
 import './Gallery.css';
 

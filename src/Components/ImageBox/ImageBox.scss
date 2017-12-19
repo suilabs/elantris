@@ -1,29 +1,28 @@
-@import "../../base.scss";
+@import '../../base.scss';
 
-@mixin labelBox {
+@mixin label-box {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
-  background-color: $sui-color-primary-trans;
-  transition: left $sui-duration-short, top $sui-duration-short;
-  left: 0;
-  top: 0;
   padding: $sui-spacing-base;
+  transition: left $sui-duration-short, top $sui-duration-short;
+  background-color: $sui-color-primary-trans;
   box-sizing: border-box;
 }
 
 .sui-image-box {
-
+  position: relative;
   width: $dwidth;
   height: $dheight;
+  color: var(--color-white);
   overflow: hidden;
-  position: relative;
-  color: white;
 
   .fallback-image {
-    width: 100%;
-    top: 50%;
     position: relative;
+    top: 50%;
+    width: 100%;
     transform: translateY(-50%);
   }
 
@@ -38,24 +37,24 @@
 
   &__label {
     &--horizontal {
-      @include labelBox;
-
       left: $dwidth;
       will-change: left;
+
+      @include label-box;
     }
 
     &--vertical {
-      @include labelBox;
-
       top: $dheight;
       will-change: top;
+
+      @include label-box;
     }
 
     &--rotate-270 {
       transform: rotateZ(270deg);
     }
 
-    &__text {
+    &-text {
       position: absolute;
       bottom: 0;
     }

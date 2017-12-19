@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 
 class ImageWithFallback extends Component {
@@ -11,13 +11,12 @@ class ImageWithFallback extends Component {
       }
     };
   }
-  
+
   render() {
     if (this.state.failed) {
-      return <img src={this.props.fallbackSrc} />;
-    } else {
-      return <img src={this.props.src} onError={this.fallback} />;
+      return <img src={this.props.fallbackSrc} alt="" />;
     }
+    return <img src={this.props.src} onError={this.fallback} alt="" />;
   }
 }
 
@@ -27,7 +26,7 @@ ImageWithFallback.propTypes = {
 };
 
 ImageWithFallback.defaultProps = {
-  fallbackSrc: 'http://maxpixel.freegreatpicture.com/static/photo/1x/Http-News-Html-Error-404-Was-Not-Found-Page-1349562.png'
+  fallbackSrc: 'http://maxpixel.freegreatpicture.com/static/photo/1x/Http-News-Html-Error-404-Was-Not-Found-Page-1349562.png',
 };
 
 export default ImageWithFallback;

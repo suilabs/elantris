@@ -24,7 +24,7 @@ const ImageBox = (props) => {
           <div
             className={labelClassName.join(' ')}
           >
-            <div className="sui-image-box__label__text">
+            <div className="sui-image-box__label-text">
               <h4>{props.title}</h4>
               <p>{props.descr}</p>
             </div>

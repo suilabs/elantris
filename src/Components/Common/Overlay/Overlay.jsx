@@ -4,7 +4,6 @@ import PropTypes from 'proptypes';
 import './Overlay.css';
 
 class Overlay extends React.Component {
-
   componentWillReceiveProps(props) {
     const { location, keyword } = props;
     const visible = location.indexOf(keyword) !== -1;
@@ -31,7 +30,6 @@ class Overlay extends React.Component {
       </div>
     );
   }
-
 }
 //
 // const Overlay = (props) => {

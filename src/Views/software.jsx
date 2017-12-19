@@ -1,5 +1,5 @@
 import React from 'react';
-import Underconstruction from "../Components/Common/UnderConstruction/UnderConstruction";
+import Underconstruction from '../Components/Common/UnderConstruction/UnderConstruction';
 
 const Software = () => (
   <Underconstruction />

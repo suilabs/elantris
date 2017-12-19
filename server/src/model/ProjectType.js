@@ -3,30 +3,33 @@ import Utils from '../utils/utils';
 
 const ProjectTypeResolver = {
   Query: {
-    types(_) {
+    types() {
       return Controller.all();
-    }
+    },
   },
   Mutation: {
     /**
-     * @param {string} type
-     * @returns ProjectType
+     *
+     * @param {*} _ - unused variable
+     * @param {String} type - new type name
+     * @returns {*} ProjectType
      */
-    insertProjectType(_, {type}) {
-      const newType = new Controller({key: Utils.joinLowerCase(type), name: type});
+    insertProjectType(_, { type }) {
+      const newType = new Controller({ key: Utils.joinLowerCase(type), name: type });
       newType.save();
       return newType.object;
     },
     /**
-     * @param {string} key
-     * @returns {Int}
+     * @param {*} _ - unused variable
+     * @param {string} key - Unique key
+     * @returns {Object} - Deleted element
      */
-    deleteProjectType(_, {key}) {
+    deleteProjectType(_, { key }) {
       const type = Controller.byKey(key);
       type.delete();
       return type.object;
     },
-  }
+  },
 };
 
 export default ProjectTypeResolver;

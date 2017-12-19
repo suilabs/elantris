@@ -12,16 +12,16 @@ class ProjectType extends AbstractModelController {
   get key() {
     return this.object.key;
   }
-  
+
   get name() {
-    return this.object.name
+    return this.object.name;
   }
-  
+
   set name(value) {
     this.object.name = value;
   }
-  
-  constructor({key, name}) {
+
+  constructor({ key, name }) {
     super();
     this.object = {};
     this.object.key = key;

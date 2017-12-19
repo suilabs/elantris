@@ -1,22 +1,11 @@
 @import '../../base.scss';
 
-@keyframes color-in{
-    0% {
-        fill: $sui-color-primary-dark;
-    }
-    50% {
-        fill: black;
-    }
-    0% {
-        fill: $sui-color-primary-dark;
-    }
-}
 .sui-logo {
-    &__vertical-dot {
-        animation: color-in $sui-duration-xlong ease 0 infinite normal;
-    }
+  &__vertical-dot {
+    fill: var(--color-black);
+  }
 
-    &__horizontal-dot {
-        animation: color-in, $sui-duration-xlong infinite $sui-duration-xlong normal;
-    }
+  &__horizontal-dot {
+    fill: $sui-color-primary;
+  }
 }

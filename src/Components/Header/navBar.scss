@@ -1,44 +1,43 @@
 @import '../../base.scss';
 
 .sui-navbar {
-  display: inline-block;
   left: 50%;
+  display: inline-block;
   padding-top: 1rem;
 
   ul {
     margin: 0;
-    list-style-type: none;
     padding: 0;
+    list-style-type: none;
   }
 
   &__item {
     display: inline;
     transition: border-bottom $sui-duration-medium ease;
-    border-bottom: 2px solid $sui-color-primary-total-trans;
+    border-bottom: #{2 * #{$sui-pixel}} solid $sui-color-primary-total-trans;
 
     &--active {
       display: inline;
       transition: border-bottom $sui-duration-medium ease;
-      border-bottom: 2px solid $sui-color-primary;
+      border-bottom: #{2 * #{$sui-pixel}} solid $sui-color-primary;
     }
 
     &:hover {
       color: $sui-color-primary-intense;
     }
 
-    &__link {
+    &--link {
+      color: var(--color-black);
       text-decoration: none;
-      color: black;
 
       &:visited {
         color: inherit;
       }
-
     }
   }
 
   &__item-spacer {
-    padding: 0 0.25rem;
     display: inline;
+    padding: 0 .25rem;
   }
 }

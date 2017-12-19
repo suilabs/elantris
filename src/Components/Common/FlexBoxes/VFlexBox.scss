@@ -1,28 +1,27 @@
 @import '../../../base.scss';
 
 .sui-vertical-flexbox {
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: space-around;
 
-    .sui-horizontal-flexbox {
-        // for every horizontal flexbox inside the vertical one, we will create a margin
-        margin-right: $sui-spacing-base;
+  .sui-horizontal-flexbox {
+    // for every horizontal flexbox inside the vertical one, we will create a margin
+    margin-right: $sui-spacing-base;
 
-        &:last-child  {
-            margin-right: 0;
-        }
+    &:last-child {
+      margin-right: 0;
     }
+  }
 
-    & > * {
-        // margin-right: $sui-spacing-base;
-        margin-bottom: $sui-spacing-base;
+  * {
+    // margin-right: $sui-spacing-base;
+    margin-bottom: $sui-spacing-base;
 
-        &:last-child {
-            margin-right: 0;
-        }
+    &:last-child {
+      margin-right: 0;
     }
+  }
 }

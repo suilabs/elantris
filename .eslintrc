@@ -4,7 +4,24 @@
     "browser": true,
     "jest": true
   },
+
   "rules": {
-    "import/no-extraneous-dependencies": [0]
+    "import/no-extraneous-dependencies": [
+      0
+    ],
+    "no-console": [
+      "off"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true
+      }
+    ],
+    "no-underscore-dangle": ["error", {"allowAfterThis": true}]
   }
 }

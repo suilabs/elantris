@@ -7,11 +7,11 @@ import ProjectTypeResolver from './model/ProjectType';
 const config = _config[process.env.ENV];
 
 const resolvers = {
-  Query: {...ProjectResolver.Query, ...ProjectTypeResolver.Query},
-  Mutation: {...ProjectResolver.Mutation, ...ProjectTypeResolver.Mutation}
+  Query: { ...ProjectResolver.Query, ...ProjectTypeResolver.Query },
+  Mutation: { ...ProjectResolver.Mutation, ...ProjectTypeResolver.Mutation },
 };
 
 export default {
-  schema: fs.readFileSync(path.join(__dirname, config.database.schema), {encoding: 'utf8'}),
-  resolvers
+  schema: fs.readFileSync(path.join(__dirname, config.database.schema), { encoding: 'utf8' }),
+  resolvers,
 };

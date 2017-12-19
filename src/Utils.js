@@ -8,7 +8,7 @@ const getCssFromString = () => {
 
 const Utils = {
   generateKey(str) {
-    return str.replace(/ /g,  '-').toLowerCase();
+    return str.replace(/ /g, '-').toLowerCase();
   },
   getCss(element, property) {
     if (typeof element === 'string') {
@@ -29,17 +29,17 @@ const Utils = {
     return process.env.NODE_ENV;
   },
   getAPIPath() {
-    const {hostname, path} = config[this.getEnvironment()].api;
+    const { hostname, path } = config[this.getEnvironment()].api;
     return `${hostname}/${path}`;
   },
   getStaticPath() {
-    const {hostname} = config[this.getEnvironment()].statics;
+    const { hostname } = config[this.getEnvironment()].statics;
     return hostname;
   },
-  getStaticImagesPath(suffix='') {
-    const {hostname, images} = config[this.getEnvironment()].statics;
+  getStaticImagesPath(suffix = '') {
+    const { hostname, images } = config[this.getEnvironment()].statics;
     return `${hostname}/${images}/${suffix}`;
-  }
+  },
 };
 
 export default Utils;

@@ -8,7 +8,6 @@ import FlangeIcon from '../../assets/icons/flange/Flange';
 import './ImageBoxWithFlange.css';
 
 class ImageBox extends Component {
-
   constructor(props) {
     super(props);
 
@@ -39,7 +38,11 @@ class ImageBox extends Component {
       <div className="sui-flange--wrapper">
         <img src={img} alt={alt} />
         { children && <div className="sui-flange--info-wrapper" style={activeStyle}>
-          <button ref={(el) => { this.button = el; }} className="sui-flange--button" onClick={this.showText}>
+          <button
+            ref={(el) => { this.button = el; }}
+            className="sui-flange--button"
+            onClick={this.showText}
+          >
             <FlangeIcon className={svgClassName} />
           </button>
           <div ref={(el) => { this.appendix = el; }} className="sui-flange--appendix">
