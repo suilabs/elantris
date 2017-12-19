@@ -6,7 +6,7 @@ const fakeRender = () => (
   <Spinner />
 );
 
-
+/* eslint-disable no-param-reassign */
 export default (component, callback) => {
   const originalRender = component.render;
 
@@ -16,4 +16,5 @@ export default (component, callback) => {
 
   component.render = fakeRender;
   callback(finished);
-}
+};
+/* eslint-enable no-param-reassign */

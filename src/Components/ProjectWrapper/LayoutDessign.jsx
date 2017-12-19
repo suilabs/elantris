@@ -3,7 +3,7 @@ import PropTypes from 'proptypes';
 
 import Utils from '../../Utils';
 import ProjectWrapper from '../../Components/ProjectWrapper/ProjectWrapper';
-import ImageBox, { ImageBoxWithFlange as ImageBoxWF } from '../../Components/ImageBox';
+import { ImageBoxWithFlange as ImageBoxWF } from '../../Components/ImageBox';
 
 const VerticalImages = props => (
   <ProjectWrapper>

@@ -8,13 +8,13 @@ let dbjson;
 
 const JSONDriver = {
   init: () => {
-    const {dbRoot, databaseFileName} = JSONDriver.getVariables();
-    
+    const { dbRoot, databaseFileName } = JSONDriver.getVariables();
+
     /* istanbul ignore else: untestable */
     if (dbRoot === ':memory:') {
       dbjson = {};
     } else {
-      dbjson = JSON.parse(fs.readFileSync(databaseFileName, {encoding: 'utf8'}));
+      dbjson = JSON.parse(fs.readFileSync(databaseFileName, { encoding: 'utf8' }));
     }
 
     /* istanbul ignore else */
@@ -23,44 +23,40 @@ const JSONDriver = {
         projects: {},
         types: {
           type1: {
-            "key": "type1",
-            "name": "Imatge Corporativa"
-          }
-        }
+            key: 'type1',
+            name: 'Imatge Corporativa',
+          },
+        },
       };
       JSONDriver.writeDB('Init DB');
     }
   },
   getVariables: () => {
-    const env = process.env.ENV;
+    const env = process.env.NODE_ENV;
     const dbRoot = config[env].database.root;
     const storageFolder = dbRoot[0] === '/' ? dbRoot : path.join(__dirname, `../../${dbRoot}`);
     const databaseFileName = path.join(storageFolder, config[env].database.file);
-    return {dbRoot, storageFolder, databaseFileName};
+    return { dbRoot, storageFolder, databaseFileName };
   },
-  hasBeenStarted: () => {
-    return dbjson !== null;
-  },
+  hasBeenStarted: () => dbjson !== null,
   writeDB: /* istanbul ignore next */ (op) => {
-    const {databaseFileName} = JSONDriver.getVariables();
+    const { databaseFileName } = JSONDriver.getVariables();
     const dbString = JSON.stringify(dbjson);
     const date = new Date();
     fs.writeFile(`${databaseFileName}-${op}-${date}`, dbString, (err) => {
       if (err) {
         console.error(err);
       }
-      fs.writeFile(databaseFileName, dbString, (err) => {
-        if (err) {
+      fs.writeFile(databaseFileName, dbString, (writeErr) => {
+        if (writeErr) {
           console.error(err);
         } else {
           console.log('DB Updated');
         }
-      })
+      });
     });
   },
-  dumpDB: /* istanbul ignore next */ () => {
-    return JSON.stringify(dbjson);
-  },
+  dumpDB: /* istanbul ignore next */ () => JSON.stringify(dbjson),
   get: (object, filterFunc) => {
     JSONDriver.init();
     if (filterFunc) {
@@ -69,7 +65,7 @@ const JSONDriver = {
         if (filterFunc(value)) {
           ac.push(value);
         }
-        return ac
+        return ac;
       }, []);
     }
     return Object.values(dbjson[object]);
@@ -96,7 +92,7 @@ const JSONDriver = {
     if (persist) {
       JSONDriver.writeDB(`Deleted_${object}_${element.key}`);
     }
-  }
+  },
 };
 
 export default JSONDriver;

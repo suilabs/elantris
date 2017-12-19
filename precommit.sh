@@ -17,7 +17,7 @@ checkLinting () {
 cssFilesToCommit=($(filesToCommit | grep .scss))
 
 echo -n "Checking SCSS Files for linting errors..."
-./node_modules/.bin/stylelint ${cssFilesToCommit} > /tmp/csslint
+./node_modules/.bin/stylelint ${cssFilesToCommit} > /tmp/csslint 2>/dev/null
 
 if [[ $? -eq 0 ]]; then
   echo -e "${GREEN}✔${NC}"
@@ -30,7 +30,7 @@ fi
 jsFilesToCommit=($(filesToCommit | grep -e .js | grep -v .json ))
 
 echo -n "Checking JS Files for linting errors:"
-./node_modules/.bin/eslint ${jsFilesToCommit} > /tmp/jslint
+./node_modules/.bin/eslint ${jsFilesToCommit} > /tmp/jslint 2>/dev/null
 
 if [[ $? -eq 0 ]]; then
   echo -e "${GREEN}✔${NC}"

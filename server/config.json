@@ -8,7 +8,8 @@
     },
     "test": {
         "database": {
-            "root": ":memory:"
+            "root": ":memory:",
+            "file": ""
         }
     }
 }

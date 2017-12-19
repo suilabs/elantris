@@ -5,6 +5,6 @@ export const HFlexBox = HBox;
 export const VFlexBox = VBox;
 
 export default {
-    HFlexBox,
-    VFlexBox,
-}
+  HFlexBox,
+  VFlexBox,
+};

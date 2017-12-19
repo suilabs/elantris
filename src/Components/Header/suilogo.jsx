@@ -4,7 +4,7 @@ import PropTypes from 'proptypes';
 import './suilogo.css';
 
 const SuiLogo = (props) => {
-  const { width, height, playfull } = props;
+  const { width, height } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -75,13 +75,11 @@ const SuiLogo = (props) => {
 SuiLogo.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
-  playfull: PropTypes.bool,
 };
 
 SuiLogo.defaultProps = {
   width: null,
   height: null,
-  playfull: false,
 };
 
 export default SuiLogo;

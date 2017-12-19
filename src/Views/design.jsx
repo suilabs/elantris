@@ -9,17 +9,15 @@ import LayoutDessign from '../Components/ProjectWrapper/LayoutDessign';
 
 import Gallery from '../Components/ImageGallery';
 
-const createInstance = (title, descr, img, href, tags = ['design']) => {
-  return {
-    title,
-    img,
-    tag: tags,
-    descr,
-    orientation: 'vertical',
-    animationDirection: 'vertical',
-    href,
-  };
-}
+const createInstance = (title, descr, img, href, tags = ['design']) => ({
+  title,
+  img,
+  tag: tags,
+  descr,
+  orientation: 'vertical',
+  animationDirection: 'vertical',
+  href,
+});
 
 // const projects = {
 //   reccrealo: {
@@ -33,7 +31,6 @@ const createInstance = (title, descr, img, href, tags = ['design']) => {
 // }
 
 class Design extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -47,7 +44,7 @@ class Design extends React.Component {
       ProjectsService.getProjects().then((pr) => {
         finished();
         this.setState({ projects: pr });
-      })
+      });
     });
   }
 
@@ -55,7 +52,7 @@ class Design extends React.Component {
     const { projects } = this.state;
     const { project: selectedProject } = this.props.match.params;
     if (selectedProject) {
-      const { title, type, images } = projects.filter((proj) => proj.key === selectedProject)[0];
+      const { title, type, images } = projects.filter(proj => proj.key === selectedProject)[0];
       return (
         <div>
           <LayoutDessign
@@ -72,9 +69,9 @@ class Design extends React.Component {
           instances={
             projects.map(
               (p => createInstance(p.title,
-                  p.subTitle,
-                  Utils.getImage(p.coverImage.url),
-                  p.key)
+                p.subTitle,
+                Utils.getImage(p.coverImage.url),
+                p.key)
               ))
           }
         />

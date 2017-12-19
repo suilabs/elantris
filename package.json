@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "backpack-react-scripts": "4.0.7",
+    "eslint": "^4.13.1",
     "graphql-server-express": "^1.2.0",
     "node-sass-chokidar": "0.0.3",
     "proptypes": "^1.1.0",
@@ -26,7 +27,7 @@
     "storybook": "start-storybook -p 9001",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "precommit": "npm run lint"
+    "precommit": "bash precommit.sh"
   },
   "devDependencies": {
     "@storybook/react": "^3.2.8",

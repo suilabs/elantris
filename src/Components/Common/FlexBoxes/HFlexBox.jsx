@@ -3,14 +3,14 @@ import PropTypes from 'proptypes';
 
 import './HFlexBox.css';
 
-const HFlexBox = (props) => (
-    <div className='sui-horizontal-flexbox'>
-        {props.children}
-    </div>
-)
+const HFlexBox = props => (
+  <div className="sui-horizontal-flexbox">
+    {props.children}
+  </div>
+);
 
 HFlexBox.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.node).isRequired,
-}
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+};
 
 export default HFlexBox;

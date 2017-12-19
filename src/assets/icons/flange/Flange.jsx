@@ -11,7 +11,7 @@ const Flange = props => (
 );
 
 Flange.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
 };
 
 export default Flange;

@@ -1,19 +1,21 @@
 import React from 'react';
-
+import PropTypes from 'proptypes';
 import { VFlexBox } from '../Components/Common/FlexBoxes';
-import ImageBox from '../Components/ImageBox';
 
 import escriptori from '../assets/escriptori.png';
 
 import './home.css';
 
-const CompetenciImageBox = (props) => {
-  return (
-    <div className="sui-home__competencies">
-      <img src={props.img} width={284} />
-      <h3>{props.text}</h3>
-    </div>
-  );
+const CompetenciImageBox = props => (
+  <div className="sui-home__competencies">
+    <img src={props.img} width={284} alt="" />
+    <h3>{props.text}</h3>
+  </div>
+);
+
+CompetenciImageBox.propTypes = {
+  img: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 const Home = () => (
@@ -23,13 +25,13 @@ const Home = () => (
         <img src={escriptori} alt="escriptory treballant" height={284} />
       </div>
       <div className="sui-home__central-column">
-        <h1>"Design is thinking made visual"</h1>
+        <h1>&quot;Design is thinking made visual&quot;</h1>
         <p className="sui-home__introduction-text">
-          El nostre objectiu és crear una identitat corporativa que ajudi a potenciar els valors que voleu transmetre com
-          empresa i enfocar-nos a aquell target o públic objectiu al qual voleu arribar. Ens agrada treballar d’una manera
-          propera amb els clients per detectar així les necessitats de l’encarrec i dur a terme una imatge corporativa
-          ajustada a cada client. agrada treballar d’una manera propera amb els clients per detectar així les necessitats
-          de l’encarrec i dur a terme una imatge corporativa ajustada a cada client.
+          El nostre objectiu és crear una identitat corporativa que ajudi a potenciar els valors que voleu transmetre
+          com empresa i enfocar-nos a aquell target o públic objectiu al qual voleu arribar. Ens agrada treballar d’una
+          manera propera amb els clients per detectar així les necessitats de l’encarrec i dur a terme una imatge
+          corporativa ajustada a cada client. agrada treballar d’una manera propera amb els clients per detectar així
+          les necessitats de l’encarrec i dur a terme una imatge corporativa ajustada a cada client.
         </p>
       </div>
       <div className="sui-home__image-right">

@@ -4,11 +4,11 @@
   "description": "Backend server for suilabs web",
   "main": "server",
   "scripts": {
-    "test": "ENV=test nyc --reporter html --reporter text mocha --timeout=3000",
+    "test": "NODE_ENV=test nyc --reporter html --reporter text mocha --timeout=3000",
     "node-link": "ln -s ${PWD}/src node_modules/sui-server",
     "postinstall": "npm run node-link",
     "init": "echo {} ./storage/database && npm install",
-    "start:dev": "ENV=dev babel-node ./src/server.js",
+    "start:dev": "NODE_ENV=dev babel-node ./src/server.js",
     "start": "node build/server.js",
     "build:server": "babel -d ./build ./src && cp ./src/model/model.graphqls ./build/model/"
   },
@@ -23,6 +23,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "graphql": "^0.11.7",

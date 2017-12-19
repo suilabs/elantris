@@ -2,22 +2,20 @@ import Controller from '../ModelController/Project';
 
 const ProjectResolver = {
   Query: {
-    project(_, {key}) {
+    project(_, { key }) {
       return Controller.byKey(key).object;
     },
-    projects(_) {
-      return Controller.all().sort((p1, p2) => {
-        return p1.position - p2.position;
-      });
-    }
+    projects() {
+      return Controller.all().sort((p1, p2) => p1.position - p2.position);
+    },
   },
   Mutation: {
-    insertProject(_, {project}) {
+    insertProject(_, { project }) {
       const newProject = new Controller(project);
       newProject.save();
       return newProject.object;
     },
-    updateProject(_, {project}) {
+    updateProject(_, { project }) {
       const projectToUpdate = Controller.byKey(project.key);
       projectToUpdate.name = project.name;
       projectToUpdate.title = project.title;
@@ -28,22 +26,22 @@ const ProjectResolver = {
       projectToUpdate.save();
       return projectToUpdate.object;
     },
-    deleteProject(_, {key}) {
+    deleteProject(_, { key }) {
       const project = Controller.byKey(key);
       project.delete();
       return project.object;
     },
-    changeOrder(_, {projects}) {
+    changeOrder(_, { projects }) {
       const retProj = [];
-      projects.forEach(({key, position}) => {
+      projects.forEach(({ key, position }) => {
         const project = Controller.byKey(key);
         project.position = position;
         retProj.push(project);
         project.save();
       });
       return retProj;
-    }
-  }
+    },
+  },
 };
 
 export default ProjectResolver;
