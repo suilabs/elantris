@@ -12,7 +12,7 @@ const Header = () => (
     <div className="sui-page-header__wrapper clearfix">
       <div className="sui-logo">
         <Link to="/">
-          <SuiLogo width="100px" />
+          <SuiLogo width="142px" />
         </Link>
       </div>
       <div className="sui-navbar-wrapper">

@@ -1,7 +1,7 @@
 @import '../../../base.scss';
 
 .sui-vertical-flexbox {
-  position: relative;
+  // position: relative;
   display: flex;
   width: 100%;
   flex-flow: row wrap;
@@ -16,8 +16,7 @@
     }
   }
 
-  * {
-    // margin-right: $sui-spacing-base;
+  > div {
     margin-bottom: $sui-spacing-base;
 
     &:last-child {

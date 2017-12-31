@@ -1,16 +1,47 @@
 @import '../../base.scss';
 
 .sui-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  margin: 0;
-  padding: 1rem;
-  background-color: $sui-color-primary-trans;
-  box-sizing: border-box;
+  margin-top: $dheight / 2;
 
-  &__right-container {
-    float: right;
+  &__contact {
+    position: relative;
+    width: $dwidth;
+    padding-left: $sui-spacing-xlarge;
+    border-left: 3 * $sui-pixel $sui-color-primary solid;
+    line-height: relative-pt(48);
+    text-align: left;
+    box-sizing: border-box;
+
+    @include h-centered;
+  }
+
+  &__consulta {
+    color: $sui-color-primary;
+    font-size: relative-pt(48);
+    font-weight: 200;
+  }
+
+  &__telephone {
+    margin-bottom: 0;
+    font-size: relative-pt(25);
+  }
+
+  &__mail {
+    margin-bottom: 0;
+    color: $sui-color-primary;
+    font-size: relative-pt(22);
+
+    &:last-child {
+      margin-top: -1rem;
+    }
+  }
+
+  &__social {
+    display: none;
+
+    @include respond-to(handhelds) {
+      display: inherit;
+    }
   }
 }

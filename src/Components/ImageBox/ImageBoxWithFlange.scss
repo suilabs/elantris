@@ -16,7 +16,7 @@
     transform: translateX(-50%);
     border: none;
     background-color: $sui-color-primary-dark;
-    color: var(--color-white);
+    color: $sui-color-white;
     font-weight: lighter;
     text-align: center;
     cursor: default;
@@ -45,7 +45,7 @@
     width: 100%;
     padding: $sui-spacing-base;
     background-color: $sui-color-primary-dark;
-    color: var(--color-white);
+    color: $sui-color-white;
     text-align: center;
     box-sizing: border-box;
   }

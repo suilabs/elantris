@@ -4,16 +4,18 @@ $sui-color-primary-total-trans: rgba(139, 3, 79, 0);
 $sui-color-primary-bright: rgba(159, 34, 95, 1);
 $sui-color-primary-intense: rgba(157, 0, 82, 1);
 $sui-color-primary-dark: rgba(86, 0, 37, 1);
+$sui-color-white: rgba(255, 255, 255, 1);
 $sui-duration-short: .3s;
 $sui-duration-medium: .6s;
 $sui-duration-long: 1s;
 $sui-duration-xlong: 4s;
-$sui-spacing-sm: 3rem;
-$sui-spacing-md: 6rem;
+$sui-spacing-sm: .3rem;
+$sui-spacing-md: .6rem;
 $sui-spacing-base: 1rem;
 $sui-spacing-large: 1.3rem;
 $sui-spacing-xlarge: 1.6rem;
 $sui-spacing-xxlarge: 2.5rem;
+$sui-spacing-xxxlarge: 4.5rem;
 $sui-media-phone: 'only screen and (max-width: 320px)';
 $sui-media-tablet: 'only screen and (max-width: 320px)';
 $sui-media-phone: 'only screen and (max-width: 320px)';
@@ -22,10 +24,18 @@ $sui-h2: 1.5em;
 $sui-h3: 1.17em;
 $dwidth: 17.75rem;
 $dheight: 17.75rem;
-$sui-page-max-width: calc(#{$dwidth} * 3 + 2rem);
+$sui-page-max-width: calc(#{$dwidth} * 3 + 4rem);
 $break-phone: 20rem;
 $break-tablet: 64rem;
 $sui-pixel: .0625rem;
+
+@function relative-pt($pt) {
+  @return ($pt / 16) * 1rem;
+}
+
+@function pixels($nPixels) {
+  @return ($sui-pixel * $nPixels);
+}
 
 @mixin respond-to($media) {
   @if $media == handhelds {
@@ -48,6 +58,17 @@ $sui-pixel: .0625rem;
   transform: translateX(-50%);
 }
 
+@mixin v-centered {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin centered {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .clearfix {
   &::before,
   &::after {
@@ -68,4 +89,43 @@ html,
 body {
   margin: 0;
   font-family: Montserrat, Arial, sans-serif;
+}
+
+#App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#App-content {
+  width: 100%;
+  flex: 1 0 auto;
+
+  &::after {
+    content: '\00a0';
+    display: block;
+    visibility: hidden;
+    height: 0;
+    margin-top: $sui-spacing-base;
+  }
+}
+
+.menu-item::after {
+  content: '·';
+  margin: auto .25rem;
+}
+
+.menu-item:last-child::after {
+  content: '';
+}
+
+a {
+  color: $sui-color-primary;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }

@@ -1,11 +1,11 @@
 {
   "development": {
     "statics": {
-      "hostname": "//localhost:3001",
+      "hostname": "//static.suilabs.com",
       "images": "images"
     },
     "api": {
-      "hostname": "//localhost:4000",
+      "hostname": "//graphql.suilabs.com",
       "path": "graphql"
     }
   },

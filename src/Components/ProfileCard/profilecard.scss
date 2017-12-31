@@ -1,0 +1,51 @@
+@import '../../base.scss';
+
+.sui-profile {
+  &-card {
+    width: $dwidth;
+    // height: $dheight;
+    font-size: relative-pt(14);
+  }
+
+  &__image {
+    width: $dwidth;
+    height: $dheight;
+    overflow: hidden;
+  }
+
+  &__details {
+    padding: $sui-spacing-sm;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__name {
+    color: $sui-color-primary;
+    font-weight: 600;
+  }
+
+  &__work {
+    margin-bottom: $sui-spacing-base;
+    color: $sui-color-primary-bright;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__contact {
+    color: $sui-color-primary;
+    font-weight: 700;
+  }
+
+  &__social {
+    margin-top: $sui-spacing-sm;
+    float: right;
+
+    img {
+      width: 2rem;
+    }
+  }
+}

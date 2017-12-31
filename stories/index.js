@@ -5,3 +5,4 @@ import './Components/gallery';
 import './Components/Common/overlay';
 import './Components/imageWithFlange';
 import './Components/Common/spinner';
+import './Components/contact';

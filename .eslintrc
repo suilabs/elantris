@@ -22,6 +22,7 @@
         "ignoreStrings": true
       }
     ],
-    "no-underscore-dangle": ["error", {"allowAfterThis": true}]
+    "no-underscore-dangle": ["error", {"allowAfterThis": true}],
+    "import/extensions": ["off"]
   }
 }

@@ -4,22 +4,23 @@
   left: 50%;
   display: inline-block;
   padding-top: 1rem;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
+  text-transform: capitalize;
 
   &__item {
     display: inline;
-    transition: border-bottom $sui-duration-medium ease;
-    border-bottom: #{2 * #{$sui-pixel}} solid $sui-color-primary-total-trans;
+
+    a {
+      transition: border-bottom $sui-duration-medium ease;
+      border-bottom: pixels(2) solid $sui-color-primary-total-trans;
+    }
 
     &--active {
       display: inline;
-      transition: border-bottom $sui-duration-medium ease;
-      border-bottom: #{2 * #{$sui-pixel}} solid $sui-color-primary;
+
+      a {
+        transition: border-bottom $sui-duration-medium ease;
+        border-bottom: pixels(2) solid $sui-color-primary;
+      }
     }
 
     &:hover {

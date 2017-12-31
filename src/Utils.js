@@ -24,9 +24,7 @@ const Utils = {
     return url;
   },
   getEnvironment() {
-    // TODO implement a true getter
-    console.log(process.env.NODE_ENV);
-    return process.env.NODE_ENV;
+    return process.env.FORCE_ENV || process.env.NODE_ENV;
   },
   getAPIPath() {
     const { hostname, path } = config[this.getEnvironment()].api;

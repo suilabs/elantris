@@ -1,17 +1,10 @@
 import React from 'react';
 import PropTypes from 'proptypes';
 
+import FollowUs from '../FollowUs';
+import { VFlexBox, justification } from '../Common/FlexBoxes';
+
 import './footer.css';
-
-const FooterElement = props => <span className="sui-footer__element"> {props.children} </span>;
-
-FooterElement.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-};
-
-FooterElement.defaultProps = {
-  children: '',
-};
 
 const Footer = (props) => {
   if (props.nonVisible) {
@@ -19,15 +12,15 @@ const Footer = (props) => {
   }
   return (
     <div id="sui-footer" className="sui-footer">
-      <div className="sui-footer__right-container">
-        <FooterElement>
-          Instagram
-        </FooterElement>
-        -
-        <FooterElement>
-          LinkedIn
-        </FooterElement>
+      <div className="sui-footer__contact">
+        <VFlexBox justify={justification.start} vAlign={justification.start}>
+          <span className="sui-footer__consulta">tens una consulta?</span>
+          <span className="sui-footer__telephone">+34 646 24 85 27</span>
+          <a className="sui-footer__mail" href="mailto://anna@suilabs.com">anna at suilabs.com</a>
+          <a className="sui-footer__mail" href="mailto://borja@suilabs.com">borja at suilabs.com</a>
+        </VFlexBox>
       </div>
+      <FollowUs className={'sui-footer__social'} show />
     </div>
   );
 };

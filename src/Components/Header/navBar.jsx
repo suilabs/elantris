@@ -7,7 +7,7 @@ import './navBar.css';
 const NavBarItem = (props) => {
   const root = props.history.location.pathname.split('/')[1];
   const active = `/${root}` === props.to ? '--active' : '';
-  const classname = `sui-navbar__item${active}`;
+  const classname = `sui-navbar__item${active} menu-item`;
   return (
     <li className={classname}>
       <Link id={props.to} to={props.to} className="sui-navbar__item--link">
@@ -39,12 +39,8 @@ const NavBar = () => (
   <nav className="sui-navbar">
     <ul>
       <NavBarItemWR to="/design" label="Design" />
-      <NavBarSpacer />
       <NavBarItemWR to="/software" label="Software" />
-      <NavBarSpacer />
       <NavBarItemWR to="/about" label="About us" />
-      <NavBarSpacer />
-      <NavBarItemWR to="/contact" label="Contact" />
     </ul>
   </nav>
 );
