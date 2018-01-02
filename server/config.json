@@ -9,7 +9,8 @@
     "test": {
         "database": {
             "root": ":memory:",
-            "file": ""
+            "file": "",
+            "schema": "model/model.graphqls"
         }
     }
 }

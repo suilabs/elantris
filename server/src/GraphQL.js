@@ -4,7 +4,7 @@ import _config from '../config.json';
 import ProjectResolver from './model/Project';
 import ProjectTypeResolver from './model/ProjectType';
 
-const config = _config[process.env.ENV];
+const config = _config[process.env.NODE_ENV];
 
 const resolvers = {
   Query: { ...ProjectResolver.Query, ...ProjectTypeResolver.Query },
