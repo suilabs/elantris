@@ -4,18 +4,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - 5000:5000
     depends_on:
       - backend
   backend:
     build:
       context: server
       dockerfile: Dockerfile
-    ports:
-      - 4000:4000
     volumes:
-      - ${PWD}/server/storage:/usr/src/app/storage
+      - ./server/storage:/usr/src/app/storage
 
 networks:
   default:
