@@ -8,11 +8,15 @@ let dbjson;
 
 const JSONDriver = {
   init: () => {
+    if (JSONDriver.hasBeenStarted()) {
+      return null; // already initialized
+    }
     const { dbRoot, databaseFileName } = JSONDriver.getVariables();
-
+    JSONDriver.isMemory = false;
     /* istanbul ignore else: untestable */
     if (dbRoot === ':memory:') {
       dbjson = {};
+      JSONDriver.isMemory = true;
     } else {
       dbjson = JSON.parse(fs.readFileSync(databaseFileName, { encoding: 'utf8' }));
     }
@@ -30,6 +34,7 @@ const JSONDriver = {
       };
       JSONDriver.writeDB('Init DB');
     }
+    return null;
   },
   getVariables: () => {
     const env = process.env.NODE_ENV;
@@ -38,23 +43,25 @@ const JSONDriver = {
     const databaseFileName = path.join(storageFolder, config[env].database.file);
     return { dbRoot, storageFolder, databaseFileName };
   },
-  hasBeenStarted: () => dbjson !== null,
+  hasBeenStarted: () => !!dbjson,
   writeDB: /* istanbul ignore next */ (op) => {
-    const { databaseFileName } = JSONDriver.getVariables();
-    const dbString = JSON.stringify(dbjson);
-    const date = new Date();
-    fs.writeFile(`${databaseFileName}-${op}-${date}`, dbString, (err) => {
-      if (err) {
-        console.error(err);
-      }
-      fs.writeFile(databaseFileName, dbString, (writeErr) => {
-        if (writeErr) {
+    if (!JSONDriver.isMemory) {
+      const { databaseFileName } = JSONDriver.getVariables();
+      const dbString = JSON.stringify(dbjson);
+      const date = new Date();
+      fs.writeFile(`${databaseFileName}-${op}-${date}`, dbString, (err) => {
+        if (err) {
           console.error(err);
-        } else {
-          console.log('DB Updated');
         }
+        fs.writeFile(databaseFileName, dbString, (writeErr) => {
+          if (writeErr) {
+            console.error(err);
+          } else {
+            console.log('DB Updated');
+          }
+        });
       });
-    });
+    }
   },
   dumpDB: /* istanbul ignore next */ () => JSON.stringify(dbjson),
   get: (object, filterFunc) => {

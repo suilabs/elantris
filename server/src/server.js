@@ -13,9 +13,20 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const canAuth = password => password === '279183pB';
 
 const app = express();
+const GRAPHQL_PORT = process.env.GRAPHQL_PORT || 4000;
 
+const errorMessage = (message) => {
+  return `
+  {
+    "errors": [
+      {
+        "message": "${message}"
+      }
+    ]
+  }`;
+};
 
-if (process.env.ENV === 'dev') {
+if (process.env.NODE_ENV === 'dev') {
   app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 }
 
@@ -25,8 +36,16 @@ app.post('*', (req, res, next) => {
   if (query.indexOf('mutation') !== 0 || canAuth(password)) {
     next();
   } else {
-    res.sendStatus(403);
+    let err;
+    if (!password) {
+      err = 'Missing password';
+    } else {
+      err = 'Password incorrect';
+    }
+    res.status(403).send(errorMessage(err));
   }
 });
 app.use('/graphql', cors(), graphqlExpress({ schema }));
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphiql'));
+const server = app.listen(GRAPHQL_PORT, () => console.log('Now browse to localhost:4000/graphiql'));
+
+module.exports = server;

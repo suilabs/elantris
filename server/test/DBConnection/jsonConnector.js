@@ -49,8 +49,8 @@ describe('JSONConnector', () => {
     const ret = JSONConnector.get('projects');
 
     expect(Object.keys(ret).length).to.be.equal(2);
-    expect(ret[project.key]).to.be.equal(project);
-    expect(ret[project2.key]).to.be.equal(project2);
+    expect(ret[0]).to.be.equal(project);
+    expect(ret[1]).to.be.equal(project2);
     expect(writeDBStub.called).to.be.equal(false);
   });
 
@@ -61,8 +61,8 @@ describe('JSONConnector', () => {
     const ret = JSONConnector.get('projects');
 
     expect(Object.keys(ret).length).to.be.equal(2);
-    expect(ret[project.key]).to.be.equal(project);
-    expect(ret[project2.key]).to.be.equal(project2);
+    expect(ret[0]).to.be.equal(project);
+    expect(ret[1]).to.be.equal(project2);
     expect(writeDBStub.called).to.be.equal(true);
   });
 
@@ -73,6 +73,6 @@ describe('JSONConnector', () => {
     const ret = JSONConnector.get('projects', e => e.key === 'k1');
 
     expect(Object.keys(ret).length).to.be.equal(1);
-    expect(ret[project.key]).to.be.equal(project);
+    expect(ret[0]).to.be.equal(project);
   });
 });
