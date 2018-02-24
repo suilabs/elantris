@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 
-import JSONConnector from 'sui-server/DBConnection/jsonConnector';
+import JSONConnector from '../../src/DBConnection/jsonConnector';
 
 describe('JSONConnector', () => {
   let writeDBStub;

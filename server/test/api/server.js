@@ -1,6 +1,6 @@
 import http from 'chai-http';
 
-import server from 'sui-server/server';
+import server from '../../src/server';
 
 chai.use(http);
 
