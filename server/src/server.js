@@ -15,8 +15,7 @@ const canAuth = password => password === '279183pB';
 const app = express();
 const GRAPHQL_PORT = process.env.GRAPHQL_PORT || 4000;
 
-const errorMessage = (message) => {
-  return `
+const errorMessage = message => `
   {
     "errors": [
       {
@@ -24,7 +23,6 @@ const errorMessage = (message) => {
       }
     ]
   }`;
-};
 
 if (process.env.NODE_ENV === 'dev') {
   app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));

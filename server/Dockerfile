@@ -9,7 +9,7 @@ COPY package-lock.json /usr/src/app
 COPY .babelrc /usr/src/app
 COPY config.json /usr/src/app
 
-ENV ENV=dev
+ENV NODE_ENV=dev
 
 RUN npm install
 RUN npm run build:server

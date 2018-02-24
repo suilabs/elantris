@@ -4,7 +4,6 @@
     "browser": true,
     "jest": true
   },
-
   "rules": {
     "import/no-extraneous-dependencies": [
       0
@@ -24,5 +23,10 @@
     ],
     "no-underscore-dangle": ["error", {"allowAfterThis": true}],
     "import/extensions": ["off"]
+  },
+  "globals": {
+    "chai": true,
+    "expect": true,
+    "after": true
   }
 }
