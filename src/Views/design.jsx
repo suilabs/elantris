@@ -14,8 +14,8 @@ const createInstance = (title, descr, img, href, tags = ['design']) => ({
   img,
   tag: tags,
   descr,
-  orientation: 'vertical',
-  animationDirection: 'vertical',
+  orientation: 'horizontal',
+  animationDirection: 'horizontal',
   href,
 });
 
