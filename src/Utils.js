@@ -38,6 +38,21 @@ const Utils = {
     const { hostname, images } = config[this.getEnvironment()].statics;
     return `${hostname}/${images}/${suffix}`;
   },
+  getFeatureFlag(name) {
+    if (!window.suilabs || !window.suilabs.queryParams) {
+      return null;
+    }
+    if (!window.suilabs.featureFlags) {
+      window.suilabs.featureFlags = window.suilabs.queryParams.get('featureFlags')
+        .split(',')
+        .reduce((accum, feature) => {
+          const [key, value] = feature.split(':');
+          accum[key] = value; // eslint-disable-line no-param-reassign
+          return accum;
+        }, {});
+    }
+    return window.suilabs.featureFlags[name];
+  },
 };
 
 export default Utils;

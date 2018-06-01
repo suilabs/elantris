@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'typeface-montserrat';
 
+import withWindowQueryString from './HOC/withWindowQueryString';
+
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import HomeView from './Views/home';
@@ -14,6 +16,7 @@ import NotFound from './Views/NotFound';
 
 import './App.css';
 
+const RouteWithQueryParams = withWindowQueryString(Route);
 
 export default () => (
   <BrowserRouter>
@@ -21,12 +24,12 @@ export default () => (
       <div id="App-content">
         <Header />
         <Switch>
-          <Route exact path="/" render={HomeView} />
-          <Route exact path="/design/:project?" component={DesignView} />
-          <Route exact path="/software" render={SoftwareView} />
-          <Route exact path="/about" render={AboutUsView} />
-          <Route exact path="/admin" render={Admin} />
-          <Route component={NotFound} />
+          <RouteWithQueryParams exact path="/" render={HomeView} />
+          <RouteWithQueryParams exact path="/design/:project?" component={DesignView} />
+          <RouteWithQueryParams exact path="/software" render={SoftwareView} />
+          <RouteWithQueryParams exact path="/about" render={AboutUsView} />
+          <RouteWithQueryParams exact path="/admin" render={Admin} />
+          <RouteWithQueryParams component={NotFound} />
         </Switch>
       </div>
       <Footer />

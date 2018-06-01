@@ -3,10 +3,6 @@
 # dependencies
 node_modules
 
-# testing
-coverage
-server/.nyc_output
-
 # production
 build
 
@@ -23,9 +19,4 @@ yarn-debug.log*
 *.css
 
 .idea/*
-database.json*
-.gitignore
-build/
-dist/
-script/
-src/config/
+.nyc_output/

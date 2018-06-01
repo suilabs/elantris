@@ -8,9 +8,6 @@ pipelines:
           script:
             - npm install
             - npm test
-            - cd server
-            - npm install
-            - npm test
     master:
       - step:
           caches:
@@ -18,9 +15,5 @@ pipelines:
           script:
             - npm install
             - npm test
-            - cd server
-            - npm install
-            - npm test
-            - cd ..
             - cd scripts
             - bash updateRepo.sh
