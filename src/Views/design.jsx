@@ -19,17 +19,6 @@ const createInstance = (title, descr, img, href, tags = ['design']) => ({
   href,
 });
 
-// const projects = {
-//   reccrealo: {
-//     title: 'Recrealo',
-//     type: 'Infografia il·lustrada',
-//     images: [
-//       { url: 'rec/rec-perso2.jpg', text: 'Bla bla bla bla bla bla' },
-//       { url: 'rec/rec-perso2.jpg', text: 'Bla bla bla bla bla bla' },
-//     ],
-//   },
-// }
-
 class Design extends React.Component {
   constructor(props) {
     super(props);

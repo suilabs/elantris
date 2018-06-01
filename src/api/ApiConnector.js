@@ -15,15 +15,13 @@ const postApi = (url, form) => {
 };
 
 class ApiConnector {
-  static apiPath = Utils.getAPIPath();
-
   static _fetchApi = (query) => {
     const headers = new Headers({
       'content-type': 'application/json',
       Accept: 'application/json',
     });
     const data = JSON.stringify(query);
-    const url = ApiConnector.apiPath;
+    const url = Utils.getAPIPath();
     const fetchConf = {
       method: 'POST',
       headers,
