@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
 
 import Utils from '../../Utils';
 import ProjectWrapper from '../../Components/ProjectWrapper/ProjectWrapper';

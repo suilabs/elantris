@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
 
 import './Overlay.css';
 
@@ -31,17 +31,13 @@ class Overlay extends React.Component {
     );
   }
 }
-//
-// const Overlay = (props) => {
-//
-// };
 
 Overlay.propTypes = {
   location: PropTypes.string.isRequired,
   keyword: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.nodega]).isRequired,
+    PropTypes.node]).isRequired,
 };
 
 export default Overlay;

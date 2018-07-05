@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
 
 const Flange = props => (
   <svg className={props.className} xmlns="http://www.w3.org/2000/svg" width="39.06403" height="12.066122" viewBox="0 0 10.335691 3.1924948">
