@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'typeface-montserrat';
 
-import withWindowQueryString from './HOC/withWindowQueryString';
+import { withSuilabs, SetParameters } from './Components/Common/Utility';
+
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -16,20 +17,19 @@ import NotFound from './Views/NotFound';
 
 import './App.css';
 
-const RouteWithQueryParams = withWindowQueryString(Route);
-
 export default () => (
   <BrowserRouter>
     <div id="App">
+      <SetParameters />
       <div id="App-content">
         <Header />
         <Switch>
-          <RouteWithQueryParams exact path="/" render={HomeView} />
-          <RouteWithQueryParams exact path="/design/:project?" component={DesignView} />
-          <RouteWithQueryParams exact path="/software" render={SoftwareView} />
-          <RouteWithQueryParams exact path="/about" render={AboutUsView} />
-          <RouteWithQueryParams exact path="/admin" render={Admin} />
-          <RouteWithQueryParams component={NotFound} />
+          <Route exact path="/" render={withSuilabs(HomeView)} />
+          <Route exact path="/design/:project?" component={withSuilabs(DesignView)} />
+          <Route exact path="/software" render={withSuilabs(SoftwareView)} />
+          <Route exact path="/about" render={withSuilabs(AboutUsView)} />
+          <Route exact path="/admin" render={withSuilabs(Admin)} />
+          <Route component={NotFound} />
         </Switch>
       </div>
       <Footer />

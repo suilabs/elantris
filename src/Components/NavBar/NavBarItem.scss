@@ -1,0 +1,23 @@
+@import '../../base.scss';
+
+.sui-navbar__item {
+  display: inline;
+
+  a {
+    transition: border-bottom $sui-duration-medium ease;
+    border-bottom: pixels(2) solid $sui-color-primary-total-trans;
+  }
+
+  &--active {
+    display: inline;
+
+    a {
+      transition: border-bottom $sui-duration-medium ease;
+      border-bottom: pixels(2) solid $sui-color-primary;
+    }
+  }
+
+  &--link {
+    @include link;
+  }
+}

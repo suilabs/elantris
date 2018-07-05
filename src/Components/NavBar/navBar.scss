@@ -1,0 +1,13 @@
+@import '../../base.scss';
+
+.sui-navbar {
+  left: 50%;
+  display: inline-block;
+  padding-top: 1rem;
+  text-transform: capitalize;
+
+  @include break-on(mobile) {
+    left: auto;
+    width: 100%;
+  }
+}

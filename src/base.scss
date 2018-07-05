@@ -26,7 +26,7 @@ $sui-h3: 1.17em;
 $dwidth: 17.75rem;
 $dheight: 17.75rem;
 $sui-page-max-width: calc(#{$dwidth} * 3 + 4rem);
-$break-phone: 20rem;
+$break-phone: 32.25rem;
 $break-tablet: 64rem;
 $sui-pixel: .0625rem;
 
@@ -38,19 +38,36 @@ $sui-pixel: .0625rem;
   @return ($sui-pixel * $nPixels);
 }
 
-@mixin respond-to($media) {
-  @if $media == handhelds {
+@mixin break-on($media) {
+  @if $media == mobile {
     @media only screen and (max-width: $break-phone) {
       @content;
     }
-  } @else if $media == medium-screens {
+  } @else if $media == tablet {
     @media only screen and (min-width: $break-phone + 1) and (max-width: $break-tablet - 1) {
       @content;
     }
-  } @else if $media == wide-screens {
+  } @else if $media == desktop {
     @media only screen and (min-width: $break-tablet) {
       @content;
     }
+  }
+}
+
+body::before {
+  content: 'desktop';
+  display: none;
+
+  @include break-on(mobile) {
+    content: 'mobile';
+  }
+
+  @include break-on(tablet) {
+    content: 'tablet';
+  }
+
+  @include break-on(desktop) {
+    content: 'big-desktop';
   }
 }
 
@@ -68,6 +85,19 @@ $sui-pixel: .0625rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@mixin link {
+  color: var(--color-black);
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: $sui-color-primary-intense;
+  }
 }
 
 .clearfix {
@@ -129,4 +159,13 @@ ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+.sui-view-wrapper {
+  position: relative;
+  z-index: -1;
+}
+
+.visually-hidden {
+  visibility: hidden;
 }

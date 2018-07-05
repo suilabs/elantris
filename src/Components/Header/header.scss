@@ -3,18 +3,26 @@
 .sui-page-header {
   position: static;
   width: 100%;
-  margin: $sui-spacing-large 0;
   margin-bottom: $sui-spacing-xxxlarge;
+  padding-top: $sui-spacing-large;
 
   &__wrapper {
     position: relative;
     width: $sui-page-max-width;
+    max-width: 100%;
 
     @include h-centered;
   }
 
   .sui-logo {
     float: left;
+
+    @include break-on(mobile) {
+      float: none;
+      padding: $sui-spacing-base;
+      padding-left: $sui-spacing-xlarge;
+      border-bottom: pixels(1) dotted $sui-color-primary;
+    }
   }
 
   .sui-navbar-wrapper {
@@ -24,5 +32,24 @@
     width: 70%;
     border-bottom: $sui-pixel $sui-color-primary dotted;
     text-align: right;
+
+    @include break-on(mobile) {
+      width: initial;
+    }
+  }
+}
+
+.sui-dropdown-menu {
+  &__button {
+    padding: $sui-spacing-base;
+    padding-right: $sui-spacing-xlarge;
+    border: 0;
+    background-color: transparent;
+  }
+
+  &__icon {
+    width: 100%;
+    max-width: 2rem;
+    max-height: 2rem;
   }
 }
