@@ -5,8 +5,19 @@ import { storiesOf } from '@storybook/react';
 import Header from '../../src/Components/Header';
 
 storiesOf('Header', module)
-  .add('Normal', () => (
-    <BrowserRouter>
-      <Header />
-    </BrowserRouter>
-  ));
+  .add('Normal', () => {
+    window.suilabs = { isMobile: false };
+    return (
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+    );
+  })
+  .add('Mobile', () => {
+    window.suilabs = { isMobile: true };
+    return (
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+    );
+  });

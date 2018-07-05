@@ -1,0 +1,27 @@
+@import '../../../base.scss';
+
+@mixin dropdown-item {
+  margin-left: -30%;
+  padding: $sui-spacing-md;
+  padding-left: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sui-dropdown-menu__item {
+  @include dropdown-item;
+
+  &--active {
+    @include dropdown-item;
+  }
+
+  &--link {
+    @include link;
+  }
+
+  &--active &--link {
+    border-bottom: pixels(2) solid $sui-color-primary;
+
+    @include link;
+  }
+}

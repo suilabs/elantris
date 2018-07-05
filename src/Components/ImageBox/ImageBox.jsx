@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
 import RelativeLink from '../Common/Link/RelativeLink';
 import ImageWithFallback from '../Common/ImageWithFallback';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'proptypes';
+import PropTypes from 'prop-types';
 
 import Utils from '../Utils';
 import ProjectsService from '../Services/ProjectService';
@@ -52,7 +52,7 @@ class Design extends React.Component {
         </div>);
     }
     return (
-      <div>
+      <div className="sui-view-wrapper">
         <Gallery
           size={{ width: 284 }}
           instances={

@@ -40,7 +40,7 @@
   &__social {
     display: none;
 
-    @include respond-to(handhelds) {
+    @include break-on(mobile) {
       display: inherit;
     }
   }

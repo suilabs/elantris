@@ -1,0 +1,37 @@
+@import '../../../base.scss';
+
+.sui-dropdown-menu {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  padding: $sui-spacing-base 0;
+  flex-direction: column;
+  transition: clip-path $sui-duration-short ease;
+  background-color: $sui-color-white-trans;
+  text-align: left;
+  clip-path: polygon(0 0, 0 0, 100% 0, 100% 0);
+
+  &--show {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  }
+}
+
+.sui-menu-button {
+  position: relative;
+  width: 0;
+  height: 0;
+  margin: 1rem;
+  margin-right: 2rem;
+  padding: 1rem;
+  border: 0;
+  background-color: $sui-color-white;
+  fill: $sui-color-primary;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
