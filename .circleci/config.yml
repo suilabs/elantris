@@ -21,17 +21,16 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
-  deploy:
-    docker:
-      - image: circleci/node:8.9.0
-    working_directory: ~/repo
+  release:
     branches:
       only:
         - master
+    docker:
+      - image: circleci/node:8.9.0
+    working_directory: ~/repo
     steps:
       - checkout
-      - run:
-        shell: /bin/bash
-        command: |
-          cd scripts
-          bash updateRepo.sh
+      - deploy:
+          command: |
+            cd scripts
+            bash updateRepo.sh
