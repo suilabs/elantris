@@ -6,12 +6,14 @@
   width: 100%;
   padding: $sui-spacing-base 0;
   flex-direction: column;
-  transition: clip-path $sui-duration-short ease;
+  transition: clip-path $sui-duration-short $sui-bezier-photon, border-bottom-color $sui-duration-short $sui-bezier-photon $sui-duration-short;
+  border-bottom: $sui-pixel solid transparent;
   background-color: $sui-color-white-trans;
   text-align: left;
   clip-path: polygon(0 0, 0 0, 100% 0, 100% 0);
 
   &--show {
+    border-bottom-color: $sui-color-black;
     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
   }
 }
