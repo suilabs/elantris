@@ -5,6 +5,11 @@
     .sui-vertical-flexbox {
       flex-wrap: nowrap;
     }
+
+    .sui-horizontal-flexbox {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
   }
 
   &__competencies {
@@ -40,19 +45,44 @@
     background-color: $sui-color-primary-bright;
     color: $sui-color-white;
 
+    @include break-on(mobile) {
+      width: 80%;
+    }
+
     h1 {
       margin-top: 50%;
+    }
+
+    .sui-home__introduction-wrapper {
+      flex-direction: column;
     }
   }
 
   &__image {
     &-left {
       width: $dwidth;
+
+      @include break-on(mobile) {
+        display: none;
+      }
     }
 
     &-right {
       width: $dwidth;
       overflow: hidden;
+
+      @include break-on(mobile) {
+        position: relative;
+        display: flex;
+        width: 100%;
+        margin-bottom: $sui-spacing-xxlarge;
+
+        img {
+          width: 60%;
+          height: auto;
+          margin-left: 40%;
+        }
+      }
     }
   }
 
@@ -74,16 +104,38 @@
     font-weight: 200;
     text-align: center;
     text-transform: uppercase;
+
+    @include break-on(mobile) {
+      display: none;
+    }
   }
 
-  &__introduction-text {
-    color: $sui-color-white;
-    font-size: relative-pt(16);
-    font-weight: 500;
-    line-height: relative-pt(23);
+  &__full-text {
+    color: $sui-color-primary;
+    font-size: relative-pt(42);
+    font-weight: 200;
+    text-transform: uppercase;
 
-    p {
-      margin-bottom: 2rem;
+    div {
+      position: absolute;
+      bottom: 1rem;
+      margin: 0;
+      margin-left: calc(40% - 1rem);
+      transform: rotate(-90deg);
+      transform-origin: 0 100%;
+    }
+  }
+
+  &__introduction {
+    &-text {
+      color: $sui-color-white;
+      font-size: relative-pt(16);
+      font-weight: 500;
+      line-height: relative-pt(23);
+
+      p {
+        margin-bottom: 2rem;
+      }
     }
   }
 }
