@@ -157,8 +157,15 @@ body {
 }
 
 a {
+  outline: 0;
   color: $sui-color-primary;
   text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
 }
 
 ul {
@@ -168,10 +175,18 @@ ul {
 }
 
 .sui-view-wrapper {
-  position: relative;
-  z-index: -1;
+  // empty
 }
 
 .visually-hidden {
   visibility: hidden;
+}
+
+div {
+  user-select: none;
+}
+
+button {
+  outline: 0;
+  user-select: none;
 }

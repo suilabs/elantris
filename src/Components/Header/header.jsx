@@ -48,11 +48,7 @@ class Header extends React.Component {
             ||
             <button
               className="sui-dropdown-menu__button"
-              onClick={() => {
-                this.setState({
-                  showMenu: !this.state.showMenu,
-                });
-              }}
+              onClick={this.handleButtonClick}
             >
               <MenuIcon className="sui-dropdown-menu__icon" />
             </button>
@@ -62,7 +58,7 @@ class Header extends React.Component {
         {
           (
             isMobile
-            && <DropdownMenu showMenu={showMenu} >
+            && <DropdownMenu showMenu={showMenu}>
               <DropdownMenuItem to="/design" label="Design" />
               <DropdownMenuItem to="/software" label="Software" />
               <DropdownMenuItem to="/about" label="About us" />
