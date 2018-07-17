@@ -111,10 +111,15 @@
   }
 
   &__full-text {
+    display: none;
     color: $sui-color-primary;
     font-size: relative-pt(42);
     font-weight: 200;
     text-transform: uppercase;
+
+    @include break-on(mobile) {
+      display: initial;
+    }
 
     div {
       position: absolute;
