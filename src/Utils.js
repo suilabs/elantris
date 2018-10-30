@@ -7,6 +7,9 @@ const getCssFromString = () => {
 };
 
 const Utils = {
+  isNewBackendEnabled() {
+    return Utils.getFeatureFlag('newBackend') === 'true';
+  },
   generateKey(str) {
     return str.replace(/ /g, '-').toLowerCase();
   },
@@ -24,7 +27,8 @@ const Utils = {
     return process.env.FORCE_ENV || process.env.NODE_ENV;
   },
   getAPIPath() {
-    const { hostname, path } = config[this.getEnvironment()].api;
+    const env = this.isNewBackendEnabled() ? 'newProd' : this.getEnvironment();
+    const { hostname, path } = config[env].api;
     return `${hostname}/${path}`;
   },
   getStaticPath() {
@@ -36,17 +40,8 @@ const Utils = {
     return `${hostname}/${images}/${suffix}`;
   },
   getFeatureFlag(name) {
-    if (!window.suilabs || !window.suilabs.queryParams) {
+    if (!window.suilabs || !window.suilabs.featureFlags) {
       return null;
-    }
-    if (!window.suilabs.featureFlags) {
-      window.suilabs.featureFlags = window.suilabs.queryParams.get('featureFlags')
-        .split(',')
-        .reduce((accum, feature) => {
-          const [key, value] = feature.split(':');
-          accum[key] = value; // eslint-disable-line no-param-reassign
-          return accum;
-        }, {});
     }
     return window.suilabs.featureFlags[name];
   },

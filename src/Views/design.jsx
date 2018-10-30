@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Utils from '../Utils';
 import ProjectsService from '../Services/ProjectService';
 import Loading from '../Components/Common/Loading';
-
-import LayoutDessign from '../Components/ProjectWrapper/LayoutDessign';
-
+import LayoutBuilder from '../Components/ProjectWrapper/LayoutBuilder';
+import LayoutDesign from '../Components/ProjectWrapper/LayoutDesign';
 import Gallery from '../Components/ImageGallery';
+import Utils from '../Utils';
 
 const createInstance = (title, descr, img, href, tags = ['design']) => ({
   title,
@@ -41,15 +40,19 @@ class Design extends React.Component {
     const { projects } = this.state;
     const { project: selectedProject } = this.props.match.params;
     if (selectedProject) {
-      const { title, type, images } = projects.filter(proj => proj.key === selectedProject)[0];
+      const project = projects.filter(proj => proj.url === selectedProject)[0];
       return (
         <div>
-          <LayoutDessign
-            title={title}
-            type={type}
-            images={images}
-          />
-        </div>);
+          {Utils.getFeatureFlag('newBackend')
+            ? <LayoutBuilder item={project} />
+            : <LayoutDesign
+              title={project.title}
+              type={project.type}
+              images={project.images}
+            />
+          }
+        </div>
+      );
     }
     return (
       <div className="sui-view-wrapper">
@@ -57,10 +60,10 @@ class Design extends React.Component {
           size={{ width: 284 }}
           instances={
             projects.map(
-              (p => createInstance(p.title,
-                p.subTitle,
-                Utils.getImage(p.coverImage.url),
-                p.key)
+              (p => createInstance(p.name,
+                p.description,
+                p.cover.url,
+                p.url)
               ))
           }
         />
