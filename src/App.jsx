@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'typeface-montserrat';
 
-import { withSuilabs, SetParameters } from './Components/Common/Utility';
+import SetParameters from './Components/Common/Utility';
 
+import Utils from './Utils';
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
@@ -22,13 +23,13 @@ export default () => (
     <div id="App">
       <SetParameters />
       <div id="App-content">
-        <Header />
+        <Header isMobile={Utils.isMobile()} />
         <Switch>
-          <Route exact path="/" render={withSuilabs(HomeView)} />
-          <Route exact path="/design/:project?" component={withSuilabs(DesignView)} />
-          <Route exact path="/software" render={withSuilabs(SoftwareView)} />
-          <Route exact path="/about" render={withSuilabs(AboutUsView)} />
-          <Route exact path="/admin" render={withSuilabs(Admin)} />
+          <Route exact path="/" render={HomeView} />
+          <Route exact path="/design/:project?" component={DesignView} />
+          <Route exact path="/software" render={SoftwareView} />
+          <Route exact path="/about" render={AboutUsView} />
+          <Route exact path="/admin" render={Admin} />
           <Route component={NotFound} />
         </Switch>
       </div>

@@ -13,7 +13,6 @@ const VerticalImages = props => (
     </div>
     {props.images.map((imageObj) => {
       const url = Utils.getImage(imageObj.url);
-      console.log(imageObj.text);
       if (!imageObj.text) {
         return <ImageBoxWF key={url} img={url} alt={imageObj.url} />;
       }
