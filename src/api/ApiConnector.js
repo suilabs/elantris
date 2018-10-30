@@ -35,7 +35,6 @@ class ApiConnector {
     const query = {
       query: GQLQueries.getProjects,
     };
-
     return this._fetchApi(query);
   }
 

@@ -5,7 +5,7 @@ import Utils from '../../Utils';
 import ProjectWrapper from '../../Components/ProjectWrapper/ProjectWrapper';
 import { ImageBoxWithFlange as ImageBoxWF } from '../../Components/ImageBox';
 
-const VerticalImages = props => (
+const LayoutDesign = props => (
   <ProjectWrapper>
     <div className="sui-project-detail--title">
       <h1>· {props.title} ·</h1>
@@ -25,7 +25,7 @@ const VerticalImages = props => (
   </ProjectWrapper>
 );
 
-VerticalImages.propTypes = {
+LayoutDesign.propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.shape({
@@ -35,8 +35,8 @@ VerticalImages.propTypes = {
   })),
 };
 
-VerticalImages.defaultProps = {
+LayoutDesign.defaultProps = {
   images: [],
 };
 
-export default VerticalImages;
+export default LayoutDesign;

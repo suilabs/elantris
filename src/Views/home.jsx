@@ -1,9 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import FollowUs from '../Components/FollowUs';
 import { VFlexBox, HFlexBox } from '../Components/Common/FlexBoxes';
-import { withSuilabs } from '../Components/Common/Utility';
 import Utils from '../Utils';
 
 import './home.css';
@@ -54,8 +52,8 @@ const TextPresentacio = () => (
 
 const DesignText = () => <div className="sui-home__design-text">design</div>;
 
-const Home = (props) => {
-  const FlexBox = props.isMobile ? HFlexBox : VFlexBox;
+const Home = () => {
+  const FlexBox = Utils.isMobile() ? HFlexBox : VFlexBox;
   return (
     <div className="sui-home--wrapper">
       <FlexBox vAlign="center">
@@ -76,8 +74,4 @@ const Home = (props) => {
   );
 };
 
-Home.propTypes = {
-  isMobile: PropTypes.bool.isRequired,
-};
-
-export default withSuilabs(Home);
+export default Home;

@@ -3,14 +3,21 @@
 .sui-flange {
   &--info-wrapper {
     position: absolute;
+
+    // @include break-on(mobile) {
+    position: initial;
     top: calc(100% - #{$sui-spacing-xxlarge});
     width: 100%;
     transition: transform $sui-duration-medium ease;
+    // }
   }
 
   &--button {
     position: relative;
     left: 50%;
+
+    // @include break-on(mobile) {
+    display: none;
     width: 5%;
     height: $sui-spacing-xlarge;
     transform: translateX(-50%);
@@ -21,6 +28,7 @@
     text-align: center;
     cursor: default;
     box-sizing: content-box;
+    // }
 
     svg {
       position: absolute;
@@ -45,9 +53,15 @@
     width: 100%;
     padding: $sui-spacing-base;
     background-color: $sui-color-primary-dark;
+
+    // @include break-on(mobile) {
+    background-color: transparent;
     color: $sui-color-white;
+    color: $sui-color-black;
+    text-align: left;
     text-align: center;
     box-sizing: border-box;
+    // }
   }
 
   &--wrapper {
