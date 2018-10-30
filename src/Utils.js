@@ -17,11 +17,8 @@ const Utils = {
     return getCssFromNode(element, property);
   },
   getImage(imagePath) {
-    console.log(config, this.getEnvironment(), config[this.getEnvironment()]);
     const { hostname } = config[this.getEnvironment()].statics;
-    const url = `${hostname}/${imagePath}`;
-    console.log(url);
-    return url;
+    return `${hostname}/${imagePath}`;
   },
   getEnvironment() {
     return process.env.FORCE_ENV || process.env.NODE_ENV;
@@ -52,6 +49,9 @@ const Utils = {
         }, {});
     }
     return window.suilabs.featureFlags[name];
+  },
+  isMobile() {
+    return (window.suilabs && window.suilabs.isMobile) || false;
   },
 };
 

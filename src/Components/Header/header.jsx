@@ -8,8 +8,6 @@ import SuiLogo from './suilogo';
 import DropdownMenu, { DropdownMenuItem } from '../Common/DropdownMenu/index';
 import MenuIcon from '../Icons/Menu';
 
-import { withSuilabs } from '../Common/Utility';
-
 import './header.css';
 
 class Header extends React.Component {
@@ -75,4 +73,4 @@ Header.propTypes = {
   isMobile: PropTypes.bool.isRequired,
 };
 
-export default withSuilabs(Header);
+export default Header;
