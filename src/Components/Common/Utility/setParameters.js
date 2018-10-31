@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { isMobile } from 'react-device-detect';
 
 class SetParameters extends React.Component {
   constructor(props) {
@@ -22,7 +21,6 @@ class SetParameters extends React.Component {
     window.suilabs = {
       queryParams: params,
       featureFlags: currentFeatureFlags,
-      isMobile: params.get('mobile') === 'true' || isMobile,
     };
   }
 

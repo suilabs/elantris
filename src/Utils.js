@@ -1,3 +1,4 @@
+import { isMobile } from 'react-device-detect';
 import config from './config.json';
 
 const getCssFromNode = (element, property) =>
@@ -45,8 +46,17 @@ const Utils = {
     }
     return window.suilabs.featureFlags[name];
   },
+  getQueryParam(name) {
+    if (!window.suilabs || !window.suilabs.queryParams) {
+      return null;
+    }
+    return window.suilabs.queryParams.get(name);
+  },
+  getBooleanParam(name) {
+    return this.getQueryParam(name) === 'true';
+  },
   isMobile() {
-    return (window.suilabs && window.suilabs.isMobile) || false;
+    return this.getBooleanParam('mobile') || isMobile;
   },
 };
 
