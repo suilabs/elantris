@@ -7,7 +7,6 @@
     "start": "react-scripts start src",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "jest": "jest --config=jest.config src",
     "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
     "lint:scss:fix": "stylefmt --recursive 'src/**/*.scss'",
     "lint:js": "eslint . --ignore-path .gitignore --ext .js,.jsx",
@@ -51,7 +50,6 @@
     "eslint": "^4.13.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "husky": "^0.14.3",
-    "react-test-renderer": "^16.6.0s",
     "style-loader": "^0.18.2"
   }
 }

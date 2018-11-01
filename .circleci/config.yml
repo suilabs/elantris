@@ -19,7 +19,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm test
   release:
     docker:
       - image: circleci/node:8.9.0
