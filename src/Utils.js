@@ -25,7 +25,7 @@ const Utils = {
     return `${hostname}/${imagePath}`;
   },
   getEnvironment() {
-    return process.env.FORCE_ENV || process.env.NODE_ENV;
+    return this.getQueryParam('env') || process.env.NODE_ENV;
   },
   getAPIPath() {
     const env = this.isNewBackendEnabled() ? 'newProd' : this.getEnvironment();

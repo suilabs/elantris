@@ -18,6 +18,23 @@ const createInstance = (title, descr, img, href, tags = ['design']) => ({
   href,
 });
 
+const createInstanceProxy = (project) => {
+  if (Utils.getFeatureFlag('newBackend') === 'true') {
+    return createInstance(
+      project.name,
+      project.description,
+      project.cover.url,
+      project.url,
+    );
+  }
+  return createInstance(
+    project.title,
+    project.subTitle,
+    Utils.getImage(project.coverImage.url),
+    project.key,
+  );
+};
+
 class Design extends React.Component {
   constructor(props) {
     super(props);
@@ -59,12 +76,7 @@ class Design extends React.Component {
         <Gallery
           size={{ width: 284 }}
           instances={
-            projects.map(
-              (p => createInstance(p.name,
-                p.description,
-                p.cover.url,
-                p.url)
-              ))
+            projects.map(createInstanceProxy)
           }
         />
       </div>
