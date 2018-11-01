@@ -40,8 +40,7 @@ main () {
   jsLen=${#jsFilesToCommit[@]}
 
   if [[ $jsLen -eq 0 ]]; then
-    echo -n "No SCSS files to check -> ";
-  else
+    echo -n "No JS files to check -> "; else
     echo -n "Checking $jsLen JS Files for linting errors..."
     ./node_modules/.bin/eslint ${jsFilesToCommit[@]} > /tmp/jslint 2>/tmp/jslintError
   fi
