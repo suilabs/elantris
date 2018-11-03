@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { BrowserRouter, StaticRouter, Route, Switch } from 'react-router-dom';
 import 'typeface-montserrat';
 
 import SetParameters from './Components/Common/Utility';
@@ -18,22 +19,39 @@ import NotFound from './Views/NotFound';
 
 import './App.css';
 
-export default () => (
-  <BrowserRouter>
-    <div id="App">
-      <SetParameters />
-      <div id="App-content">
-        <Header isMobile={Utils.isMobile()} />
-        <Switch>
-          <Route exact path="/" render={HomeView} />
-          <Route exact path="/design/:project?" component={DesignView} />
-          <Route exact path="/software" render={SoftwareView} />
-          <Route exact path="/about" render={AboutUsView} />
-          <Route exact path="/admin" render={Admin} />
-          <Route component={NotFound} />
-        </Switch>
+function App({ ssr, isMobile }) {
+  const Router = ssr ? StaticRouter : BrowserRouter;
+  Utils.setIsMobile(isMobile);
+  return (
+    <Router>
+      <div id="App">
+        {ssr || <SetParameters />}
+        <div id="App-content">
+          <Header isMobile={Utils.isMobile()} />
+          <Switch>
+            <Route exact path="/" render={HomeView} />
+            <Route exact path="/design/:project?" component={DesignView} />
+            <Route exact path="/software" render={SoftwareView} />
+            <Route exact path="/about" render={AboutUsView} />
+            <Route exact path="/admin" render={Admin} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  </BrowserRouter>
-);
+    </Router>
+  );
+}
+
+App.propTypes = {
+  ssr: PropTypes.bool,
+  isMobile: PropTypes.bool,
+};
+
+App.defaultProps = {
+  ssr: false,
+  isMobile: false,
+};
+
+export default App;
+

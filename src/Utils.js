@@ -1,4 +1,3 @@
-import { isMobile } from 'react-device-detect';
 import config from './config.json';
 
 const getCssFromNode = (element, property) =>
@@ -8,6 +7,7 @@ const getCssFromString = () => {
 };
 
 const Utils = {
+  mobile: false,
   isNewBackendEnabled() {
     return Utils.getFeatureFlag('newBackend') === 'true';
   },
@@ -25,7 +25,7 @@ const Utils = {
     return `${hostname}/${imagePath}`;
   },
   getEnvironment() {
-    return this.getQueryParam('env') || process.env.NODE_ENV;
+    return process.env.NODE_ENV;
   },
   getAPIPath() {
     const env = this.isNewBackendEnabled() ? 'newProd' : this.getEnvironment();
@@ -56,9 +56,11 @@ const Utils = {
     return this.getQueryParam(name) === 'true';
   },
   isMobile() {
-    return this.getBooleanParam('mobile') || isMobile;
+    return this.mobile;
+  },
+  setIsMobile(b) {
+    this.mobile = b;
   },
 };
 
 export default Utils;
-

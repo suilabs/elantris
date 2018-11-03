@@ -4,11 +4,13 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app
+COPY package-lock.json /usr/src/app
 COPY public /usr/src/app/public
 COPY src /usr/src/app/src
-COPY package-lock.json /usr/src/app
+COPY server /usr/src/app/server
 
-RUN npm install
+RUN NODE_ENV=production
+RUN npm install --production
 RUN npm run build-css
 RUN npm run build
 
@@ -18,4 +20,4 @@ ENV LETSENCRYPT_EMAIL=borja.arias.upc@gmail.com
 
 EXPOSE 5000
 
-CMD [ "npm", "run", "serve" ]
+CMD [ "npm", "start" ]

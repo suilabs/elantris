@@ -5,7 +5,6 @@ import App from './App';
 // import Footer from './Components/Footer';
 import registerServiceWorker from './registerServiceWorker';
 
-// ReactDOM.render(React.createElement(Header), document.getElementById('header'));
-ReactDOM.render(React.createElement(App), document.getElementById('root'));
-// ReactDOM.render(React.createElement(Footer), document.getElementById('footer'));
+ReactDOM.hydrate(React.createElement(App), document.getElementById('root'));
+
 registerServiceWorker();
