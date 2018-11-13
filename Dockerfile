@@ -11,7 +11,6 @@ COPY server /usr/src/app/server
 
 RUN NODE_ENV=production
 RUN npm install --production
-RUN npm run build-css
 RUN npm run build
 
 ENV VIRTUAL_HOST=preprod.suilabs.com
