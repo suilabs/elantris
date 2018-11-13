@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './suilogo.css';
+import './suilogo.scss';
 
 const SuiLogo = (props) => {
   const { width, height } = props;

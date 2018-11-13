@@ -6,6 +6,7 @@ const Text = ({ className, content }) => {
   if (!containsHtml) {
     return <p className={className}>{content}</p>;
   }
+  // eslint-disable-next-line react/no-danger
   return <div dangerouslySetInnerHTML={{ __html: content.slice(7) }} />; // eslint-disable react/no-danger
 };
 

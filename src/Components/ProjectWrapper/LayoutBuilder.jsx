@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import ProjectWrapper from '../../Components/ProjectWrapper/ProjectWrapper';
 import FieldFactory from '../Common/Fields/FieldFactory';
 
-const LayoutBuilder = ({ item: { name, type, template, configuration } }) => (
+const LayoutBuilder = ({
+  item: {
+    name, type, template, configuration,
+  },
+}) => (
   <ProjectWrapper>
     <div className="sui-project-detail--title">
       <h1>{ name }</h1>

@@ -23,10 +23,14 @@ export default {
       })
       .catch(reject);
   }),
-  createProject: ({ key, title, subTitle, coverImage, types, images, password }) => {
+  createProject: ({
+    key, title, subTitle, coverImage, types, images, password,
+  }) => {
     cache.isValid = false;
     return APIConnector.createProject(
-      { key, title, subTitle, coverImage, types, images },
+      {
+        key, title, subTitle, coverImage, types, images,
+      },
       password,
     );
   },

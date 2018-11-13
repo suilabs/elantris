@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FollowUs from '../FollowUs';
 import { VFlexBox, justification } from '../Common/FlexBoxes';
 
-import './footer.css';
+import './footer.scss';
 
 const Footer = (props) => {
   if (props.nonVisible) {
@@ -20,7 +20,7 @@ const Footer = (props) => {
           <a className="sui-footer__mail" href="mailto://borja@suilabs.com">borja at suilabs.com</a>
         </VFlexBox>
       </div>
-      <FollowUs className={'sui-footer__social'} show />
+      <FollowUs className="sui-footer__social" show />
     </div>
   );
 };

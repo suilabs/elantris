@@ -8,7 +8,7 @@ import SuiLogo from './suilogo';
 import DropdownMenu, { DropdownMenuItem } from '../Common/DropdownMenu/index';
 import MenuIcon from '../Icons/Menu';
 
-import './header.css';
+import './header.scss';
 
 class Header extends React.Component {
   constructor(props) {
@@ -38,7 +38,8 @@ class Header extends React.Component {
           </div>
           <div className="sui-navbar-wrapper">
             {(!isMobile
-              && <NavBar>
+              &&
+              <NavBar>
                 <NavBarItem to="/design" label="Design" />
                 <NavBarItem to="/software" label="Software" />
                 <NavBarItem to="/about" label="About us" />
@@ -56,7 +57,8 @@ class Header extends React.Component {
         {
           (
             isMobile
-            && <DropdownMenu showMenu={showMenu}>
+            &&
+            <DropdownMenu showMenu={showMenu}>
               <DropdownMenuItem to="/design" label="Design" />
               <DropdownMenuItem to="/software" label="Software" />
               <DropdownMenuItem to="/about" label="About us" />

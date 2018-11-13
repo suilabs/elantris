@@ -5,7 +5,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 filesToCommit () {
-  git diff --cached --name-only
+  git diff --diff-filter=d --cached --name-only
 }
 
 checkLinting () {

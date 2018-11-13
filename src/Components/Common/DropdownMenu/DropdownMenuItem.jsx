@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import './DropdownMenuItem.css';
+import './DropdownMenuItem.scss';
 
 const DropdownMenuItem = (props) => {
   const root = props.history.location.pathname.split('/')[1];

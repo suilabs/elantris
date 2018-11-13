@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import RelativeLink from '../Common/Link/RelativeLink';
 import ImageWithFallback from '../Common/ImageWithFallback';
 
-import './ImageBox.css';
+import './ImageBox.scss';
 
 const ImageBox = (props) => {
   const imageClassName = [props.imageClassName, 'sui-image-box__image'];

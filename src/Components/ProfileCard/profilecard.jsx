@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import SocialIcons from '../../assets/social';
 
-import './profilecard.css';
+import './profilecard.scss';
 
 const deviceType = () => {
-  const width = window.screen.width;
+  const { width } = window.screen;
   if (width < 320) {
     return 'mobile';
   } else if (width > 321 && width < 720) {

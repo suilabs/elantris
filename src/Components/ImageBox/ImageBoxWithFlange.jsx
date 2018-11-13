@@ -5,7 +5,7 @@ import Utils from '../../Utils';
 
 import FlangeIcon from '../../assets/icons/flange/Flange';
 
-import './ImageBoxWithFlange.css';
+import './ImageBoxWithFlange.scss';
 
 class ImageBox extends Component {
   constructor(props) {
@@ -37,18 +37,21 @@ class ImageBox extends Component {
     return (
       <div className="sui-flange--wrapper">
         <img src={img} alt={alt} />
-        { children && <div className="sui-flange--info-wrapper" style={activeStyle}>
-          <button
-            ref={(el) => { this.button = el; }}
-            className="sui-flange--button"
-            onClick={this.showText}
-          >
-            <FlangeIcon className={svgClassName} />
-          </button>
-          <div ref={(el) => { this.appendix = el; }} className="sui-flange--appendix">
-            {children}
+        { children
+          &&
+          <div className="sui-flange--info-wrapper" style={activeStyle}>
+            <button
+              ref={(el) => { this.button = el; }}
+              className="sui-flange--button"
+              onClick={this.showText}
+            >
+              <FlangeIcon className={svgClassName} />
+            </button>
+            <div ref={(el) => { this.appendix = el; }} className="sui-flange--appendix">
+              {children}
+            </div>
           </div>
-        </div> }
+        }
       </div>
     );
   }

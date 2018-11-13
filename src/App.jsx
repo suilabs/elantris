@@ -17,7 +17,7 @@ import Admin from './Views/admin';
 
 import NotFound from './Views/NotFound';
 
-import './App.css';
+import './App.scss';
 
 function App({ ssr, isMobile }) {
   const Router = ssr ? StaticRouter : BrowserRouter;

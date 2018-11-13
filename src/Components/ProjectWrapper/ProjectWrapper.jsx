@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import FlexBoxV from '../Common/FlexBoxes/VFlexBox';
 
-import './ProjectWrapper.css';
+import './ProjectWrapper.scss';
 
 const ProjectWrapper = props => (
   <FlexBoxV>
