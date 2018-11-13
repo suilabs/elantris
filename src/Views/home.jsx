@@ -2,6 +2,7 @@ import React from 'react';
 
 import FollowUs from '../Components/FollowUs';
 import { VFlexBox, HFlexBox } from '../Components/Common/FlexBoxes';
+import { BreakMobile, BreakOverMobile } from '../Components/Common/Breakpoint';
 import Utils from '../Utils';
 
 import './home.scss';
@@ -52,26 +53,34 @@ const TextPresentacio = () => (
 
 const DesignText = () => <div className="sui-home__design-text">design</div>;
 
-const Home = () => {
-  const FlexBox = Utils.isMobile() ? HFlexBox : VFlexBox;
-  return (
-    <div className="sui-home--wrapper">
-      <FlexBox vAlign="center">
-        <div className="sui-home__image-left">
-          <DesignText />
-          <img src={Utils.getStaticImagesPath('home/homeauri.png')} alt="Auri lampara" height={284} />
-        </div>
-        <div className="sui-home__central-column">
-          <TextPresentacio />
-        </div>
-        <div className="sui-home__image-right">
-          <div className="sui-home__software-text">software</div>
-          <div className="sui-home__full-text"><div>Design &<br />Software</div></div>
-          <img src={Utils.getStaticImagesPath('home/homefotosoftware.png')} alt="escriptori treballant" height={568} />
-        </div>
-      </FlexBox>
-    </div>
-  );
-};
+const Content = () => [
+  <div className="sui-home__image-left">
+    <DesignText />
+    <img src={Utils.getStaticImagesPath('home/homeauri.png')} alt="Auri lampara" height={284} />
+  </div>,
+  <div className="sui-home__central-column">
+    <TextPresentacio />
+  </div>,
+  <div className="sui-home__image-right">
+    <div className="sui-home__software-text">software</div>
+    <div className="sui-home__full-text"><div>Design &<br />Software</div></div>
+    <img src={Utils.getStaticImagesPath('home/homefotosoftware.png')} alt="escriptori treballant" height={568} />
+  </div>,
+];
+
+const Home = () => (
+  <div className="sui-home--wrapper">
+    <BreakOverMobile>
+      <VFlexBox vAlign="center">
+        <Content />
+      </VFlexBox>
+    </BreakOverMobile>
+    <BreakMobile>
+      <HFlexBox vAlign="center">
+        <Content />
+      </HFlexBox>
+    </BreakMobile>
+  </div>
+);
 
 export default Home;

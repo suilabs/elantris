@@ -1,0 +1,9 @@
+@import '../../../base.scss';
+
+.show-on-mobile {
+  display: none;
+
+  @include break-on(mobile) {
+    display: initial;
+  }
+}
