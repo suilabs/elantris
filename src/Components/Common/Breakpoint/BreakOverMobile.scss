@@ -1,0 +1,9 @@
+@import '../../../base.scss';
+
+.show-over-mobile {
+  display: inherit;
+
+  @include break-on(mobile) {
+    display: none;
+  }
+}
