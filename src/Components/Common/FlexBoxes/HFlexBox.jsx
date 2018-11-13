@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './HFlexBox.css';
+import './HFlexBox.scss';
 
 const HFlexBox = props => (
   <div className={`sui-horizontal-flexbox ${props.className}`}>

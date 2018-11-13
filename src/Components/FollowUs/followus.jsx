@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './followus.css';
+import './followus.scss';
 
 const FollowUs = (props) => {
   if (!props.show) {
@@ -13,9 +13,9 @@ const FollowUs = (props) => {
       <p>
         follow us:
       </p>
-      <a className="menu-item sui-follow__item">LinkedIn</a>
-      <a className="menu-item sui-follow__item">Behance</a>
-      <a className="menu-item sui-follow__item">Instagram</a>
+      <a href="#linkedin" className="menu-item sui-follow__item">LinkedIn</a>
+      <a href="#behance" className="menu-item sui-follow__item">Behance</a>
+      <a href="#instagram" className="menu-item sui-follow__item">Instagram</a>
     </div>
   );
 };

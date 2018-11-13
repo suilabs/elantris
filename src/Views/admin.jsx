@@ -9,7 +9,7 @@ import Loading from '../Components/Common/Loading';
 import ImageWithFlange from '../Components/ImageBox/ImageBoxWithFlange';
 import ImageBox from '../Components/ImageBox/ImageBox';
 
-import './admin.css';
+import './admin.scss';;
 import ProjectService from '../Services/ProjectService';
 
 const UploadedImages = ({ images, onChange }) => (

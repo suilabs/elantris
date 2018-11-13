@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImageBox from '../ImageBox';
 import { VFlexBox } from '../Common/FlexBoxes';
 
-import './Gallery.css';
+import './Gallery.scss';
 
 class Gallery extends Component {
   static filterInstances(instances, filter) {
@@ -40,8 +40,10 @@ class Gallery extends Component {
         {
           filterable &&
           <div className="sui-form-field">
-            <label htmlFor="filter-input">Search</label>
-            <input id="filter-input" type="text" onChange={this.onFilterChange} />
+            <label htmlFor="filter-input">
+              <input id="filter-input" type="text" onChange={this.onFilterChange} />
+              Search
+            </label>
           </div>
         }
         <VFlexBox>
@@ -51,7 +53,7 @@ class Gallery extends Component {
                 key={instance.title}
                 {...instance}
                 width={size.width}
-                className={'sui-add-margins'}
+                className="sui-add-margins"
               />
             ))
           }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Overlay.css';
+import './Overlay.scss';
 
 class Overlay extends React.Component {
   componentWillReceiveProps(props) {

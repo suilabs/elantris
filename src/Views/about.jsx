@@ -2,7 +2,7 @@ import React from 'react';
 
 import Utils from '../Utils';
 
-import './about.css';
+import './about.scss';
 import ProfileCard from '../Components/ProfileCard/profilecard';
 import { VFlexBox, justification } from '../Components/Common/FlexBoxes';
 

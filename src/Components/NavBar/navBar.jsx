@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './navBar.css';
+import './navBar.scss';
 
 const NavBar = ({ children = [] }) => (
   <nav className="sui-navbar">

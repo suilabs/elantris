@@ -4,7 +4,7 @@ import FollowUs from '../Components/FollowUs';
 import { VFlexBox, HFlexBox } from '../Components/Common/FlexBoxes';
 import Utils from '../Utils';
 
-import './home.css';
+import './home.scss';
 
 const TextPresentacio = () => (
   <HFlexBox className="sui-home__introduction-wrapper">

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './DropdownMenu.css';
+import './DropdownMenu.scss';
 
 const DropDownMenu = ({ showMenu, children }) => {
   const className = `sui-dropdown-menu ${(showMenu && 'sui-dropdown-menu--show') || ''}`;
