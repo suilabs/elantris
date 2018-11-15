@@ -60,8 +60,10 @@ $sui-pixel: .0625rem;
   }
 }
 
-@mixin h-centered {
-  left: 50%;
+/* stylelint-disable */
+@mixin h-centered($offset: 0) {
+  /* stylelint-enable */
+  left: calc(50% + #{$offset});
   transform: translateX(-50%);
 }
 
