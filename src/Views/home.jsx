@@ -1,6 +1,5 @@
 import React from 'react';
 
-import FollowUs from '../Components/FollowUs';
 import { VFlexBox, HFlexBox } from '../Components/Common/FlexBoxes';
 import { BreakMobile, BreakOverMobile } from '../Components/Common/Breakpoint';
 import Utils from '../Utils';
@@ -47,7 +46,6 @@ const TextPresentacio = () => (
         disseny i justificar propostes.
       </p>
     </div>
-    <FollowUs show />
   </HFlexBox>
 );
 

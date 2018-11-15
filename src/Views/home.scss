@@ -39,7 +39,6 @@
 
   &__central-column {
     width: $dwidth;
-    height: $dwidth * 3;
     margin: 0 1rem;
     padding: 0 $sui-spacing-base;
     background-color: $sui-color-primary-bright;
@@ -47,6 +46,8 @@
 
     @include break-on(mobile) {
       width: 80%;
+      height: initial;
+      padding-bottom: 1rem;
     }
 
     h1 {

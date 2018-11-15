@@ -1,13 +1,28 @@
 @import '../../base.scss';
 
 .sui-follow-us {
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+  margin: 0 -1rem $sui-spacing-base 0;
+  text-align: right;
+
   p {
-    font-size: relative-pt(23);
+    /* stylelint-disable */
+    font-size: 2em;
+    /* stylelint-enable */
     font-weight: 200;
     text-transform: uppercase;
   }
 
   a {
     color: $sui-color-white;
+  }
+}
+
+.sui-follow__item {
+  img {
+    width: initial;
+    margin-top: $sui-spacing-base;
   }
 }
