@@ -9,9 +9,15 @@ const app = express();
 const router = Router();
 
 router.use('^/$', serverRenderer);
+
+router.use('/service-worker.js', (req, res) => {
+  res.set('Cache-Control', 'no-cache');
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
+});
+
 router.use(express.static(
   path.resolve(__dirname, '..', 'build'),
-  { maxAge: '30d' },
+  { maxAge: '30s' },
 ));
 
 router.use('*', serverRenderer);
