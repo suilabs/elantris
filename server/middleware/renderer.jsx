@@ -45,14 +45,13 @@ export default (req, res) => {
     const html = ReactDOMServer.renderToString(React.createElement(App, props));
 
     // inject the rendered app into our html and send it
-    return res.send(
-      htmlData.replace(
-        '<article id="root"/>',
-        `<article id="root">${html}</article>`,
-      ).replace(
-        '{{clientSideParams}}',
-        `JSON.parse(${JSON.stringify(clientSideParams)})`,
-      ),
+    const newHtml = htmlData.replace(
+      '<article id="root"/>',
+      `<article id="root">${html}</article>`,
+    ).replace(
+      '{{clientSideParams}}',
+      `JSON.parse(${JSON.stringify(clientSideParams)})`,
     );
+    return res.send(newHtml);
   });
 };
