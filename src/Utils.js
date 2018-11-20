@@ -1,4 +1,5 @@
 import config from './config.json';
+import routeConfig from './routeConfig';
 
 const getCssFromNode = (element, property) =>
   window.getComputedStyle(element).getPropertyValue(property);
@@ -60,6 +61,9 @@ const Utils = {
   },
   setIsMobile(b) {
     this.mobile = b;
+  },
+  getPageTitle(route) {
+    return routeConfig[route].title;
   },
 };
 

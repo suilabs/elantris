@@ -9,6 +9,7 @@ import Utils from './Utils';
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import withTitle from './Views/HoC/withTitle';
 import HomeView from './Views/home';
 import DesignView from './Views/design';
 import SoftwareView from './Views/software';
@@ -25,14 +26,14 @@ function App({ ssr, isMobile }) {
   return (
     <Router>
       <div id="App">
-        {ssr || <SetParameters />}
+        <SetParameters ssr={ssr} />
         <div id="App-content">
           <Header isMobile={Utils.isMobile()} />
           <Switch>
-            <Route exact path="/" render={HomeView} />
-            <Route exact path="/design/:project?" component={DesignView} />
-            <Route exact path="/software" render={SoftwareView} />
-            <Route exact path="/about" render={AboutUsView} />
+            <Route exact path="/" render={withTitle(Utils.getPageTitle('home'), HomeView)} />
+            <Route exact path="/design/:project?" component={withTitle(Utils.getPageTitle('design'), DesignView)} />
+            <Route exact path="/software" render={withTitle(Utils.getPageTitle('software'), SoftwareView)} />
+            <Route exact path="/about" render={withTitle(Utils.getPageTitle('about'), AboutUsView)} />
             <Route exact path="/admin" render={Admin} />
             <Route component={NotFound} />
           </Switch>

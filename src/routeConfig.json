@@ -1,0 +1,17 @@
+{
+  "home": {
+    "title": "Suilabs - Welcome to Suilabs.com"
+  },
+  "/": {
+    "title": "Suilabs - Welcome to Suilabs.com"
+  },
+  "design": {
+    "title": "Suilabs - Design projects"
+  },
+  "software": {
+    "title": "Suilabs - Software projects"
+  },
+  "about": {
+    "title": "Suilabs - This is us :D"
+  }
+}
