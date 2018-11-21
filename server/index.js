@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 import path from 'path';
 import 'ignore-styles';
+import exphbs from 'express-handlebars';
 
 import serverRenderer from './middleware/renderer';
 
@@ -21,6 +22,21 @@ router.use(express.static(
 ));
 
 router.use('*', serverRenderer);
+
+// Handlebars.registerHelper('json', function(context) {
+//   return JSON.stringify(context);
+// });
+
+const html = exphbs.create({
+  extname: 'html',
+  helpers: {
+    json: obj => JSON.stringify(obj),
+  },
+});
+
+app.engine('html', html.engine);
+app.set('view engine', 'html');
+app.set('views', path.join(__dirname, '..', 'build'));
 
 app.use(router);
 

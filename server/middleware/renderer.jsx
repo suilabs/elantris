@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import MobileDetect from 'mobile-detect';
-import path from 'path';
-import fs from 'fs';
+import Utils from '../../src/Utils';
 
 import App from '../../src/App';
 
@@ -20,38 +19,30 @@ const captureParams = (req) => {
   }
   return {
     queryParams: otherParams,
-    featureFlags,
+    featureFlags: featureFlags || {},
   };
 };
 
+
 export default (req, res) => {
-  // point to the html file created by CRA's build tool
-  const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
+  const md = new MobileDetect(req.headers['user-agent']);
 
-  fs.readFile(filePath, 'utf8', (err, htmlData) => {
-    if (err) {
-      console.error('err', err);
-      return res.status(404).end();
-    }
+  // render the app as a string
+  const clientSideParams = captureParams(req) || {};
+  const props = {
+    ssr: true,
+    isMobile: clientSideParams.queryParams.mobile === 'true' || !!md.mobile(),
+  };
+  global.document = {}; // mock document for setting title
+  const html = ReactDOMServer.renderToString(React.createElement(App, props));
 
-    const md = new MobileDetect(req.headers['user-agent']);
-
-    // render the app as a string
-    const clientSideParams = captureParams(req);
-    const props = {
-      ssr: true,
-      isMobile: clientSideParams.queryParams.mobile === 'true' || !!md.mobile(),
-    };
-    const html = ReactDOMServer.renderToString(React.createElement(App, props));
-
-    // inject the rendered app into our html and send it
-    const newHtml = htmlData.replace(
-      '<article id="root"/>',
-      `<article id="root">${html}</article>`,
-    ).replace(
-      '{{clientSideParams}}',
-      `JSON.parse(${JSON.stringify(clientSideParams)})`,
-    );
-    return res.send(newHtml);
-  });
+  const vars = {
+    title: `<title>${Utils.getPageTitle(req.path)}</title>`,
+    root: `
+    <script>
+      window.appParams=${JSON.stringify(clientSideParams)}
+    </script>
+    ${html}`,
+  };
+  return res.render('index', vars);
 };
