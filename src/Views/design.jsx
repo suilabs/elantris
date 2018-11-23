@@ -57,7 +57,7 @@ class Design extends React.Component {
     const { projects } = this.state;
     const { project: selectedProject } = this.props.match.params;
     if (selectedProject) {
-      const project = projects.filter(proj => proj.url === selectedProject)[0];
+      const project = projects.filter(proj => proj.url === selectedProject || proj.key === selectedProject)[0]; // remove proj.key once newBackend is 100%
       return (
         <div>
           {Utils.getFeatureFlag('newBackend')
