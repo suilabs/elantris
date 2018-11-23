@@ -22,23 +22,20 @@ const Utils = {
     return getCssFromNode(element, property);
   },
   getImage(imagePath) {
-    const { hostname } = config[this.getEnvironment()].statics;
+    const { hostname } = config.statics;
     return `${hostname}/${imagePath}`;
   },
-  getEnvironment() {
-    return process.env.NODE_ENV;
-  },
   getAPIPath() {
-    const env = this.isNewBackendEnabled() ? 'newProd' : this.getEnvironment();
-    const { hostname, path } = config[env].api;
+    const hostname = this.isNewBackendEnabled() ? '//v2.hathsin.suilabs.com' : config.hostname;
+    const { path } = config.api;
     return `${hostname}/${path}`;
   },
   getStaticPath() {
-    const { hostname } = config[this.getEnvironment()].statics;
+    const { hostname } = config.statics;
     return hostname;
   },
   getStaticImagesPath(suffix = '') {
-    const { hostname, images } = config[this.getEnvironment()].statics;
+    const { hostname, images } = config.statics;
     return `${hostname}/${images}/${suffix}`;
   },
   getFeatureFlag(name) {

@@ -54,7 +54,7 @@ const DesignText = () => <div className="sui-home__design-text">design</div>;
 const Content = () => [
   <div className="sui-home__image-left">
     <DesignText />
-    <img src={Utils.getStaticImagesPath('home/homeauri.png')} alt="Auri lampara" height={284} />
+    <img src={Utils.getStaticImagesPath('homeauri.png')} alt="Auri lampara" height={284} />
   </div>,
   <div className="sui-home__central-column">
     <TextPresentacio />
@@ -62,7 +62,7 @@ const Content = () => [
   <div className="sui-home__image-right">
     <div className="sui-home__software-text">software</div>
     <div className="sui-home__full-text"><div>Design &<br />Software</div></div>
-    <img src={Utils.getStaticImagesPath('home/homefotosoftware.png')} alt="escriptori treballant" height={568} />
+    <img src={Utils.getStaticImagesPath('homefotosoftware.png')} alt="escriptori treballant" height={568} />
   </div>,
 ];
 

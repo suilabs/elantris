@@ -14,7 +14,6 @@ import HomeView from './Views/home';
 import DesignView from './Views/design';
 import SoftwareView from './Views/software';
 import AboutUsView from './Views/about';
-import Admin from './Views/admin';
 
 import NotFound from './Views/NotFound';
 
@@ -34,7 +33,6 @@ function App({ ssr, isMobile }) {
             <Route exact path="/design/:project?" component={withTitle(Utils.getPageTitle('design'), DesignView)} />
             <Route exact path="/software" render={withTitle(Utils.getPageTitle('software'), SoftwareView)} />
             <Route exact path="/about" render={withTitle(Utils.getPageTitle('about'), AboutUsView)} />
-            <Route exact path="/admin" render={Admin} />
             <Route component={NotFound} />
           </Switch>
         </div>

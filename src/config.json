@@ -1,28 +1,10 @@
 {
-  "development": {
-    "statics": {
-      "hostname": "//static.suilabs.com",
-      "images": "images"
-    },
-    "api": {
-      "hostname": "//hathsin.suilabs.com",
-      "path": "graphql"
-    }
+  "statics": {
+    "hostname": "https://s3.eu-west-3.amazonaws.com/",
+    "images": "suilabs/static"
   },
-  "production": {
-    "statics": {
-      "hostname": "//static.suilabs.com",
-      "images": "images"
-    },
-    "api": {
-      "hostname": "//hathsin.suilabs.com",
-      "path": "graphql"
-    }
-  },
-  "newProd": {
-    "api": {
-      "hostname": "//v2.hathsin.suilabs.com",
-      "path": "graphql"
-    }
+  "api": {
+    "hostname": "//hathsin.suilabs.com",
+    "path": "graphql"
   }
 }

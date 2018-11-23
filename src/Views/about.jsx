@@ -36,7 +36,7 @@ const About = () => (
       </div>
       <img
         className="sui-about__hero"
-        src={Utils.getStaticImagesPath('about/fotoperfiljunts.png')}
+        src={Utils.getStaticImagesPath('fotoperfiljunts.png')}
         alt="Nosotros"
       />
     </div>
@@ -67,14 +67,14 @@ const About = () => (
         <div>L&#39;equip</div>
       </div>
       <ProfileCard
-        img="https://static.suilabs.com/images/about/fotoperfilanna.png"
+        img={Utils.getStaticImagesPath('fotoperfilanna.png')}
         name="Anna Berenguer"
         work={['Disseny Gràfic', 'Interiorisme']}
         contact={['+34 646 248 527', 'anna@suilabs.com']}
         social={[{ type: 'linkedIn', url: 'https://www.linkedin.com/in/anna-berenguer-gisbert-798954aa/' }]}
       />
       <ProfileCard
-        img="https://static.suilabs.com/images/about/fotoperfilborja.png"
+        img={Utils.getStaticImagesPath('fotoperfilborja.png')}
         name="Borja Arias"
         work={['Enginyer del software', '@ Skyscanner Ltd.']}
         contact={['+34 609 759 147', 'barias@suilabs.com']}
