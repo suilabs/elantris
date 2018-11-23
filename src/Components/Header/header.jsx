@@ -11,6 +11,8 @@ import MenuIcon from '../Icons/Menu';
 
 import './header.scss';
 
+const stopPropagation = e => e.stopPropagation();
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -18,9 +20,20 @@ class Header extends React.Component {
     this.state = {
       showMenu: false,
     };
+    this.menu = React.createRef();
   }
 
+  handleClose = () => {
+    document.removeEventListener('click', this.handleClose);
+    this.menu.current.removeListener('click', stopPropagation);
+    this.setState({
+      showMenu: false,
+    });
+  };
+
   handleButtonClick = () => {
+    document.addEventListener('click', this.handleClose);
+    this.menu.current.addEventListener('click', stopPropagation);
     this.setState({
       showMenu: !this.state.showMenu,
     });
@@ -56,7 +69,7 @@ class Header extends React.Component {
           </div>
         </div>
         <BreakMobile>
-          <DropdownMenu showMenu={showMenu}>
+          <DropdownMenu showMenu={showMenu} ref={this.menu}>
             <DropdownMenuItem to="/design" label="Design" />
             <DropdownMenuItem to="/software" label="Software" />
             <DropdownMenuItem to="/about" label="About us" />
