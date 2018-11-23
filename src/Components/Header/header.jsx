@@ -25,7 +25,7 @@ class Header extends React.Component {
 
   handleClose = () => {
     document.removeEventListener('click', this.handleClose);
-    this.menu.current.removeListener('click', stopPropagation);
+    this.menu.current.removeEventListener('click', stopPropagation);
     this.setState({
       showMenu: false,
     });
