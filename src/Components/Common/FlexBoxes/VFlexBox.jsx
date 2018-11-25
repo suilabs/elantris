@@ -24,7 +24,7 @@ const VFlexBox = (props) => {
 };
 
 VFlexBox.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   justify: PropTypes.oneOf(Object.values(justification)),
   vAlign: PropTypes.oneOf(Object.values(justification)),
 };
