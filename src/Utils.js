@@ -26,7 +26,7 @@ const Utils = {
     return `${hostname}/${imagePath}`;
   },
   getAPIPath() {
-    const hostname = this.isNewBackendEnabled() ? '//v2.hathsin.suilabs.com' : config.hostname;
+    const hostname = this.isNewBackendEnabled() ? 'https://v2.hathsin.suilabs.com' : config.api.hostname;
     const { path } = config.api;
     return `${hostname}/${path}`;
   },
@@ -36,6 +36,10 @@ const Utils = {
   },
   getStaticImagesPath(suffix = '') {
     const { hostname, images } = config.statics;
+    return `${hostname}/${images}/${suffix}`;
+  },
+  getAWSImagesPath(suffix = '') {
+    const { hostname, images } = config.aws;
     return `${hostname}/${images}/${suffix}`;
   },
   getFeatureFlag(name) {
