@@ -10,3 +10,9 @@ import './Components/imageWithFlange';
 import './Components/contact';
 import './Components/icons';
 import './Components/NavBar';
+
+import './ComponentsLib/Tags';
+import './ComponentsLib/HeroImage';
+import './ComponentsLib/Paragraph';
+import './ComponentsLib/Image';
+import './ComponentsLib/page';

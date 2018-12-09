@@ -21,20 +21,9 @@ const Queries = {
               id
               name
           }
-          template {
-              id
-              name
-              rows {
-                id
-                name
-                type
-              }              
-          }
           configuration {
-            component {
-              id
-            }
-            value
+            componentId
+            propsJson
           }
         }
       }
