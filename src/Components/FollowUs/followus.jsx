@@ -10,14 +10,29 @@ const FollowUs = (props) => {
       <p>
         follow us:
       </p>
-      <a href="#linkedin" className="menu-item sui-follow__item">
-        <img src="/icons/ln.png" alt="LinkedIn" />
+      <a
+        href="https://www.linkedin.com/in/anna-berenguer-gisbert-798954aa/"
+        className="menu-item sui-follow__item"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://s3.eu-west-3.amazonaws.com/suilabs/static/linkedin.svg" alt="LinkedIn" />
       </a>
-      <a href="#behance" className="menu-item sui-follow__item">
-        <img src="/icons/ln.png" alt="Behance" />
+      <a
+        href="https://www.behance.net/annaberenguer"
+        className="menu-item sui-follow__item"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://s3.eu-west-3.amazonaws.com/suilabs/static/behance.svg" alt="Behance" />
       </a>
-      <a href="#instagram" className="menu-item sui-follow__item">
-        <img src="/icons/ln.png" alt="Instagram" />
+      <a
+        href="https://www.instagram.com/suilabs/"
+        className="menu-item sui-follow__item"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://s3.eu-west-3.amazonaws.com/suilabs/static/insta.svg" alt="Instagram" />
       </a>
     </div>
   );
