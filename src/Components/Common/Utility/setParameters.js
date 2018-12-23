@@ -2,6 +2,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+const mergeWithCookie = (cookieService, featureFlags) => {
+  const featureFlagsCookie = cookieService.getJSONCookie('featureFlags');
+  const finalFlags = { ...featureFlagsCookie, ...featureFlags };
+  cookieService.putSessionJSONCookie('featureFlags', finalFlags);
+  return finalFlags;
+};
+
 class SetParameters extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +25,7 @@ class SetParameters extends React.Component {
         }, {});
         params.delete('featureFlags');
       }
+      currentFeatureFlags = mergeWithCookie(props.cookieService, currentFeatureFlags);
       window.suilabs = {
         queryParams: params,
         featureFlags: currentFeatureFlags,
@@ -40,6 +48,10 @@ SetParameters.propTypes = {
     search: PropTypes.string.isRequired,
   }).isRequired,
   ssr: PropTypes.bool.isRequired,
+  cookieService: PropTypes.shape({
+    getJSONCookie: PropTypes.func,
+    putSessionJSONCookie: PropTypes.func,
+  }).isRequired,
 };
 
 export default withRouter(SetParameters);

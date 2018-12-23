@@ -4,6 +4,7 @@ import { BrowserRouter, StaticRouter, Route, Switch } from 'react-router-dom';
 import 'typeface-montserrat';
 
 import SetParameters from './Components/Common/Utility';
+import CookieService from './Services/CookieService';
 
 import Utils from './Utils';
 
@@ -25,7 +26,10 @@ function App({ ssr, isMobile }) {
   return (
     <Router>
       <div id="App">
-        <SetParameters ssr={ssr} />
+        <SetParameters
+          cookieService={CookieService}
+          ssr={ssr}
+        />
         <div id="App-content">
           <Header isMobile={Utils.isMobile()} />
           <Switch>
