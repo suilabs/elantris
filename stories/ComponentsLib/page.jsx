@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { SuiHeroImage, SuiTag, SuiParagraph, SuiImage } from '../../src/ComponentsLib';
+import { SuiHeroImage, SuiTag, SuiParagraph, SuiImage, SuiTitle } from '../../src/ComponentsLib';
 
 const text = `This is the text in the Paragraph. It can be any kind of text. This is just
       an example of what can be here. You won't probably read this far, but you are beautiful.
@@ -66,6 +66,41 @@ storiesOf('Components', module)
         style={{
         color: '#da3456',
       }}
+      />
+      <SuiParagraph
+        text={text}
+        textColor="#da3456"
+      />
+      <SuiImage
+        image={{
+          url: 'http://altunit.com/wp-content/uploads/2017/10/hero-750x400.jpg',
+        }}
+        alt="this is a hero image"
+        width={50}
+      />
+      <SuiImage
+        image={{
+          url: 'http://altunit.com/wp-content/uploads/2017/10/hero-750x400.jpg',
+        }}
+        alt="this is a hero image"
+        width={50}
+      />
+    </div>
+  )).add('With Title', () => (
+    <div
+      style={{
+        width: '50%',
+      }}
+    >
+      <SuiTitle
+        title="Project Title"
+        subTitle="Project sub"
+      />
+      <SuiTag
+        tags="Tag1, Tag2, Tag3, tag with spaces"
+        style={{
+          color: '#da3456',
+        }}
       />
       <SuiParagraph
         text={text}

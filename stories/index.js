@@ -15,4 +15,5 @@ import './ComponentsLib/Tags';
 import './ComponentsLib/HeroImage';
 import './ComponentsLib/Paragraph';
 import './ComponentsLib/Image';
+import './ComponentsLib/Title';
 import './ComponentsLib/page';
