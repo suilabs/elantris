@@ -1,27 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Text from './Text';
-import ImageArray from './ImageArray';
+import { SuiHeroImage, SuiImage, SuiParagraph, SuiTag } from '../../../ComponentsLib';
 
-export const FIELD_TYPES = {
-  TEXT: 'TEXT',
-  ARRAY_IMAGE: 'ARRAY_IMAGE',
-};
+const componentTypes = [SuiHeroImage, SuiImage, SuiParagraph, SuiTag];
 
-const FIELDS = {
-  TEXT: Text,
-  ARRAY_IMAGE: ImageArray,
-};
-
-const FieldFactory = ({ type, value }) => {
-  const Component = FIELDS[type];
-  return <Component content={value} />;
+const FieldFactory = ({ id, props }) => {
+  const Component = componentTypes.find(c => id === c.id);
+  const jsonProps = JSON.parse(props);
+  console.log(jsonProps);
+  return <Component {...jsonProps} />;
 };
 
 FieldFactory.propTypes = {
-  type: PropTypes.oneOf(Object.values(FIELD_TYPES)).isRequired,
-  value: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  props: PropTypes.string.isRequired,
 };
 
 export default FieldFactory;
