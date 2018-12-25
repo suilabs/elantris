@@ -26,7 +26,7 @@ const Utils = {
     return `${hostname}/${imagePath}`;
   },
   getAPIPath() {
-    const hostname = this.isNewBackendEnabled() ? 'http://v2.hathsin.suilabs.com' : config.api.hostname;
+    const hostname = this.isNewBackendEnabled() ? '//v2.hathsin.suilabs.com' : config.api.hostname;
     const { path } = config.api;
     return `${hostname}/${path}`;
   },
