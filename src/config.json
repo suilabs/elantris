@@ -8,7 +8,7 @@
     "images": "suilabs/static"
   },
   "api": {
-    "hostname": "http://localhost:4000",
+    "hostname": "https://hathsin.suilabs.com",
     "path": "graphql"
   }
 }

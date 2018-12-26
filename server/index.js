@@ -1,7 +1,6 @@
 import express, { Router } from 'express';
 import path from 'path';
 import 'ignore-styles';
-import compression from 'compression';
 import exphbs from 'express-handlebars';
 
 import serverRenderer from './middleware/renderer';
@@ -39,7 +38,6 @@ app.engine('html', html.engine);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, '..', 'build'));
 
-app.use(compression);
 app.use(router);
 
 app.listen(PORT, (error) => {
