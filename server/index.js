@@ -1,12 +1,16 @@
 import express, { Router } from 'express';
 import path from 'path';
 import 'ignore-styles';
+import compression from 'compression';
 import exphbs from 'express-handlebars';
 
 import serverRenderer from './middleware/renderer';
 
 const PORT = process.env.PORT || 5000;
 const app = express();
+
+app.use(compression());
+
 const router = Router();
 
 router.use('^/$', serverRenderer);
@@ -22,10 +26,6 @@ router.use(express.static(
 ));
 
 router.use('*', serverRenderer);
-
-// Handlebars.registerHelper('json', function(context) {
-//   return JSON.stringify(context);
-// });
 
 const html = exphbs.create({
   extname: 'html',
