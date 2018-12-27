@@ -3,6 +3,7 @@ import path from 'path';
 import 'ignore-styles';
 import compression from 'compression';
 import exphbs from 'express-handlebars';
+import clearSiteData from 'clearsitedata';
 
 import serverRenderer from './middleware/renderer';
 
@@ -13,16 +14,17 @@ app.use(compression());
 
 const router = Router();
 
+router.get('*', clearSiteData());
+
 router.use('^/$', serverRenderer);
 
 router.use('/service-worker.js', (req, res) => {
-  res.set('Cache-Control', 'no-cache');
+  res.set('Cache-Control', 'max-age=0,no-cache,no-store,must-revalidate');
   res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
 });
 
 router.use(express.static(
   path.resolve(__dirname, '..', 'build'),
-  { maxAge: '30s' },
 ));
 
 router.use('*', serverRenderer);
