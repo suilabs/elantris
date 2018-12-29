@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { SuiHeroImage, SuiImage, SuiParagraph, SuiTag } from '../../../ComponentsLib';
+import { SuiHeroImage, SuiImage, SuiParagraph, SuiTag, SuiTitle } from '../../../ComponentsLib';
 
-const componentTypes = [SuiHeroImage, SuiImage, SuiParagraph, SuiTag];
+const componentTypes = [SuiHeroImage, SuiImage, SuiParagraph, SuiTag, SuiTitle];
 
 const FieldFactory = ({ id, props }) => {
   const Component = componentTypes.find(c => id === c.id);
