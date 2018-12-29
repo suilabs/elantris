@@ -32,7 +32,7 @@ class ApiConnector {
   };
 
   static getProjects() {
-    const newOrOld = Utils.getFeatureFlag('newBackend') === 'true' ? 'new' : 'old';
+    const newOrOld = Utils.isOldBackendEnabled() ? 'old' : 'new';
     const query = {
       query: GQLQueries.getProjects[newOrOld],
     };
