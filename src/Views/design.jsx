@@ -19,7 +19,7 @@ const createInstance = (title, descr, img, href, tags = ['design']) => ({
 });
 
 const createInstanceProxy = (project) => {
-  if (Utils.getFeatureFlag('newBackend') === 'true') {
+  if (!Utils.isOldBackendEnabled()) {
     return createInstance(
       project.name,
       project.description,
@@ -60,7 +60,7 @@ class Design extends React.Component {
       const project = projects.filter(proj => proj.url === selectedProject || proj.key === selectedProject)[0]; // remove proj.key once newBackend is 100%
       return (
         <div>
-          {Utils.getFeatureFlag('newBackend')
+          {!Utils.isOldBackendEnabled()
             ? <LayoutBuilder item={project} />
             : <LayoutDesign
               title={project.title}
