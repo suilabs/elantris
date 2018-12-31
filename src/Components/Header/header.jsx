@@ -46,7 +46,7 @@ class Header extends React.Component {
       <div className="sui-page-header">
         <div className="sui-page-header__wrapper clearfix">
           <div className="sui-logo">
-            <Link to="/">
+            <Link to="/" aria-label="home" >
               <SuiLogo width={isMobile ? '100px' : '142px'} />
             </Link>
           </div>
@@ -62,6 +62,7 @@ class Header extends React.Component {
               <button
                 className="sui-dropdown-menu__button"
                 onClick={this.handleButtonClick}
+                aria-label="menu"
               >
                 <MenuIcon className="sui-dropdown-menu__icon" />
               </button>

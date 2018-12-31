@@ -38,6 +38,7 @@ export default (req, res) => {
 
   const vars = {
     title: `<title>${Utils.getPageTitle(req.path)}</title>`,
+    metaDescription: Utils.getMetaDescription(req.path),
     root: `
     <script>
       window.appParams=${JSON.stringify(clientSideParams)}

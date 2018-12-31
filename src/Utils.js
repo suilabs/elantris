@@ -69,6 +69,9 @@ const Utils = {
   getPageTitle(route) {
     return routeConfig[route].title;
   },
+  getMetaDescription(route) {
+    return routeConfig[route].metaDescription;
+  },
 };
 
 export default Utils;
