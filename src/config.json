@@ -4,7 +4,7 @@
     "images": "images"
   },
   "aws": {
-    "hostname": "https://s3.eu-west-3.amazonaws.com/",
+    "hostname": "https://s3.eu-west-3.amazonaws.com",
     "images": "suilabs/static"
   },
   "api": {

@@ -7,12 +7,12 @@ const DropDownMenu = React.forwardRef(({ showMenu, children }, ref) => {
   const className = `sui-dropdown-menu ${(showMenu && 'sui-dropdown-menu--show') || ''}`;
 
   return (
-    <div
+    <ul
       className={className}
       ref={ref}
     >
       {children}
-    </div>
+    </ul>
   );
 });
 

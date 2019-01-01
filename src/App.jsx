@@ -30,8 +30,8 @@ function App({ ssr, isMobile }) {
           cookieService={CookieService}
           ssr={ssr}
         />
-        <div id="App-content">
-          <Header isMobile={Utils.isMobile()} />
+        <Header isMobile={Utils.isMobile()} />
+        <main id="App-content">
           <Switch>
             <Route exact path="/" render={withTitle(Utils.getPageTitle('home'), HomeView)} />
             <Route exact path="/design/:project?" component={withTitle(Utils.getPageTitle('design'), DesignView)} />
@@ -39,7 +39,7 @@ function App({ ssr, isMobile }) {
             <Route exact path="/about" render={withTitle(Utils.getPageTitle('about'), AboutUsView)} />
             <Route component={NotFound} />
           </Switch>
-        </div>
+        </main>
         <Footer />
       </div>
     </Router>

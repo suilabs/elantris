@@ -10,7 +10,7 @@ const DropdownMenuItem = (props) => {
   const classname = `sui-dropdown-menu__item${active} ${props.className}`;
   return (
     <li className={classname}>
-      <Link id={props.to} to={props.to} className="sui-dropdown-menu__item--link">
+      <Link to={props.to} className="sui-dropdown-menu__item--link">
         {props.label}
       </Link>
     </li>
