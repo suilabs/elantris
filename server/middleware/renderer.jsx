@@ -26,19 +26,22 @@ const captureParams = (req) => {
 
 export default (req, res) => {
   const md = new MobileDetect(req.headers['user-agent']);
+  global.window = {};
 
   // render the app as a string
   const clientSideParams = captureParams(req) || {};
+  const path = req.originalUrl;
   const props = {
     ssr: true,
     isMobile: clientSideParams.queryParams.mobile === 'true' || !!md.mobile(),
+    url: path,
   };
   global.document = {}; // mock document for setting title
   const html = ReactDOMServer.renderToString(React.createElement(App, props));
 
   const vars = {
-    title: `<title>${Utils.getPageTitle(req.path)}</title>`,
-    metaDescription: Utils.getMetaDescription(req.path),
+    title: `<title>${Utils.getPageTitle(path)}</title>`,
+    metaDescription: Utils.getMetaDescription(path),
     root: `
     <script>
       window.appParams=${JSON.stringify(clientSideParams)}

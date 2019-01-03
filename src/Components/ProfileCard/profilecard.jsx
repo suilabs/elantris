@@ -1,31 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SocialIcons from '../../assets/social';
-
 import './profilecard.scss';
-
-const deviceType = () => {
-  const { width } = window.screen;
-  if (width < 320) {
-    return 'mobile';
-  } else if (width > 321 && width < 720) {
-    return 'tablet';
-  }
-  return 'desktop';
-};
-
-const isMobile = () => deviceType() === 'mobile';
-const isTablet = () => deviceType() === 'tablet';
-
-const socialImage = (type) => {
-  if (isMobile()) {
-    return SocialIcons[type].sm;
-  } else if (isTablet()) {
-    return SocialIcons[type].md;
-  }
-  return SocialIcons[type].lg;
-};
+import Utils from '../../Utils';
 
 const ProfileCard = props => (
   <div className="sui-profile-card">
@@ -44,7 +21,7 @@ const ProfileCard = props => (
         {
           props.social.map(el => (
             <a href={el.url} key={el}>
-              <img src={socialImage(el.type)} alt={el.type} />
+              <img src={Utils.getAWSImagesPath('linkedin.svg')} alt={el.type} />
             </a>
           ))
         }

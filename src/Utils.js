@@ -67,10 +67,19 @@ const Utils = {
     this.mobile = b;
   },
   getPageTitle(route) {
-    return routeConfig[route].title;
+    return this.getRouteConfig(route).title;
   },
   getMetaDescription(route) {
-    return routeConfig[route].metaDescription;
+    return this.getRouteConfig(route).metaDescription;
+  },
+  routeExists(route) {
+    return !!routeConfig[route];
+  },
+  getRouteConfig(route) {
+    if (this.routeExists(route)) {
+      return routeConfig[route];
+    }
+    return routeConfig.notFound;
   },
 };
 

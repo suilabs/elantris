@@ -7,16 +7,19 @@
     "title": "Suilabs - Welcome to Suilabs.com",
     "metaDescription": "Un estudi multidisciplinari de disseny i programació. Especialitzats en el disseny d'identitat corporativa i la programació de pàgines i apps web."
   },
-  "design": {
+  "/design": {
     "title": "Suilabs - Design projects",
     "metaDescription": "Entra per veure els nostres projectes de disseny en detall."
   },
-  "software": {
+  "/software": {
     "title": "Suilabs - Software projects",
     "metaDescription": "Vine a saber més sobre els projectes web que em dut a terme."
   },
-  "about": {
+  "/about": {
     "title": "Suilabs - This is us :D",
     "metaDescription": "Vols saber més de nosaltres? Entra i poset en contacte."
+  },
+  "notFound": {
+    "title": "Suilabs - No hem trobat la pàgina que estaves buscant"
   }
 }
