@@ -1,0 +1,14 @@
+@import '../base.scss';
+
+.sui-not-found-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: $sui-page-max-width / 2;
+  text-align: center;
+
+  @include h-centered;
+
+  @include break-on(mobile) {
+    max-width: 100%;
+  }
+}
