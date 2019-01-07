@@ -90,3 +90,15 @@ $sui-pixel: .0625rem;
     color: $sui-color-primary-intense;
   }
 }
+
+.clearfix {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}

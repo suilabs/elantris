@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import translations from '../../Services/TranslationService';
+
 import './followus.scss';
 
 const FollowUs = (props) => {
@@ -8,7 +10,7 @@ const FollowUs = (props) => {
   return (
     <div className={classNames}>
       <p>
-        follow us:
+        {translations().followUs}
       </p>
       <a
         href="https://www.linkedin.com/in/anna-berenguer-gisbert-798954aa/"

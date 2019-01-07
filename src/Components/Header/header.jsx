@@ -8,6 +8,9 @@ import SuiLogo from './suilogo';
 import DropdownMenu, { DropdownMenuItem } from '../Common/DropdownMenu';
 import { BreakMobile, BreakOverMobile } from '../Common/Breakpoint';
 import MenuIcon from '../Icons/Menu';
+import LanguageSelector, { Language } from '../Language';
+import Utils from '../../Utils';
+import translations from '../../Services/TranslationService';
 
 import './header.scss';
 
@@ -19,8 +22,12 @@ class Header extends React.Component {
 
     this.state = {
       showMenu: false,
+      currentLanguage: Utils.getCurrentLanguage(),
+      languages: Utils.getSupportedLanguages(),
+      showLanguageSelector: false,
     };
     this.menu = React.createRef();
+    this.translation = translations();
   }
 
   handleClose = () => {
@@ -39,23 +46,44 @@ class Header extends React.Component {
     });
   };
 
+  openLanguageSelector = () => {
+    this.setState({
+      showLanguageSelector: true,
+    });
+  };
+
+  handleLanguageClick = (event) => {
+    const { currentTarget: { id } } = event;
+    if (id !== this.state.currentLanguage) {
+      this.props.onChangeLanguage(id);
+    } else {
+      this.setState({
+        showLanguageSelector: false,
+      });
+    }
+  };
+
   render() {
     const { isMobile } = this.props;
-    const { showMenu } = this.state;
+    const {
+      showMenu, currentLanguage,
+      languages, showLanguageSelector,
+    } = this.state;
+    const selectedLanguage = languages.filter(l => l.ISO2 === currentLanguage)[0];
     return (
       <div className="sui-page-header">
         <div className="sui-page-header__wrapper clearfix">
           <div className="sui-logo">
-            <Link to="/" aria-label="home" >
+            <Link to={`/${currentLanguage}`} aria-label="home" >
               <SuiLogo width={isMobile ? '100px' : '142px'} />
             </Link>
           </div>
           <div className="sui-navbar-wrapper">
             <BreakOverMobile>
               <NavBar>
-                <NavBarItem to="/design" label="Design" />
-                <NavBarItem to="/software" label="Software" />
-                <NavBarItem to="/about" label="About us" />
+                <NavBarItem to={`/${currentLanguage}/design`} label={this.translation.sections_design} />
+                <NavBarItem to={`/${currentLanguage}/software`} label={this.translation.sections_software} />
+                <NavBarItem to={`/${currentLanguage}/about`} label={this.translation.sections_aboutUs} />
               </NavBar>
             </BreakOverMobile>
             <BreakMobile>
@@ -68,12 +96,26 @@ class Header extends React.Component {
               </button>
             </BreakMobile>
           </div>
+          <Language
+            {...selectedLanguage}
+            onClick={this.openLanguageSelector}
+            className="sui-language-open-selector"
+          />
+          <LanguageSelector
+            languages={languages}
+            selected={selectedLanguage.ISO2}
+            onClick={this.handleLanguageClick}
+            className="sui-language-selector-menu"
+            style={{
+              visibility: showLanguageSelector ? 'visible' : 'hidden',
+            }}
+          />
         </div>
         <BreakMobile>
           <DropdownMenu showMenu={showMenu} ref={this.menu}>
-            <DropdownMenuItem to="/design" label="Design" />
-            <DropdownMenuItem to="/software" label="Software" />
-            <DropdownMenuItem to="/about" label="About us" />
+            <DropdownMenuItem to={`/${currentLanguage}/design`} label={this.translation.sections_design} />
+            <DropdownMenuItem to={`/${currentLanguage}/software`} label={this.translation.sections_software} />
+            <DropdownMenuItem to={`/${currentLanguage}/about`} label={this.translation.sections_aboutUs} />
           </DropdownMenu>
         </BreakMobile>
       </div>
@@ -83,6 +125,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
   isMobile: PropTypes.bool.isRequired,
+  onChangeLanguage: PropTypes.func.isRequired,
 };
 
 export default Header;

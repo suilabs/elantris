@@ -26,9 +26,11 @@ class SetParameters extends React.Component {
         params.delete('featureFlags');
       }
       currentFeatureFlags = mergeWithCookie(props.cookieService, currentFeatureFlags);
+      const language = props.location.pathname.split('/')[1];
       window.suilabs = {
         queryParams: params,
         featureFlags: currentFeatureFlags,
+        language,
         ssr: false,
       };
     }
@@ -46,11 +48,13 @@ class SetParameters extends React.Component {
 SetParameters.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string.isRequired,
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
   ssr: PropTypes.bool.isRequired,
   cookieService: PropTypes.shape({
     getJSONCookie: PropTypes.func,
     putSessionJSONCookie: PropTypes.func,
+    putSessionCookie: PropTypes.func,
   }).isRequired,
 };
 

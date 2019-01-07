@@ -6,7 +6,7 @@ import Header from '../../src/Components/Header';
 
 storiesOf('Header', module)
   .add('Normal', () => {
-    window.suilabs = { isMobile: false };
+    window.suilabs = { isMobile: false, language: 'ca' };
     return (
       <BrowserRouter>
         <Header />

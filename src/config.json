@@ -10,5 +10,26 @@
   "api": {
     "hostname": "https://v2.hathsin.suilabs.com",
     "path": "graphql"
-  }
+  },
+  "supportedLanguages": [
+    {
+      "ISO": "cat",
+      "ISO2": "ca",
+      "original": "Catalan",
+      "flagUrl": "https://s3.eu-west-3.amazonaws.com/suilabs/static/cat-flag.svg"
+    },
+    {
+      "ISO": "esp",
+      "ISO2": "es",
+      "original": "Español",
+      "flagUrl": "https://s3.eu-west-3.amazonaws.com/suilabs/static/esp-flag.svg"
+    },
+    {
+      "ISO": "eng",
+      "ISO2": "en",
+      "original": "English",
+      "flagUrl": "https://s3.eu-west-3.amazonaws.com/suilabs/static/uk-flag.svg"
+    }
+  ],
+  "defaultLanguage": "ca"
 }

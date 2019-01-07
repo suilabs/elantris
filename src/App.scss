@@ -17,18 +17,6 @@ body::before {
   }
 }
 
-.clearfix {
-  &::before,
-  &::after {
-    content: '';
-    display: table;
-  }
-
-  &::after {
-    clear: both;
-  }
-}
-
 img {
   width: 100%; // by default
 }
