@@ -1,10 +1,6 @@
 import CookieParser from 'cookie';
 
-const getCookies = () => {
-  const cookies = CookieParser.parse(document.cookie);
-  console.log('Cookies', cookies);
-  return cookies;
-};
+const getCookies = () => CookieParser.parse(document.cookie);
 
 const CookieService = {
   getPlainCookie(cookieName) {
@@ -22,7 +18,9 @@ const CookieService = {
     return cookie || {};
   },
   putSessionCookie(cookieName, cookieValue) {
-    document.cookie = CookieParser.serialize(cookieName, encodeURIComponent(cookieValue));
+    document.cookie = CookieParser.serialize(cookieName, encodeURIComponent(cookieValue), {
+      path: '/',
+    });
   },
   putSessionJSONCookie(cookieName, jsonValue) {
     this.putSessionCookie(cookieName, JSON.stringify(jsonValue));

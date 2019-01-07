@@ -14,12 +14,15 @@
 
   &__text-over-hero {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: $dwidth;
-    padding: 0 $sui-spacing-large;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    padding: 2rem 3rem;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    background-color: $sui-color-white-trans;
     color: $sui-color-primary;
-    font-size: relative-pt(24);
+    font-size: relative-pt(16);
     font-style: italic;
     line-height: relative-pt(28);
     box-sizing: border-box;
@@ -51,12 +54,16 @@
 
   &__content--wrapper {
     width: $dwidth;
-    // margin-bottom: pixels(-4);
+
+    @include break-on(desktop) {
+      &:first-of-type {
+        margin: auto;
+      }
+    }
   }
 
   &__titol {
     display: inline-block;
-    transform: rotate(-90deg) translateX(-100%);
     color: $sui-color-primary;
     font-size: relative-pt(32);
     font-weight: 500;

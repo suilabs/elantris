@@ -12,12 +12,13 @@ export const justification = {
 };
 
 const VFlexBox = (props) => {
-  const justfStyle = {
+  const justifyStyle = {
     justifyContent: props.justify,
     alignItems: props.vAlign,
   };
+  const className = `sui-vertical-flexbox ${props.className}`;
   return (
-    <div className="sui-vertical-flexbox" style={justfStyle}>
+    <div className={className} style={justifyStyle}>
       {props.children}
     </div>
   );
@@ -27,11 +28,13 @@ VFlexBox.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   justify: PropTypes.oneOf(Object.values(justification)),
   vAlign: PropTypes.oneOf(Object.values(justification)),
+  className: PropTypes.string,
 };
 
 VFlexBox.defaultProps = {
   justify: 'center',
   vAlign: 'center',
+  className: '',
 };
 
 export default VFlexBox;

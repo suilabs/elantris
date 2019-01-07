@@ -2,49 +2,21 @@ import React from 'react';
 
 import { VFlexBox, HFlexBox } from '../Components/Common/FlexBoxes';
 import { BreakMobile, BreakOverMobile } from '../Components/Common/Breakpoint';
+import translation from '../Services/TranslationService';
 import Utils from '../Utils';
 
 import './home.scss';
 
 const TextPresentacio = () => (
   <HFlexBox className="sui-home__introduction-wrapper">
-    <div className="sui-home__introduction-text">
-      <p>
-        <strong>Suilabs</strong> som un estudi
-        multidisciplinari de disseny
-        i programació.
-      </p>
-      <p>
-        Especialitzats en el disseny
-        d’identitat corporativa i la
-        programació de pàgines web
-        i apps.
-      </p>
-      <p>
-        El nostre objectiu és arribar
-        a materialitzar un concepte
-        amb el qual el client
-        s’identifiqui.
-      </p>
-      <p>
-        Tenim empenta, ganes de
-        seguir aprenent i il·lusió
-        d’afrontar nous reptes, amb
-        honestedat i rigor perquè
-        creiem amb la feina ben feta.
-      </p>
-      <p>
-        El nostre tracte amb el client
-        és sincer i proper. Escoltem,
-        empatitzem i ens adaptem a
-        les necessitats de cada client
-        i projecte.
-      </p>
-      <p>
-        Ens agrada fer pedagogia per
-        explicar el nostre procés de
-        disseny i justificar propostes.
-      </p>
+    <div
+      className="sui-home__introduction-text"
+    >
+      {
+        translation().homePageContent.map(
+          p => <p dangerouslySetInnerHTML={{ __html: p }} />,
+        )
+      }
     </div>
   </HFlexBox>
 );

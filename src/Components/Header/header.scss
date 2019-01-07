@@ -41,8 +41,7 @@
 
 .sui-dropdown-menu {
   &__button {
-    padding: $sui-spacing-base;
-    padding-right: $sui-spacing-xlarge;
+    padding: $sui-spacing-base $sui-spacing-xlarge $sui-spacing-base $sui-spacing-base;
     border: 0;
     background-color: transparent;
   }
@@ -51,5 +50,25 @@
     width: 100%;
     max-width: 2rem;
     max-height: 2rem;
+  }
+}
+
+.sui-language {
+  &-selector-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $sui-spacing-xxxlarge;
+    border-radius: $sui-spacing-sm;
+    background-color: $sui-color-white;
+    box-shadow: 0 0 $sui-spacing-sm grey;
+  }
+
+  &-open-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $sui-spacing-xxxlarge;
+    padding: 0;
   }
 }

@@ -10,6 +10,7 @@ import './Components/imageWithFlange';
 import './Components/contact';
 import './Components/icons';
 import './Components/NavBar';
+import './Components/language';
 
 import './ComponentsLib/Tags';
 import './ComponentsLib/HeroImage';
