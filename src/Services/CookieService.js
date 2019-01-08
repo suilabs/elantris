@@ -1,6 +1,11 @@
 import CookieParser from 'cookie';
 
-const getCookies = () => CookieParser.parse(document.cookie);
+const getCookies = () => {
+  if (typeof document !== 'undefined' && 'cookie' in document) {
+    return CookieParser.parse(document.cookie);
+  }
+  return '';
+};
 
 const CookieService = {
   getPlainCookie(cookieName) {

@@ -26,7 +26,11 @@ const captureParams = (req) => {
 
 export default (req, res) => {
   const md = new MobileDetect(req.headers['user-agent']);
-  global.window = {};
+  global.window = {
+    location: {
+      pathname: req.originalUrl,
+    },
+  };
 
   // render the app as a string
   const clientSideParams = captureParams(req) || {};

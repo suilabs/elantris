@@ -87,12 +87,15 @@ const Utils = {
   },
   getCurrentLanguage() {
     const lang = CookieService.getPlainCookie('suiLanguage') ||
-      window.suilabs.language ||
-      window.location.pathname.split('/')[1];
+      (window.suilabs || {}).language ||
+      ((window.location || {}).pathname || '').split('/')[1];
     if (lang.length !== 2) {
       return config.defaultLanguage;
     }
     return lang;
+  },
+  getDefaultLanguage() {
+    return config.defaultLanguage;
   },
 };
 
