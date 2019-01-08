@@ -4,19 +4,30 @@ import 'ignore-styles';
 import compression from 'compression';
 import exphbs from 'express-handlebars';
 import clearSiteData from 'clearsitedata';
+import cookieParser from 'cookie-parser';
 
+import Utils from '../src/Utils';
 import serverRenderer from './middleware/renderer';
 
 const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(compression());
+app.use(cookieParser());
 
 const router = Router();
 
 router.get('*', clearSiteData());
 
-router.use('^/$', serverRenderer);
+router.use('^/$', (req, res) => {
+  const to = req.originalUrl.split('/');
+  if (to.length >= 2 && to[1].length <= 2) {
+    to[1] = req.cookies.suiLanguage || Utils.getDefaultLanguage();
+  } else if (to.length >= 2 && to[1].length > 2) {
+    to.splice(1, 0, 'ca');
+  }
+  return res.redirect(to.join('/'));
+});
 
 router.use('/service-worker.js', (req, res) => {
   res.set('Cache-Control', 'max-age=0,no-cache,no-store,must-revalidate');
@@ -27,7 +38,18 @@ router.use(express.static(
   path.resolve(__dirname, '..', 'build'),
 ));
 
-router.use('*', serverRenderer);
+router.use('/ca', serverRenderer);
+router.use('/es', serverRenderer);
+router.use('/en', serverRenderer);
+router.use('*', (req, res) => {
+  const to = req.originalUrl.split('/');
+  if (to.length >= 2 && to[1].length === 2) {
+    to[1] = 'ca';
+  } else if (to.length >= 2 && to[1].length > 2) {
+    to.splice(1, 0, 'ca');
+  }
+  return res.redirect(to.join('/'));
+});
 
 const html = exphbs.create({
   extname: 'html',

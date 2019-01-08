@@ -55,7 +55,7 @@ Routes.defaultProps = {
 const GuessLanguage = ({ location }) => {
   const cookieLanguage = CookieService.getPlainCookie('suiLanguage') || 'ca';
   const to = location.pathname.split('/');
-  if (to.length >= 2 && to[1].length === 2) {
+  if (to.length >= 2 && to[1].length <= 2) {
     to[1] = cookieLanguage;
   } else if (to.length >= 2 && to[1].length > 2) {
     to.splice(1, 0, cookieLanguage);
@@ -88,7 +88,7 @@ function App({ ssr, isMobile, url }) {
           <Route path="/ca" component={Routes} />
           <Route path="/en" component={Routes} />
           <Route path="/es" component={Routes} />
-          <Route path="*" component={GuessLanguage} />
+          <Route path="*" component={ssr ? Routes : GuessLanguage} />
         </Switch>
       </div>
     </Router>

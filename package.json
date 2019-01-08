@@ -37,6 +37,7 @@
     "clearsitedata": "^0.1.0",
     "compression": "^1.7.3",
     "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
     "eslint": "^5.6.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-skyscanner": "^3.0.0",
