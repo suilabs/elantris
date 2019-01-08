@@ -20,27 +20,30 @@ import NotFound from './Views/NotFound';
 
 import './App.scss';
 
-const Routes = ({ match }) => [
-  <Header
-    isMobile={Utils.isMobile()}
-    onChangeLanguage={(nLanguage) => {
-      CookieService.putSessionCookie('suiLanguage', nLanguage);
-      const currentLocation = window.location.pathname.split('/');
-      currentLocation[1] = nLanguage;
-      window.setTimeout(window.location = currentLocation.join('/'), 0);
-    }}
-  />,
-  <main id="App-content">
-    <Switch>
-      <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('/'), HomeView)} />
-      <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('/design'), DesignView)} />
-      <Route exact path={`${match.url}/software`} render={withTitle(Utils.getPageTitle('/software'), SoftwareView)} />
-      <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('/about'), AboutUsView)} />
-      <Route path="*" component={NotFound} />
-    </Switch>
-  </main>,
-  <Footer />,
-];
+const Routes = ({ match }) => {
+  CookieService.putSessionCookie('suiLanguage', match.url.split('/')[1]);
+  return [
+    <Header
+      isMobile={Utils.isMobile()}
+      onChangeLanguage={(nLanguage) => {
+        CookieService.putSessionCookie('suiLanguage', nLanguage);
+        const currentLocation = window.location.pathname.split('/');
+        currentLocation[1] = nLanguage;
+        window.setTimeout(window.location = currentLocation.join('/'), 0);
+      }}
+    />,
+    <main id="App-content">
+      <Switch>
+        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('/'), HomeView)} />
+        <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('/design'), DesignView)} />
+        <Route exact path={`${match.url}/software`} render={withTitle(Utils.getPageTitle('/software'), SoftwareView)} />
+        <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('/about'), AboutUsView)} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </main>,
+    <Footer />,
+  ];
+};
 
 Routes.propTypes = {
   match: PropTypes.shape({
@@ -88,7 +91,7 @@ function App({ ssr, isMobile, url }) {
           <Route path="/ca" component={Routes} />
           <Route path="/en" component={Routes} />
           <Route path="/es" component={Routes} />
-          <Route path="*" component={ssr ? Routes : GuessLanguage} />
+          <Route path="*" component={GuessLanguage} />
         </Switch>
       </div>
     </Router>

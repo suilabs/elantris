@@ -19,7 +19,7 @@ const router = Router();
 
 router.get('*', clearSiteData());
 
-router.use('^/$', (req, res) => {
+const redirectToLanguage = (req, res) => {
   const to = req.originalUrl.split('/');
   if (to.length >= 2 && to[1].length <= 2) {
     to[1] = req.cookies.suiLanguage || Utils.getDefaultLanguage();
@@ -27,7 +27,9 @@ router.use('^/$', (req, res) => {
     to.splice(1, 0, 'ca');
   }
   return res.redirect(to.join('/'));
-});
+};
+
+router.use('^/$', redirectToLanguage);
 
 router.use('/service-worker.js', (req, res) => {
   res.set('Cache-Control', 'max-age=0,no-cache,no-store,must-revalidate');
@@ -41,15 +43,7 @@ router.use(express.static(
 router.use('/ca', serverRenderer);
 router.use('/es', serverRenderer);
 router.use('/en', serverRenderer);
-router.use('*', (req, res) => {
-  const to = req.originalUrl.split('/');
-  if (to.length >= 2 && to[1].length === 2) {
-    to[1] = 'ca';
-  } else if (to.length >= 2 && to[1].length > 2) {
-    to.splice(1, 0, 'ca');
-  }
-  return res.redirect(to.join('/'));
-});
+router.use('*', redirectToLanguage);
 
 const html = exphbs.create({
   extname: 'html',
