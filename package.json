@@ -5,7 +5,7 @@
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "create:sitemap": "node ./scripts/generateSiteMap.js",
+    "create:sitemap": "bash ./scripts/sitemap.sh design software about > ./public/sitemap.xml",
     "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
     "lint:scss:fix": "stylelint 'src/**/*.scss' --syntax scss --fix",
     "lint:js": "eslint . --ignore-path .gitignore --ext .js,.jsx",
@@ -66,7 +66,6 @@
     "enzyme-to-json": "^3.3.4",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "husky": "^0.14.3",
-    "sitemap-generator": "^8.3.2",
     "style-loader": "^0.18.2",
     "stylelint": "^9.8.0",
     "stylelint-config-skyscanner": "^1.0.1"
