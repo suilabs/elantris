@@ -17,6 +17,14 @@ app.use(cookieParser());
 
 const router = Router();
 
+router.get('*', (req, res, next) => {
+  const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
+  if (fullUrl.indexOf('www.') !== -1) {
+    return res.redirect(301, fullUrl.replace('www.', ''));
+  }
+  return next();
+});
+
 router.get('*', clearSiteData());
 
 const redirectToLanguage = (req, res) => {
