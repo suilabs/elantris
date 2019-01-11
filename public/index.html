@@ -34,9 +34,9 @@
       var _paq = _paq || [];
       /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
       _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-      _paq.push(["setDomains", ["suilabs.com"]]);
-      _paq.push(["setDoNotTrack", true]);
+      _paq.push(["setCookieDomain", "*.suilabs.com"]);
       _paq.push(['trackPageView']);
+      _paq.push(["setDoNotTrack", true]);
       _paq.push(['enableLinkTracking']);
       (function() {
         var u="//mordor.suilabs.com/";
@@ -46,7 +46,7 @@
         g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
       })();
     </script>
-    <noscript><img src="//mordor.suilabs.com/piwik.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></noscript>
+    <noscript><span><img src="//mordor.suilabs.com/piwik.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></span></noscript>
     <!-- End Mordor Code -->
 
 
