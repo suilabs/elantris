@@ -48,6 +48,7 @@
     "jest-resolve": "^23.6.0",
     "matomo-tracker": "^2.2.0",
     "mobile-detect": "^1.4.3",
+    "node-fetch": "^2.3.0",
     "node-sass": "^4.10.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",

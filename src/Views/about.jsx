@@ -51,14 +51,14 @@ const About = () => {
           <div>{translation.about_equip}</div>
         </div>
         <ProfileCard
-          img={Utils.getAWSImagesPath('fotoperfilanna.png')}
+          img={Utils.getAWSImagesPath('about_anna.jpg')}
           name="Anna Berenguer"
           work={translation.contact_role_anna}
           contact={['+34 646 248 527', 'anna@suilabs.com']}
           social={[{ type: 'linkedIn', url: 'https://www.linkedin.com/in/anna-berenguer-gisbert-798954aa/' }]}
         />
         <ProfileCard
-          img={Utils.getAWSImagesPath('fotoperfilborja.png')}
+          img={Utils.getAWSImagesPath('about_borja.jpg')}
           name="Borja Arias"
           work={translation.contact_role_borja}
           contact={['+34 609 759 147', 'barias@suilabs.com']}

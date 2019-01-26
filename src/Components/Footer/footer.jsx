@@ -11,7 +11,6 @@ const Footer = (props) => {
     return '';
   }
   const text = translations().tensUnaConsulta;
-  console.log(text);
   return (
     <div id="sui-footer" className="sui-footer">
       <div className="sui-footer__contact">
