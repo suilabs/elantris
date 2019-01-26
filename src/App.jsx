@@ -34,10 +34,10 @@ const Routes = ({ match }) => {
     />,
     <main id="App-content">
       <Switch>
-        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('/'), HomeView)} />
-        <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('/design'), DesignView)} />
-        <Route exact path={`${match.url}/software`} render={withTitle(Utils.getPageTitle('/software'), SoftwareView)} />
-        <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('/about'), AboutUsView)} />
+        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), HomeView)} />
+        <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('design'), DesignView)} />
+        <Route exact path={`${match.url}/software`} render={withTitle(Utils.getPageTitle('software'), SoftwareView)} />
+        <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('about'), AboutUsView)} />
         <Route path="*" component={NotFound} />
       </Switch>
     </main>,

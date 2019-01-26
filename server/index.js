@@ -71,6 +71,9 @@ app.use(router);
 app.listen(PORT, (error) => {
   if (error) {
     console.log(error);
+    matomo.track({
+
+    });
     process.abort();
   }
   console.log(`Elantris backend listening is ${PORT}`);
