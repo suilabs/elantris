@@ -35,6 +35,14 @@ export default (req, res) => {
   // render the app as a string
   const clientSideParams = captureParams(req) || {};
   const path = req.originalUrl;
+  req.app.locals.matomo.track({
+    url: path,
+    action_name: 'access',
+    cvar: JSON.stringify({
+      clientSideParams,
+      node_env: process.env.NODE_ENV,
+    }),
+  });
   const props = {
     ssr: true,
     isMobile: clientSideParams.queryParams.mobile === 'true' || !!md.mobile(),

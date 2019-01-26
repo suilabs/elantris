@@ -3,8 +3,8 @@ import path from 'path';
 import 'ignore-styles';
 import compression from 'compression';
 import exphbs from 'express-handlebars';
-import clearSiteData from 'clearsitedata';
 import cookieParser from 'cookie-parser';
+import MatomoTracker from 'matomo-tracker';
 
 import Utils from '../src/Utils';
 import serverRenderer from './middleware/renderer';
@@ -16,7 +16,11 @@ app.use(compression());
 app.use(cookieParser());
 
 const router = Router();
-
+const matomo = new MatomoTracker(2, 'https://mordor.suilabs.com/piwik.php');
+matomo.on('error', (err) => {
+  console.log('error tracking request: ', err);
+});
+app.locals.matomo = matomo;
 router.get('*', (req, res, next) => {
   const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
   if (fullUrl.indexOf('www.') !== -1) {
@@ -24,8 +28,6 @@ router.get('*', (req, res, next) => {
   }
   return next();
 });
-
-router.get('*', clearSiteData());
 
 const redirectToLanguage = (req, res) => {
   const to = req.originalUrl.split('/');
