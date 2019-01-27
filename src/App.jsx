@@ -5,6 +5,7 @@ import 'typeface-montserrat';
 
 import SetParameters from './Components/Common/Utility';
 import CookieService from './Services/CookieService';
+import eyeService from './Services/EyeService';
 
 import Utils from './Utils';
 
@@ -20,6 +21,11 @@ import NotFound from './Views/NotFound';
 
 import './App.scss';
 
+const withPageView = Component => (props) => {
+  eyeService.seePage();
+  return <Component {...props} />;
+};
+
 const Routes = ({ match }) => {
   CookieService.putSessionCookie('suiLanguage', match.url.split('/')[1]);
   return [
@@ -34,10 +40,10 @@ const Routes = ({ match }) => {
     />,
     <main id="App-content">
       <Switch>
-        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), HomeView)} />
-        <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('design'), DesignView)} />
-        <Route exact path={`${match.url}/software`} render={withTitle(Utils.getPageTitle('software'), SoftwareView)} />
-        <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('about'), AboutUsView)} />
+        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), withPageView(HomeView))} />
+        <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('design'), withPageView(DesignView))} />
+        <Route exact path={`${match.url}/software`} render={withTitle(Utils.getPageTitle('software'), withPageView(SoftwareView))} />
+        <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('about'), withPageView(AboutUsView))} />
         <Route path="*" component={NotFound} />
       </Switch>
     </main>,
@@ -80,6 +86,7 @@ function App({ ssr, isMobile, url }) {
   const Router = ssr ? StaticRouter : BrowserRouter;
   const context = {};
   Utils.setIsMobile(isMobile);
+  Utils.setIsSSR(ssr);
   return (
     <Router location={url} context={context}>
       <div id="App">

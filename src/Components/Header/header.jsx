@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import withEye from '../../Views/HoC/withEyes';
 
 import NavBar, { NavBarItem } from '../NavBar';
 
@@ -63,6 +64,10 @@ class Header extends React.Component {
     }
   };
 
+  trackLogoClick = () => {
+    this.props.eye.seeClick('logo', 'logo');
+  };
+
   render() {
     const { isMobile } = this.props;
     const {
@@ -74,7 +79,7 @@ class Header extends React.Component {
       <div className="sui-page-header">
         <div className="sui-page-header__wrapper clearfix">
           <div className="sui-logo">
-            <Link to={`/${currentLanguage}`} aria-label="home" >
+            <Link to={`/${currentLanguage}`} onClick={this.trackLogoClick} aria-label="home" >
               <SuiLogo width={isMobile ? '100px' : '142px'} />
             </Link>
           </div>
@@ -126,6 +131,9 @@ class Header extends React.Component {
 Header.propTypes = {
   isMobile: PropTypes.bool.isRequired,
   onChangeLanguage: PropTypes.func.isRequired,
+  eye: PropTypes.shape({
+    seeClick: PropTypes.func,
+  }).isRequired,
 };
 
-export default Header;
+export default withEye(Header);
