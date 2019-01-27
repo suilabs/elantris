@@ -97,6 +97,12 @@ const Utils = {
   getDefaultLanguage() {
     return config.defaultLanguage;
   },
+  setIsSSR(value) {
+    this.ssr = value;
+  },
+  isSSR() {
+    return this.ssr;
+  },
 };
 
 export default Utils;
