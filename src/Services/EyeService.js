@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 class EyeService {
   constructor() {
     this.enabled = typeof _paq !== 'undefined';
@@ -8,8 +9,14 @@ class EyeService {
 
   seePage() {
     if (this.enabled) {
-      window._paq.push(['setDocumentTitle', document.title]); // eslint-disable-line no-underscore-dangle
-      window._paq.push(['trackPageView']); // eslint-disable-line no-underscore-dangle
+      window._paq.push(['setDocumentTitle', document.title]);
+      window._paq.push(['trackPageView']);
+    }
+  }
+
+  seeClick(category, name) {
+    if (this.enabled) {
+      window._paq.push(['trackEvent', category, name]);
     }
   }
 }

@@ -1,17 +1,24 @@
-import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import withEye from '../../Views/HoC/withEyes';
 
 import './NavBarItem.scss';
 
 const NavBarItem = (props) => {
-  const root = props.history.location.pathname.split('/')[1];
-  const active = `/${root}` === props.to ? '--active' : '';
-  const classname = `sui-navbar__item${active} ${props.className}`;
+  const {
+    to, label, className, history, eye,
+  } = props;
+  const root = history.location.pathname.split('/')[1];
+  const active = `/${root}` === to ? '--active' : '';
+  const classname = `sui-navbar__item${active} ${className}`;
+  const onClickTrack = () => {
+    eye.seeClick('navbar', label);
+  };
   return (
     <li className={classname}>
-      <Link to={props.to} className="sui-navbar__item--link">
-        {props.label}
+      <Link to={to} onClick={onClickTrack} className="sui-navbar__item--link">
+        {label}
       </Link>
     </li>
   );
@@ -26,10 +33,13 @@ NavBarItem.propTypes = {
     }).isRequired,
   }).isRequired,
   className: PropTypes.string,
+  eye: PropTypes.shape({
+    seeClick: PropTypes.func,
+  }).isRequired,
 };
 
 NavBarItem.defaultProps = {
   className: 'menu-item',
 };
 
-export default withRouter(NavBarItem);
+export default withEye(withRouter(NavBarItem));
