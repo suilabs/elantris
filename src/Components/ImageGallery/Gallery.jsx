@@ -29,7 +29,7 @@ class Gallery extends Component {
   }
 
   render() {
-    const { filterable, instances, size } = this.props;
+    const { filterable, instances, size, onItemClick } = this.props;
 
     const style = {
       maxWidth: `${(size.width * this.maxRowElemets) + 100}px`,
@@ -54,6 +54,7 @@ class Gallery extends Component {
                 {...instance}
                 width={size.width}
                 className="sui-add-margins"
+                onClick={onItemClick}
               />
             ))
           }
@@ -73,12 +74,14 @@ Gallery.propTypes = {
     widht: String.number,
     height: String.number,
   }),
+  onItemClick: PropTypes.func,
 };
 
 Gallery.defaultProps = {
   instances: [],
   filterable: false,
   size: { width: 200, height: 200 },
+  onItemClick: () => {},
 };
 
 export default Gallery;

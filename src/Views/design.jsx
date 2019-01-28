@@ -7,6 +7,7 @@ import LayoutBuilder from '../Components/ProjectWrapper/LayoutBuilder';
 import LayoutDesign from '../Components/ProjectWrapper/LayoutDesign';
 import Gallery from '../Components/ImageGallery';
 import Utils from '../Utils';
+import withEye from './HoC/withEyes';
 
 const createInstance = (title, descr, img, href, tags = ['design']) => ({
   title,
@@ -53,6 +54,10 @@ class Design extends React.Component {
     });
   }
 
+  handleItemClick = (event, projectName) => {
+    this.props.eye.seeClick('Project', 'Open', projectName);
+  };
+
   render() {
     const { projects } = this.state;
     const { project: selectedProject } = this.props.match.params;
@@ -78,6 +83,7 @@ class Design extends React.Component {
           instances={
             projects.map(createInstanceProxy)
           }
+          onItemClick={this.handleItemClick}
         />
       </div>
     );
@@ -91,6 +97,9 @@ Design.propTypes = {
       project: PropTypes.arrayOf(PropTypes.string),
     }),
   }).isRequired,
+  eye: PropTypes.shape({
+    seeClick: PropTypes.func,
+  }).isRequired,
 };
 
-export default Design;
+export default withEye(Design);

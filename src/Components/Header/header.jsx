@@ -40,14 +40,17 @@ class Header extends React.Component {
   };
 
   handleButtonClick = () => {
+    const { showMenu } = this.state;
     document.addEventListener('click', this.handleClose);
     this.menu.current.addEventListener('click', stopPropagation);
+    this.props.eye.seeClick('Mobile menu', showMenu ? 'Close' : 'Open', `${Date.now()}`);
     this.setState({
-      showMenu: !this.state.showMenu,
+      showMenu: !showMenu,
     });
   };
 
   openLanguageSelector = () => {
+    this.props.eye.seeClick('Language Selector', 'Open', this.state.currentLanguage);
     this.setState({
       showLanguageSelector: true,
     });
@@ -56,8 +59,10 @@ class Header extends React.Component {
   handleLanguageClick = (event) => {
     const { currentTarget: { id } } = event;
     if (id !== this.state.currentLanguage) {
+      this.props.eye.seeClick('Language', 'Selected', id);
       this.props.onChangeLanguage(id);
     } else {
+      this.props.eye.seeClick('Language Selector', 'Close', this.state.currentLanguage);
       this.setState({
         showLanguageSelector: false,
       });
@@ -65,7 +70,7 @@ class Header extends React.Component {
   };
 
   trackLogoClick = () => {
-    this.props.eye.seeClick('logo', 'logo');
+    this.props.eye.seeClick('Navigation', 'click', 'logo');
   };
 
   render() {
