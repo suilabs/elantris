@@ -12,9 +12,12 @@ const ImageBox = (props) => {
   if (props.orientation === 'vertical') {
     labelClassName.push('sui-image-box__label--rotate-270');
   }
+  const onClick = (href) => (event) => {
+    props.onClick(event, href);
+  };
   return (
     <div className={className.join(' ')}>
-      <RelativeLink to={props.href}>
+      <RelativeLink to={props.href} onClick={onClick(props.href)} >
         <ImageWithFallback
           src={props.img}
           className={imageClassName.join(' ')}
@@ -45,6 +48,7 @@ ImageBox.propTypes = {
   className: PropTypes.string,
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
   animationDirection: PropTypes.oneOf(['horizontal', 'vertical']),
+  onClick: PropTypes.func,
 };
 
 ImageBox.defaultProps = {
@@ -56,6 +60,7 @@ ImageBox.defaultProps = {
   textClassName: '',
   className: '',
   href: '',
+  onClick: () => {},
 };
 
 export default ImageBox;

@@ -13,7 +13,7 @@ const NavBarItem = (props) => {
   const active = `/${root}` === to ? '--active' : '';
   const classname = `sui-navbar__item${active} ${className}`;
   const onClickTrack = () => {
-    eye.seeClick('navbar', label);
+    eye.seeClick('Navigation', 'click', label);
   };
   return (
     <li className={classname}>

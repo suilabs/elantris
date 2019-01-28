@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const RelativeLink = (props) => {
   const toRelative = `${window.location.pathname}/${props.to}`;
-  return <Link to={toRelative}>{props.children}</Link>;
+  return <Link to={toRelative} onClick={props.onClick}>{props.children}</Link>;
 };
 
 RelativeLink.propTypes = {
@@ -13,6 +13,11 @@ RelativeLink.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  onClick: PropTypes.func,
+};
+
+RelativeLink.defaultProps = {
+  onClick: () => {},
 };
 
 export default RelativeLink;

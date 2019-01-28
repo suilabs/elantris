@@ -14,9 +14,9 @@ class EyeService {
     }
   }
 
-  seeClick(category, name) {
+  seeClick(category, action, extraData) {
     if (this.enabled) {
-      window._paq.push(['trackEvent', category, name]);
+      window._paq.push(['trackEvent', category, action, extraData]);
     }
   }
 }
