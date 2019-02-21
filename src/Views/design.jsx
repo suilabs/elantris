@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ProjectsService from '../Services/ProjectService';
+import TranslationService from '../Services/TranslationService';
 import Loading from '../Components/Common/Loading';
 import LayoutBuilder from '../Components/ProjectWrapper/LayoutBuilder';
 import LayoutDesign from '../Components/ProjectWrapper/LayoutDesign';
@@ -47,8 +48,18 @@ class Design extends React.Component {
 
   componentWillMount() {
     Loading(this, (finished) => {
-      ProjectsService.getProjects().then((pr) => {
+      ProjectsService.byLanguage(Utils.getCurrentLanguage()).then((pr) => {
         finished();
+        if (pr.length === 0) {
+          const translate = TranslationService();
+          const project = {
+            name: translate.coming_soon_title,
+            description: translate.coming_soon_subtitle,
+            cover: { url: Utils.getAWSImagesPath('comingSoon.jpg') },
+            url: '#',
+          };
+          pr.push(project);
+        }
         this.setState({ projects: pr });
       });
     });

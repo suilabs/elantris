@@ -85,6 +85,8 @@ export default {
       'Software Engineer',
       '@ Skyscanner Ltd.',
     ],
+    coming_soon_title: 'No hay nada aun',
+    coming_soon_subtitle: 'Estamos trabajando en ello',
   },
   en: {
     homePageContent: [
@@ -129,5 +131,7 @@ export default {
       'Software Engineer',
       '@ Skyscanner Ltd.',
     ],
+    coming_soon_title: 'There\'s nothing here yet.',
+    coming_soon_subtitle: 'We are working on that. :D',
   },
 };
