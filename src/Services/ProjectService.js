@@ -23,6 +23,8 @@ export default {
       })
       .catch(reject);
   }),
+  byLanguage: lang => APIConnector.getProjectsByLanguage(lang)
+    .then(({ data }) => data.projectsByLanguage),
   createProject: ({
     key, title, subTitle, coverImage, types, images, password,
   }) => {

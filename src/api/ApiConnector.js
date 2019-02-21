@@ -39,6 +39,11 @@ class ApiConnector {
     return this._fetchApi(query);
   }
 
+  static getProjectsByLanguage(lang) {
+    const query = GQLQueries.getProjectByLanguage(lang);
+    return this._fetchApi(query);
+  }
+
   static createProject(projectData, password) {
     const query = {
       query: GQLMutations.insertProject,
