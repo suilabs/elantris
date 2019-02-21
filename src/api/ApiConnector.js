@@ -32,9 +32,8 @@ class ApiConnector {
   };
 
   static getProjects() {
-    const newOrOld = Utils.isOldBackendEnabled() ? 'old' : 'new';
     const query = {
-      query: GQLQueries.getProjects[newOrOld],
+      query: GQLQueries.getProjects,
     };
     return this._fetchApi(query);
   }
