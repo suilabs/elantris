@@ -1,116 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import ProjectsService from '../Services/ProjectService';
-import TranslationService from '../Services/TranslationService';
-import Loading from '../Components/Common/Loading';
-import LayoutBuilder from '../Components/ProjectWrapper/LayoutBuilder';
-import LayoutDesign from '../Components/ProjectWrapper/LayoutDesign';
-import Gallery from '../Components/ImageGallery';
-import Utils from '../Utils';
-import withEye from './HoC/withEyes';
+import ProjectsView from './projects';
 
-const createInstance = (title, descr, img, href, tags = ['design']) => ({
-  title,
-  img,
-  tag: tags,
-  descr,
-  orientation: 'horizontal',
-  animationDirection: 'horizontal',
-  href,
-});
+const Design = props => (
+  <ProjectsView
+    section="design"
+    {...props}
+  />
+);
 
-const createInstanceProxy = (project) => {
-  if (!Utils.isOldBackendEnabled()) {
-    return createInstance(
-      project.name,
-      project.description,
-      project.cover.url,
-      project.url,
-    );
-  }
-  return createInstance(
-    project.title,
-    project.subTitle,
-    Utils.getImage(project.coverImage.url),
-    project.key,
-  );
-};
-
-class Design extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      projects: [],
-    };
-  }
-
-  componentWillMount() {
-    Loading(this, (finished) => {
-      ProjectsService.byLanguage(Utils.getCurrentLanguage()).then((pr) => {
-        finished();
-        if (pr.length === 0) {
-          const translate = TranslationService();
-          const project = {
-            name: translate.coming_soon_title,
-            description: translate.coming_soon_subtitle,
-            cover: { url: Utils.getAWSImagesPath('comingSoon.jpg') },
-            url: '#',
-          };
-          pr.push(project);
-        }
-        this.setState({ projects: pr });
-      });
-    });
-  }
-
-  handleItemClick = (event, projectName) => {
-    this.props.eye.seeClick('Project', 'Open', projectName);
-  };
-
-  render() {
-    const { projects } = this.state;
-    const { project: selectedProject } = this.props.match.params;
-    if (selectedProject) {
-      const project = projects.filter(proj => proj.url === selectedProject || proj.key === selectedProject)[0]; // remove proj.key once newBackend is 100%
-      return (
-        <div>
-          {!Utils.isOldBackendEnabled()
-            ? <LayoutBuilder item={project} />
-            : <LayoutDesign
-              title={project.title}
-              type={project.type}
-              images={project.images}
-            />
-          }
-        </div>
-      );
-    }
-    return (
-      <div className="sui-view-wrapper">
-        <Gallery
-          size={{ width: 284 }}
-          instances={
-            projects.map(createInstanceProxy)
-          }
-          onItemClick={this.handleItemClick}
-        />
-      </div>
-    );
-  }
-}
-
-Design.propTypes = {
-  // location: PropTypes.shape({ hash: PropTypes.string }).isRequired,
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      project: PropTypes.arrayOf(PropTypes.string),
-    }),
-  }).isRequired,
-  eye: PropTypes.shape({
-    seeClick: PropTypes.func,
-  }).isRequired,
-};
-
-export default withEye(Design);
+export default Design;

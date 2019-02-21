@@ -42,7 +42,7 @@ const Routes = ({ match }) => {
       <Switch>
         <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), withPageView(HomeView))} />
         <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('design'), withPageView(DesignView))} />
-        <Route exact path={`${match.url}/software`} render={withTitle(Utils.getPageTitle('software'), withPageView(SoftwareView))} />
+        <Route exact path={`${match.url}/software/:project?`} render={withTitle(Utils.getPageTitle('software'), withPageView(SoftwareView))} />
         <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('about'), withPageView(AboutUsView))} />
         <Route path="*" component={NotFound} />
       </Switch>

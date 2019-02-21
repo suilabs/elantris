@@ -12,7 +12,7 @@ const ImageBox = (props) => {
   if (props.orientation === 'vertical') {
     labelClassName.push('sui-image-box__label--rotate-270');
   }
-  const onClick = (href) => (event) => {
+  const onClick = href => (event) => {
     props.onClick(event, href);
   };
   return (
@@ -59,7 +59,7 @@ ImageBox.defaultProps = {
   imageClassName: '',
   textClassName: '',
   className: '',
-  href: '',
+  href: null,
   onClick: () => {},
 };
 

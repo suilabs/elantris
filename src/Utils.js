@@ -10,12 +10,6 @@ const getCssFromString = () => {
 
 const Utils = {
   mobile: false,
-  isNewBackendEnabled() {
-    return Utils.getFeatureFlag('newBackend') === 'true';
-  },
-  isOldBackendEnabled() {
-    return Utils.getFeatureFlag('oldBackend') === 'true';
-  },
   generateKey(str) {
     return str.replace(/ /g, '-').toLowerCase();
   },
@@ -30,7 +24,7 @@ const Utils = {
     return `${hostname}/${imagePath}`;
   },
   getAPIPath() {
-    const hostname = this.isOldBackendEnabled() ? '//hathsin.suilabs.com' : config.api.hostname;
+    const { hostname } = config.api;
     const { path } = config.api;
     return `${hostname}/${path}`;
   },

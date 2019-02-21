@@ -41,6 +41,10 @@ export default {
       'Software Engineer',
       '@ Skyscanner Ltd.',
     ],
+    coming_soon_title: 'Encara no hi res que mostrar',
+    coming_soon_subtitle: 'Estem treballant-hi',
+    not_found_text: 'Pots continuar cercant el pergamí de la veritat o',
+    not_found_link: 'tornar a casa',
   },
   es: {
     homePageContent: [
@@ -87,6 +91,8 @@ export default {
     ],
     coming_soon_title: 'No hay nada aun',
     coming_soon_subtitle: 'Estamos trabajando en ello',
+    not_found_text: 'Puedes seguir buscando el pergamino de la verdad o',
+    not_found_link: 'volver a casa',
   },
   en: {
     homePageContent: [
@@ -133,5 +139,7 @@ export default {
     ],
     coming_soon_title: 'There\'s nothing here yet.',
     coming_soon_subtitle: 'We are working on that. :D',
+    not_found_text: 'You can keep searching for the scroll of the truth or',
+    not_found_link: 'go back Home',
   },
 };

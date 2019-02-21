@@ -34,16 +34,13 @@ const Queries = {
       language: lang,
     },
   }),
-  getProjects: {
-    old: '{ projects { key title subTitle coverImage { url } images { url text } types } }',
-    new: `
-      {
-        projects {
-          ${projectFields}
-        }
+  getProjects: `
+    {
+      projects {
+        ${projectFields}
       }
-    `,
-  },
+    }
+  `,
   getTypes: '{ types { id name } }',
 };
 

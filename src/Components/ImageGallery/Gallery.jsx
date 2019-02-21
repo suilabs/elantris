@@ -29,7 +29,9 @@ class Gallery extends Component {
   }
 
   render() {
-    const { filterable, instances, size, onItemClick } = this.props;
+    const {
+      filterable, instances, size, onItemClick,
+    } = this.props;
 
     const style = {
       maxWidth: `${(size.width * this.maxRowElemets) + 100}px`,

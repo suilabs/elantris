@@ -1,8 +1,12 @@
 import React from 'react';
-import Underconstruction from '../Components/Common/UnderConstruction/UnderConstruction';
 
-const Software = () => (
-  <Underconstruction />
+import ProjectsView from './projects';
+
+const Software = props => (
+  <ProjectsView
+    section="software"
+    {...props}
+  />
 );
 
 export default Software;
