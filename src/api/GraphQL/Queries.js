@@ -19,6 +19,7 @@ const projectFields = `
     componentId
     propsJson
   }
+  languages
 `;
 
 const Queries = {
