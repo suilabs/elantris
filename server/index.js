@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import MatomoTracker from 'matomo-tracker';
 
 import Utils from '../src/Utils';
+import sitemap from './sitemap';
 import serverRenderer from './middleware/renderer';
 
 const PORT = process.env.PORT || 5000;
@@ -45,6 +46,8 @@ router.use('/service-worker.js', (req, res) => {
   res.set('Cache-Control', 'max-age=0,no-cache,no-store,must-revalidate');
   res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
 });
+
+router.get('/sitemap.xml', sitemap);
 
 router.use(express.static(
   path.resolve(__dirname, '..', 'build'),
