@@ -55,7 +55,7 @@ const generateSiteMap = (host, projects) => {
 const sitemap = (req, res) => {
   ProjectService.getProjects()
     .then((projects) => {
-      res.set('Content-Type', 'application/xhtml+xml');
+      res.set('Content-Type', 'application/xml');
       res.send(generateSiteMap(req.hostname, projects));
     });
 };
