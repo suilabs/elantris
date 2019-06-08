@@ -6,6 +6,7 @@ import exphbs from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import MatomoTracker from 'matomo-tracker';
 
+import './polyfill/fetch';
 import Utils from '../src/Utils';
 import sitemap from './sitemap';
 import serverRenderer from './middleware/renderer';
@@ -40,6 +41,10 @@ const redirectToLanguage = (req, res) => {
   return res.redirect(to.join('/'));
 };
 
+router.use('^/sockjs-node/*', (req, res) => {
+  res.send('OK');
+});
+
 router.use('^/$', redirectToLanguage);
 
 router.use('/service-worker.js', (req, res) => {
@@ -67,7 +72,11 @@ const html = exphbs.create({
 
 app.engine('html', html.engine);
 app.set('view engine', 'html');
-app.set('views', path.join(__dirname, '..', 'build'));
+if (process.env.NODE_ENV !== 'development') {
+  app.set('views', path.join(__dirname, '..', 'build'));
+} else {
+  app.set('views', path.join(__dirname, '.'));
+}
 
 app.use(router);
 

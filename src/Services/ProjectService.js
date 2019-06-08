@@ -5,9 +5,14 @@ const cache = {
   isValid: false,
 };
 
+let SSRProjects = null;
+
 export default {
   getProjects: () => new Promise((resolve, reject) => {
-    APIConnector.getProjects()
+    if (SSRProjects) {
+      return resolve(SSRProjects);
+    }
+    return APIConnector.getProjects()
       .then(({ data }) => {
         if (!cache.isValid) {
           cache.data = data.projects;
@@ -41,4 +46,7 @@ export default {
     );
   },
   createType: (type, password) => APIConnector.createProjectType(type, password),
+  setProjects: (projects) => {
+    SSRProjects = projects;
+  },
 };

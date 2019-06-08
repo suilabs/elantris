@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Utils from '../../../Utils';
 import Spinner from './Spinner';
 
 const fakeRender = () => (
@@ -8,6 +9,9 @@ const fakeRender = () => (
 
 /* eslint-disable no-param-reassign */
 export default (component, callback) => {
+  if (Utils.isSSR()) {
+    return;
+  }
   const originalRender = component.render;
 
   const finished = () => {

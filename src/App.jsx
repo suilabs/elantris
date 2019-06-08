@@ -6,6 +6,7 @@ import 'typeface-montserrat';
 import SetParameters from './Components/Common/Utility';
 import CookieService from './Services/CookieService';
 import eyeService from './Services/EyeService';
+import { Provider } from './Services/Context';
 
 import Utils from './Utils';
 
@@ -82,26 +83,31 @@ GuessLanguage.defaultProps = {
   location: { pathname: '/' },
 };
 
-function App({ ssr, isMobile, url }) {
+function App({
+  ssr, isMobile, url, projects,
+}) {
   const Router = ssr ? StaticRouter : BrowserRouter;
   const context = {};
   Utils.setIsMobile(isMobile);
   Utils.setIsSSR(ssr);
   return (
-    <Router location={url} context={context}>
-      <div id="App">
-        <SetParameters
-          cookieService={CookieService}
-          ssr={ssr}
-        />
-        <Switch>
-          <Route path="/ca" component={Routes} />
-          <Route path="/en" component={Routes} />
-          <Route path="/es" component={Routes} />
-          <Route path="*" component={GuessLanguage} />
-        </Switch>
-      </div>
-    </Router>
+    <Provider value={projects}>
+      <Router location={url} context={context}>
+        <div id="App">
+          <SetParameters
+            cookieService={CookieService}
+            ssr={ssr}
+            projectsList={projects}
+          />
+          <Switch>
+            <Route path="/ca" component={Routes} />
+            <Route path="/en" component={Routes} />
+            <Route path="/es" component={Routes} />
+            <Route path="*" component={GuessLanguage} />
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
@@ -109,12 +115,14 @@ App.propTypes = {
   ssr: PropTypes.bool,
   isMobile: PropTypes.bool,
   url: PropTypes.string,
+  projects: PropTypes.arrayOf(PropTypes.object),
 };
 
 App.defaultProps = {
   ssr: false,
   isMobile: false,
   url: '',
+  projects: [],
 };
 
 export default App;
