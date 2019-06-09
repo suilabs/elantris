@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import MobileDetect from 'mobile-detect';
-import fetch, { Headers } from 'node-fetch';
 
 import Utils from '../../src/Utils';
+import ProjectService from '../../src/Services/ProjectService';
 
 import App from '../../src/App';
-
-global.fetch = fetch;
-global.Headers = Headers;
 
 const captureParams = (req) => {
 // eslint-disable-next-line prefer-const
@@ -28,8 +25,23 @@ const captureParams = (req) => {
   };
 };
 
+const resolvePathProject = async (path) => {
+  // eslint-disable-next-line no-unused-vars
+  const [_, language, section, projectPath] = path.split('/');
+  if (language.length !== 2 || !section) {
+    return null;
+  }
 
-export default (req, res) => {
+  const projects = await ProjectService.byLanguageAndSection(language, section);
+
+  if (!projectPath) {
+    return projects;
+  }
+
+  return projects.filter(proj => proj.url === projectPath);
+};
+
+export default async (req, res) => {
   const md = new MobileDetect(req.headers['user-agent']);
   global.window = {
     location: {
@@ -49,22 +61,25 @@ export default (req, res) => {
       node_env: process.env.NODE_ENV,
     }),
   });
+  const projects = await resolvePathProject(path);
   const props = {
     ssr: true,
     isMobile: clientSideParams.queryParams.mobile === 'true' || !!md.mobile(),
     url: path,
+    projects,
   };
+
   global.document = {}; // mock document for setting title
   const html = ReactDOMServer.renderToString(React.createElement(App, props));
 
   const vars = {
     title: `<title>${Utils.getPageTitle(pagePath)}</title>`,
     metaDescription: Utils.getMetaDescription(pagePath),
-    root: `
-    <script>
+    clientSideParams: `
+    <script id="clientSideParams">
       window.appParams=${JSON.stringify(clientSideParams)}
-    </script>
-    ${html}`,
+    </script>`,
+    root: `${html}`,
   };
   return res.render('index', vars);
 };

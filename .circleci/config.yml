@@ -19,6 +19,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run test:server
       - run: npm run build
   release:
     docker:

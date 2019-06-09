@@ -7,6 +7,7 @@ import Loading from '../../Components/Common/Loading';
 import LayoutBuilder from '../../Components/ProjectWrapper/LayoutBuilder';
 import Gallery from '../../Components/ImageGallery';
 import Utils from '../../Utils';
+import Context from '../../Services/Context';
 
 const createInstance = (title, descr, img, href, tags = []) => ({
   title,
@@ -26,6 +27,8 @@ const createInstanceProxy = project => createInstance(
 );
 
 class ProjectList extends React.Component {
+  static contextType = Context;
+
   constructor(props) {
     super(props);
 
@@ -35,25 +38,31 @@ class ProjectList extends React.Component {
   }
 
   componentWillMount() {
-    Loading(this, (finished) => {
-      ProjectsService.byLanguageAndSection(Utils.getCurrentLanguage(), this.props.section).then((pr) => {
-        finished();
-        if (pr.length === 0) {
-          const translate = TranslationService();
-          const project = {
-            name: translate.coming_soon_title,
-            description: translate.coming_soon_subtitle,
-            cover: { url: Utils.getAWSImagesPath('comingSoon.jpg') },
-          };
-          pr.push(project);
-        }
-        this.setState({ projects: pr });
+    if (!this.state.projects.length) {
+      Loading(this, (finished) => {
+        ProjectsService.byLanguageAndSection(Utils.getCurrentLanguage(), this.props.section).then((pr) => {
+          finished();
+          this.setProjects(pr);
+        });
       });
-    });
+    }
   }
 
+  setProjects = (projects) => {
+    if (projects.length === 0) {
+      const translate = TranslationService();
+      const project = {
+        name: translate.coming_soon_title,
+        description: translate.coming_soon_subtitle,
+        cover: { url: Utils.getAWSImagesPath('comingSoon.jpg') },
+      };
+      projects.push(project);
+    }
+    this.setState({ projects });
+  };
+
   render() {
-    const { projects } = this.state;
+    const projects = this.context.length > 0 ? this.context : this.state.projects;
     const { path } = this.props;
     if (path) {
       const project = projects.filter(proj => proj.url === path)[0];
