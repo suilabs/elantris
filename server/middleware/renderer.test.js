@@ -23,7 +23,8 @@ jest.mock('../../src/Utils', () => ({
 
 let mockIsMobile;
 jest.mock('mobile-detect', () => class {
-  static mobile() {
+  // eslint-disable-next-line class-methods-use-this
+  mobile() {
     return mockIsMobile;
   }
 });
@@ -64,6 +65,7 @@ describe('Renderer', () => {
     };
     mockCreateElement = jest.fn(() => {});
     mockByLanguageAndSection = jest.fn(() => []);
+    mockIsMobile = false;
   });
 
   it('should return', async () => {
@@ -83,8 +85,6 @@ describe('Renderer', () => {
   });
 
   it('should call create element with the correct props', async () => {
-    mockIsMobile = false;
-
     await Renderer(req, res);
 
     expect(mockCreateElement).toHaveBeenCalledWith(
