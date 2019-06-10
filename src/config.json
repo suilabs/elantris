@@ -4,8 +4,8 @@
     "images": "images"
   },
   "aws": {
-    "hostname": "https://s3.eu-west-3.amazonaws.com",
-    "images": "suilabs/static"
+    "hostname": "https://d26aplmy81ikda.cloudfront.net",
+    "images": "static"
   },
   "api": {
     "hostname": "https://v2.hathsin.suilabs.com",
@@ -16,19 +16,19 @@
       "ISO": "cat",
       "ISO2": "ca",
       "original": "Catalan",
-      "flagUrl": "https://s3.eu-west-3.amazonaws.com/suilabs/static/cat-flag.svg"
+      "flagUrl": "https://d26aplmy81ikda.cloudfront.net/static/cat-flag.svg"
     },
     {
       "ISO": "esp",
       "ISO2": "es",
       "original": "Español",
-      "flagUrl": "https://s3.eu-west-3.amazonaws.com/suilabs/static/esp-flag.svg"
+      "flagUrl": "https://d26aplmy81ikda.cloudfront.net/static/esp-flag.svg"
     },
     {
       "ISO": "eng",
       "ISO2": "en",
       "original": "English",
-      "flagUrl": "https://s3.eu-west-3.amazonaws.com/suilabs/static/uk-flag.svg"
+      "flagUrl": "https://d26aplmy81ikda.cloudfront.net/static/uk-flag.svg"
     }
   ],
   "defaultLanguage": "ca"

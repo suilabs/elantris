@@ -55,6 +55,8 @@
     color: $sui-color-primary;
     font-size: 1.375em;
     line-height: 1.5em;
+    unicode-bidi:bidi-override;
+    direction: rtl;
   }
 
   &__social {
