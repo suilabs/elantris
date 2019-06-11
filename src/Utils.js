@@ -40,6 +40,10 @@ const Utils = {
     const { hostname, images } = config.aws;
     return `${hostname}/${images}/${suffix}`;
   },
+  getAWSProjectImagePath(suffix = '') {
+    const { hostname } = config.aws;
+    return `${hostname}/${suffix}`;
+  },
   getFeatureFlag(name) {
     if (!window.suilabs || !window.suilabs.featureFlags) {
       return null;

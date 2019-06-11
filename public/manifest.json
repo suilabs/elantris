@@ -3,7 +3,7 @@
   "name": "Suilabs presentation page",
   "icons": [
     {
-      "src": "https://s3.eu-west-3.amazonaws.com/suilabs/favicons/favicon-192.png",
+      "src": "https://d26aplmy81ikda.cloudfront.net/favicons/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
