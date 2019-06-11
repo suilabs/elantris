@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import translations from '../../Services/TranslationService';
 
 import './followus.scss';
+import Utils from '../../Utils';
 
 const FollowUs = (props) => {
   const classNames = `sui-follow-us ${props.className}`;
@@ -18,7 +19,7 @@ const FollowUs = (props) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="https://s3.eu-west-3.amazonaws.com/suilabs/static/linkedin.svg" alt="LinkedIn" />
+        <img src={Utils.getAWSImagesPath('linkedin.svg')} alt="LinkedIn" />
       </a>
       <a
         href="https://www.behance.net/annaberenguer"
@@ -26,7 +27,7 @@ const FollowUs = (props) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="https://s3.eu-west-3.amazonaws.com/suilabs/static/behance.svg" alt="Behance" />
+        <img src={Utils.getAWSImagesPath('behance.svg')} alt="Behance" />
       </a>
       <a
         href="https://www.instagram.com/suilabs/"
@@ -34,7 +35,7 @@ const FollowUs = (props) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="https://s3.eu-west-3.amazonaws.com/suilabs/static/insta.svg" alt="Instagram" />
+        <img src={Utils.getAWSImagesPath('insta.svg')} alt="Instagram" />
       </a>
     </div>
   );

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import ProjectWrapper from '../../Components/ProjectWrapper/ProjectWrapper';
 import FieldFactory from '../Common/Fields/FieldFactory';
+import Utils from '../../Utils';
 
 const LayoutBuilder = ({
   item: {
@@ -14,6 +15,7 @@ const LayoutBuilder = ({
       <FieldFactory
         id={config.componentId}
         props={config.propsJson}
+        buildImageUrl={Utils.getAWSProjectImagePath}
       />
     ))}
   </ProjectWrapper>

@@ -13,7 +13,9 @@ const emails = [
 
 class MailLink extends React.Component {
   setRef = email => (ref) => {
-    ref.setAttribute('href', `mailto:${email.split('').reverse().join('')}`);
+    if (ref) {
+      ref.setAttribute('href', `mailto:${email.split('').reverse().join('')}`);
+    }
   };
 
   render() {
