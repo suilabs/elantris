@@ -2,6 +2,10 @@
 
 .sui-home {
   &--wrapper {
+    animation-duration: $sui-duration-medium;
+    animation-name: fade-in;
+    animation-timing-function: ease-out;
+
     .sui-vertical-flexbox {
       flex-wrap: nowrap;
     }

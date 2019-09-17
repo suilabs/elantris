@@ -7,23 +7,32 @@ import translations from '../../Services/TranslationService';
 import './footer.scss';
 
 const emails = [
-  'moc.sbalius@anna',
-  'moc.sbalius@ajrob',
+  'anna',
+  'borja',
 ];
 
 class MailLink extends React.Component {
-  setRef = email => (ref) => {
-    if (ref) {
-      ref.setAttribute('href', `mailto:${email.split('').reverse().join('')}`);
-    }
+  constructor(props) {
+    super(props);
+
+    this.reference = {};
+    emails.forEach((email) => {
+      this.reference[email] = React.createRef();
+    });
+  }
+
+  redirectToMail = (e) => {
+    const input = e.target;
+    input.select();
+    document.execCommand('copy');
+    input.blur();
   };
 
   render() {
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
     return emails.map(email => (
       <p className="sui-footer__mail">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a ref={this.setRef(email)}>{email}</a>
+        <input readOnly className="email-input" value={`${email}@suilabs.com`} onClick={this.redirectToMail} />
       </p>
     ));
   }

@@ -55,8 +55,8 @@
     color: $sui-color-primary;
     font-size: 1.375em;
     line-height: 1.5em;
-    unicode-bidi:bidi-override;
     direction: rtl;
+    unicode-bidi: bidi-override;
   }
 
   &__social {
@@ -65,5 +65,17 @@
     @include break-on(mobile) {
       display: inherit;
     }
+  }
+}
+
+.email {
+  &-input {
+    width: 100%;
+    border: 0;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
   }
 }

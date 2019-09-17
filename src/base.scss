@@ -30,6 +30,7 @@ $sui-h1: 2em;
 $sui-h2: 1.5em;
 $sui-h3: 1.17em;
 $dwidth: 17.75rem;
+$dwidth-double: 35.5rem;
 $dheight: 17.75rem;
 $sui-page-max-width: 57.25rem;
 $break-phone: 32.25rem;
@@ -42,6 +43,16 @@ $sui-pixel: .0625rem;
 
 @function pixels($nPixels) {
   @return ($sui-pixel * $nPixels);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @mixin break-on($media) {
@@ -61,7 +72,7 @@ $sui-pixel: .0625rem;
 }
 
 /* stylelint-disable */
-@mixin h-centered($offset: 0rem) {
+@mixin h-centered($offset: 0) {
   /* stylelint-enable */
   left: calc(50% + #{$offset});
   transform: translateX(-50%);
