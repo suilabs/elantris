@@ -3,6 +3,9 @@
 .sui-about {
   position: relative;
   max-width: $sui-page-max-width;
+  animation-duration: $sui-duration-long;
+  animation-name: fade-in;
+  animation-timing-function: ease-out;
 
   @include h-centered;
 
