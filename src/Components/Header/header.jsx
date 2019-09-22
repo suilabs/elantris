@@ -108,6 +108,7 @@ class Header extends React.Component {
           </div>
           <Language
             {...selectedLanguage}
+            id={selectedLanguage.ISO}
             onClick={this.openLanguageSelector}
             className="sui-language-open-selector"
           />
