@@ -74,7 +74,7 @@ $sui-pixel: .0625rem;
 /* stylelint-disable */
 @mixin h-centered($offset: 0) {
   /* stylelint-enable */
-  left: calc(50% + #{$offset});
+  left: calc(50% + #{$offset}rem);
   transform: translateX(-50%);
 }
 

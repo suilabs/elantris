@@ -19,9 +19,7 @@
 
     @include break-on(mobile) {
       float: none;
-      padding: $sui-spacing-base;
-      padding-left: $sui-spacing-xlarge;
-      border-bottom: pixels(1) dotted $sui-color-primary;
+      padding: $sui-spacing-base $sui-spacing-base $sui-spacing-base $sui-spacing-xlarge;
     }
   }
 
@@ -30,7 +28,6 @@
     right: 0;
     bottom: 0;
     width: 70%;
-    border-bottom: $sui-pixel $sui-color-primary dotted;
     text-align: right;
 
     @include break-on(mobile) {

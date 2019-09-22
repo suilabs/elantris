@@ -22,11 +22,10 @@ main () {
     echo -n "No SCSS files to check -> ";
   else
     echo -n "Checking $cssLen SCSS Files for linting errors..."
-    ./node_modules/.bin/stylelint ${cssFilesToCommit[@]} --fix > /tmp/csslint 2>/dev/null
+    ./node_modules/.bin/stylelint ${cssFilesToCommit[@]} > /tmp/csslint 2>/dev/null
   fi
 
   if [[ $? -eq 0 ]]; then
-    git add -u
     echo -e "${GREEN}✔${NC}"
   else
     echo -e "${RED}✘${NC}"
@@ -43,11 +42,10 @@ main () {
   if [[ $jsLen -eq 0 ]]; then
     echo -n "No JS files to check -> "; else
     echo -n "Checking $jsLen JS Files for linting errors..."
-    ./node_modules/.bin/eslint ${jsFilesToCommit[@]} --fix > /tmp/jslint 2>/tmp/jslintError
+    ./node_modules/.bin/eslint ${jsFilesToCommit[@]} > /tmp/jslint 2>/tmp/jslintError
   fi
 
   if [[ $? -eq 0 ]]; then
-    git add -u
     echo -e "${GREEN}✔${NC}"
   else
     echo -e "${RED}✘${NC}"

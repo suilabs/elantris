@@ -27,6 +27,7 @@ const LanguageSelector = ({
 LanguageSelector.propTypes = {
   languages: PropTypes.arrayOf(PropTypes.shape({
     ISO: PropTypes.string,
+    ISO2: PropTypes.string,
     original: PropTypes.string,
     flagUrl: PropTypes.string,
   })),

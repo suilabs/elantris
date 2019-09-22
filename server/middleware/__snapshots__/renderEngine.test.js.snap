@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports['RenderEngine returns string with substitued vars 1'] = '"<h1>{{{title}}</h1>"';

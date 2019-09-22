@@ -11,6 +11,10 @@ jest.mock('react-dom/server', () => ({
 
 jest.mock('../../src/App', () => 'App');
 
+let mockRenderEngine;
+// eslint-disable-next-line no-undef
+jest.mock('./renderEngine', () => (...c) => mockRenderEngine(...c));
+
 let mockByLanguageAndSection;
 jest.mock('../../src/Services/ProjectService', () => ({
   byLanguageAndSection: (...c) => mockByLanguageAndSection(...c),
@@ -57,7 +61,8 @@ describe('Renderer', () => {
       },
     };
     res = {
-      render: jest.fn(),
+      send: jest.fn(),
+      type: jest.fn(),
     };
     clientSideParams = {
       queryParams: {},
@@ -66,6 +71,7 @@ describe('Renderer', () => {
     mockCreateElement = jest.fn(() => {});
     mockByLanguageAndSection = jest.fn(() => []);
     mockIsMobile = false;
+    mockRenderEngine = jest.fn(() => 'template');
   });
 
   it('should return', async () => {
@@ -73,8 +79,11 @@ describe('Renderer', () => {
 
     await Renderer(req, res);
 
-    expect(res.render).toHaveBeenCalledWith(
-      'index',
+    expect(res.send).toHaveBeenCalledWith(
+      'template',
+    );
+    const engineArguments = mockRenderEngine.mock.calls[0];
+    expect(engineArguments[1]).toEqual(
       {
         title: '<title>pageTitle</title>',
         metaDescription: 'metadescription',

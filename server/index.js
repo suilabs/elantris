@@ -2,7 +2,6 @@ import express, { Router } from 'express';
 import path from 'path';
 import 'ignore-styles';
 import compression from 'compression';
-import exphbs from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import MatomoTracker from 'matomo-tracker';
 
@@ -62,21 +61,6 @@ router.use('/ca', serverRenderer);
 router.use('/es', serverRenderer);
 router.use('/en', serverRenderer);
 router.use('*', redirectToLanguage);
-
-const html = exphbs.create({
-  extname: 'html',
-  helpers: {
-    json: obj => JSON.stringify(obj),
-  },
-});
-
-app.engine('html', html.engine);
-app.set('view engine', 'html');
-if (process.env.NODE_ENV !== 'development') {
-  app.set('views', path.join(__dirname, '..', 'build'));
-} else {
-  app.set('views', path.join(__dirname, '.'));
-}
 
 app.use(router);
 
