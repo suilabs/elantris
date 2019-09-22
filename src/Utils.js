@@ -44,11 +44,12 @@ const Utils = {
     const { hostname } = config.aws;
     return `${hostname}/${suffix}`;
   },
-  getFeatureFlag(name) {
+  getFeatureFlag(name, defaultValue) {
     if (!window.suilabs || !window.suilabs.featureFlags) {
-      return null;
+      return defaultValue;
     }
-    return window.suilabs.featureFlags[name];
+    console.debug(name, window.suilabs.featureFlags[name] || defaultValue);
+    return window.suilabs.featureFlags[name] || defaultValue;
   },
   getQueryParam(name) {
     if (!window.suilabs || !window.suilabs.queryParams) {

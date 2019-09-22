@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, StaticRouter, Route, Switch, Redirect } from 'react-router-dom';
 import 'typeface-montserrat';
@@ -27,29 +27,51 @@ const withPageView = Component => (props) => {
   return <Component {...props} />;
 };
 
-const Routes = ({ match }) => {
-  CookieService.putSessionCookie('suiLanguage', match.url.split('/')[1]);
-  return [
-    <Header
-      isMobile={Utils.isMobile()}
-      onChangeLanguage={(nLanguage) => {
-        CookieService.putSessionCookie('suiLanguage', nLanguage);
-        const currentLocation = window.location.pathname.split('/');
-        currentLocation[1] = nLanguage;
-        window.setTimeout(window.location = currentLocation.join('/'), 0);
-      }}
-    />,
+const Main = (props) => {
+  const { match } = props;
+  const isSinglePage = Utils.getFeatureFlag('isSinglePage', false);
+  const HomeAbout = () => (
+    <Fragment>
+      <HomeView />
+      <AboutUsView />
+    </Fragment>
+  );
+  return (
     <main id="App-content">
       <Switch>
-        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), withPageView(HomeView))} />
+        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), withPageView(isSinglePage ? HomeAbout : HomeView))} />
         <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('design'), withPageView(DesignView))} />
         <Route exact path={`${match.url}/software/:project?`} render={withTitle(Utils.getPageTitle('software'), withPageView(SoftwareView))} />
-        <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('about'), withPageView(AboutUsView))} />
+        { !isSinglePage ? <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('about'), withPageView(AboutUsView))} /> : '' }
         <Route path="*" component={NotFound} />
       </Switch>
-    </main>,
-    <Footer />,
-  ];
+    </main>
+  );
+};
+
+Main.propTypes = {
+  match: PropTypes.shape({
+    url: PropTypes.string,
+  }).isRequired,
+};
+
+const Routes = ({ match }) => {
+  CookieService.putSessionCookie('suiLanguage', match.url.split('/')[1]);
+  return (
+    <Fragment>
+      <Header
+        isMobile={Utils.isMobile()}
+        onChangeLanguage={(nLanguage) => {
+          CookieService.putSessionCookie('suiLanguage', nLanguage);
+          const currentLocation = window.location.pathname.split('/');
+          currentLocation[1] = nLanguage;
+          window.setTimeout(window.location = currentLocation.join('/'), 0);
+        }}
+      />
+      <Main match={match} />
+      <Footer />
+    </Fragment>
+  );
 };
 
 Routes.propTypes = {
