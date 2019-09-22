@@ -68,15 +68,13 @@ const html = exphbs.create({
   helpers: {
     json: obj => JSON.stringify(obj),
   },
+  layoutsDir: path.join(__dirname, '..', 'build'),
 });
 
 app.engine('html', html.engine);
 app.set('view engine', 'html');
-if (process.env.NODE_ENV !== 'development') {
-  app.set('views', path.join(__dirname, '..', 'build'));
-} else {
-  app.set('views', path.join(__dirname, '.'));
-}
+
+app.set('views', path.join(__dirname, '..', 'build'));
 
 app.use(router);
 

@@ -73,7 +73,7 @@ Gallery.propTypes = {
   })),
   filterable: PropTypes.bool,
   size: PropTypes.shape({
-    widht: String.number,
+    width: String.number,
     height: String.number,
   }),
   onItemClick: PropTypes.func,

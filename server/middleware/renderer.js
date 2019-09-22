@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import MobileDetect from 'mobile-detect';
+import pathHelper from 'path';
 
 import Utils from '../../src/Utils';
 import ProjectService from '../../src/Services/ProjectService';
+import render from './renderEngine';
 
 import App from '../../src/App';
 
@@ -81,5 +83,7 @@ export default async (req, res) => {
     </script>`,
     root: `${html}`,
   };
-  return res.render('index', vars);
+  const htmlString = await render(pathHelper.join(__dirname, '..', '..', 'build/index.html'), vars);
+  res.type('html');
+  return res.send(htmlString);
 };
