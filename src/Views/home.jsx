@@ -14,7 +14,7 @@ const TextPresentacio = () => (
     >
       {
         translation().homePageContent.map(
-          p => <p dangerouslySetInnerHTML={{ __html: p }} />,
+          p => <p key={p} dangerouslySetInnerHTML={{ __html: p }} />,
         )
       }
     </div>

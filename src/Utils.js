@@ -48,7 +48,6 @@ const Utils = {
     if (!window.suilabs || !window.suilabs.featureFlags) {
       return defaultValue;
     }
-    console.debug(name, window.suilabs.featureFlags[name] || defaultValue);
     return window.suilabs.featureFlags[name] || defaultValue;
   },
   getQueryParam(name) {

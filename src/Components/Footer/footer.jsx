@@ -31,7 +31,7 @@ class MailLink extends React.Component {
   render() {
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
     return emails.map(email => (
-      <p className="sui-footer__mail">
+      <p key={email} className="sui-footer__mail">
         <input readOnly className="email-input" value={`${email}@suilabs.com`} onClick={this.redirectToMail} />
       </p>
     ));

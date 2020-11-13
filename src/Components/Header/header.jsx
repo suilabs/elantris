@@ -80,7 +80,7 @@ class Header extends React.Component {
       languages, showLanguageSelector,
     } = this.state;
     const selectedLanguage = languages.filter(l => l.ISO2 === currentLanguage)[0];
-    const isSinglePage = Utils.getFeatureFlag('isSinglePage', true);
+    const isSinglePage = Utils.getFeatureFlag('isSinglePage', false);
     return (
       <div className="sui-page-header">
         <div className="sui-page-header__wrapper clearfix">
@@ -100,10 +100,10 @@ class Header extends React.Component {
                   to={`/${currentLanguage}${sectionSeparationChar}software`}
                   label={this.translation.sections_software}
                 />
-                {!isSinglePage && <NavBarItem
+                {!isSinglePage ? <NavBarItem
                   to={`/${currentLanguage}${sectionSeparationChar}about`}
                   label={this.translation.sections_aboutUs}
-                />}
+                /> : ''}
               </NavBar>
             </BreakOverMobile>
             <BreakMobile>
