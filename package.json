@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
     "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
     "lint:scss:fix": "stylelint 'src/**/*.scss' --syntax scss --fix",
     "lint:js": "eslint . --ignore-path .gitignore --ext .js,.jsx",
@@ -14,7 +13,6 @@
     "start": "NODE_ENV=no-dev node ./server/bootstrap.js",
     "start:dev": "DEBUG=express:application node ./server/bootstrap.js",
     "start:client": "BROWSER=none react-scripts start src",
-    "storybook": "start-storybook -p 9001",
     "test:server": "jest server/**/*.test.js",
     "test": "react-scripts test --env=jsdom",
     "precommit": "bash precommit.sh"
@@ -55,7 +53,6 @@
     "typeface-montserrat": "0.0.45"
   },
   "devDependencies": {
-    "@storybook/react": "^4.1.18",
     "babel-jest": "^24.9.0",
     "eslint-plugin-skyscanner-dates": "^1.0.9",
     "husky": "^0.14.3",
