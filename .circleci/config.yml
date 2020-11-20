@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.9.0
+      - image: circleci/node:lts
     steps:
       - checkout
       - restore_cache:
@@ -23,13 +23,15 @@ jobs:
       - run: npm run build
   release:
     docker:
-      - image: circleci/node:8.9.0
+      - image: circleci/node:lts
     steps:
-      - checkout
-      - deploy:
+        - checkout
+          - deploy:
           command: |
+            sudo apt update
+            sudo apt install -y rsync
             cd scripts
-            bash updateRepo.sh
+            bash updateRepo.sh >/dev/null
 workflows:
   version: 2
   build_and_deploy:
