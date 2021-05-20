@@ -64,6 +64,9 @@ router.use('*', redirectToLanguage);
 
 app.use(router);
 
+app.get('/');
+app.get('/add');
+
 app.listen(PORT, (error) => {
   if (error) {
     console.log(error);

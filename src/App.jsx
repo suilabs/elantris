@@ -11,16 +11,14 @@ import { Provider } from './Services/Context';
 import Utils from './Utils';
 
 import Header from './Components/Header';
-import Footer from './Components/Footer';
+// import Footer from './Components/Footer';
 import withTitle from './Views/HoC/withTitle';
 import HomeView from './Views/home';
-import DesignView from './Views/design';
-import SoftwareView from './Views/software';
-import AboutUsView from './Views/about';
 
 import NotFound from './Views/NotFound';
 
 import './App.scss';
+import Footer from './Components/Footer';
 
 const withPageView = Component => (props) => {
   eyeService.seePage();
@@ -29,20 +27,11 @@ const withPageView = Component => (props) => {
 
 const Main = (props) => {
   const { match } = props;
-  const isSinglePage = Utils.getFeatureFlag('isSinglePage', false);
-  const HomeAbout = () => (
-    <Fragment>
-      <HomeView />
-      <AboutUsView />
-    </Fragment>
-  );
   return (
     <main id="App-content">
       <Switch>
-        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), withPageView(isSinglePage ? HomeAbout : HomeView))} />
-        <Route exact path={`${match.url}/design/:project?`} component={withTitle(Utils.getPageTitle('design'), withPageView(DesignView))} />
-        <Route exact path={`${match.url}/software/:project?`} render={withTitle(Utils.getPageTitle('software'), withPageView(SoftwareView))} />
-        { !isSinglePage ? <Route exact path={`${match.url}/about`} render={withTitle(Utils.getPageTitle('about'), withPageView(AboutUsView))} /> : '' }
+        <Route exact path={`${match.url}`} render={withTitle(Utils.getPageTitle('home'), withPageView(HomeView))} />
+        <Route exact path={`${match.url}/:project`} render={withTitle(Utils.getPageTitle('home'), withPageView(HomeView))} />
         <Route path="*" component={NotFound} />
       </Switch>
     </main>
@@ -148,4 +137,3 @@ App.defaultProps = {
 };
 
 export default App;
-

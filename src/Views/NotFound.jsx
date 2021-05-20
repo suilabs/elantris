@@ -6,11 +6,11 @@ import translate from '../Services/TranslationService';
 import './NotFound.scss';
 
 const NotFound = () => {
-  const tranlations = translate();
+  const translations = translate();
   return (
     <div className="sui-not-found-wrapper">
       <img src={Utils.getAWSImagesPath('notFound.jpg')} alt="Page not found" />
-      <p>{tranlations.not_found_text}<br /><a href="/">{tranlations.not_found_link}</a></p>
+      <p>{translations.not_found_text}<br /><a href="/">{translations.not_found_link}</a></p>
     </div>
   );
 };

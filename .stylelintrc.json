@@ -3,6 +3,7 @@
   "rules": {
     "selector-max-id": 2,
     "selector-max-type": 1,
-    "selector-max-compound-selectors": 5
+    "selector-max-compound-selectors": 5,
+    "scale-unlimited/declaration-strict-value": "off"
   }
 }

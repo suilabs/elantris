@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ImageBox from '../ImageBox';
 import { VFlexBox } from '../Common/FlexBoxes';
 
 import './Gallery.scss';
+import CoverImage from '../CoverImage';
 
 class Gallery extends Component {
   static filterInstances(instances, filter) {
@@ -51,7 +51,7 @@ class Gallery extends Component {
         <VFlexBox>
           {
             Gallery.filterInstances(instances, this.state.filter).map(instance => (
-              <ImageBox
+              <CoverImage
                 key={instance.title}
                 {...instance}
                 width={size.width}
@@ -68,7 +68,7 @@ class Gallery extends Component {
 
 Gallery.propTypes = {
   instances: PropTypes.arrayOf(PropTypes.shape({
-    ...ImageBox.propTypes,
+    ...CoverImage.propTypes,
     tag: PropTypes.arrayOf(PropTypes.string),
   })),
   filterable: PropTypes.bool,

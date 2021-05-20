@@ -11,11 +11,9 @@ import Context from '../../Services/Context';
 
 const createInstance = (title, descr, img, href, tags = []) => ({
   title,
-  img,
+  src: img,
   tag: tags,
   descr,
-  orientation: 'horizontal',
-  animationDirection: 'horizontal',
   href,
 });
 
@@ -24,6 +22,7 @@ const createInstanceProxy = project => createInstance(
   project.description,
   project.cover.url,
   project.url,
+  [project.type.name],
 );
 
 class ProjectList extends React.Component {

@@ -80,7 +80,6 @@ class Header extends React.Component {
       languages, showLanguageSelector,
     } = this.state;
     const selectedLanguage = languages.filter(l => l.ISO2 === currentLanguage)[0];
-    const isSinglePage = Utils.getFeatureFlag('isSinglePage', false);
     return (
       <div className="sui-page-header">
         <div className="sui-page-header__wrapper clearfix">
@@ -93,17 +92,9 @@ class Header extends React.Component {
             <BreakOverMobile>
               <NavBar>
                 <NavBarItem
-                  to={`/${currentLanguage}${sectionSeparationChar}design`}
-                  label={this.translation.sections_design}
-                />
-                <NavBarItem
                   to={`/${currentLanguage}${sectionSeparationChar}software`}
                   label={this.translation.sections_software}
                 />
-                {!isSinglePage ? <NavBarItem
-                  to={`/${currentLanguage}${sectionSeparationChar}about`}
-                  label={this.translation.sections_aboutUs}
-                /> : ''}
               </NavBar>
             </BreakOverMobile>
             <BreakMobile>
@@ -134,15 +125,7 @@ class Header extends React.Component {
         </div>
         <BreakMobile>
           <DropdownMenu showMenu={showMenu} ref={this.menu}>
-            <DropdownMenuItem to={`/${currentLanguage}/design`} label={this.translation.sections_design} />
             <DropdownMenuItem to={`/${currentLanguage}/software`} label={this.translation.sections_software} />
-            {
-              !isSinglePage
-              && <DropdownMenuItem
-                to={`/${currentLanguage}/about`}
-                label={this.translation.sections_aboutUs}
-              />
-            }
           </DropdownMenu>
         </BreakMobile>
       </div>

@@ -77,10 +77,7 @@ export default async (req, res) => {
   const vars = {
     title: `<title>${Utils.getPageTitle(pagePath)}</title>`,
     metaDescription: Utils.getMetaDescription(pagePath),
-    clientSideParams: `
-    <script id="clientSideParams">
-      window.appParams=${JSON.stringify(clientSideParams)}
-    </script>`,
+    clientSideParams: `window.appParams=${JSON.stringify(clientSideParams)}`,
     root: `${html}`,
   };
   const htmlString = await render(pathHelper.join(__dirname, '..', '..', 'build/index.html'), vars);
