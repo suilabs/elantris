@@ -27,8 +27,6 @@ const createInstanceProxy = project => createInstance(
 );
 
 class ProjectList extends React.Component {
-  static contextType = Context;
-
   constructor(props) {
     super(props);
 
@@ -60,6 +58,8 @@ class ProjectList extends React.Component {
     }
     this.setState({ projects });
   };
+
+  static contextType = Context;
 
   render() {
     const projects = this.context.length > 0 ? this.context : this.state.projects;

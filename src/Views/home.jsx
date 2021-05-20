@@ -29,17 +29,16 @@ const Content = () => (
       <DesignText />
       <img src={Utils.getAWSImagesPath('homeauri.jpeg')} alt="Auri lampara" height={284} />
     </div>
-    ,
     <div className="sui-home__central-column">
       <TextPresentacio />
-    </div>,
+    </div>
     <div className="sui-home__image-right">
       <div className="sui-home__software-text">software</div>
       <div className="sui-home__full-text">
         <div>Design &<br />Software</div>
       </div>
       <img src={Utils.getAWSImagesPath('homefotosoftware.jpeg')} alt="escriptori treballant" height={568} />
-    </div>,
+    </div>
   </Fragment>
 );
 
