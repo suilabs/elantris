@@ -16,7 +16,7 @@ const postApi = (url, form) => {
 };
 
 class ApiConnector {
-  static _fetchApi = (query) => {
+  static fetchApi = (query) => {
     const headers = new Headers({
       'content-type': 'application/json',
       Accept: 'application/json',
@@ -36,7 +36,7 @@ class ApiConnector {
     const query = {
       query: GQLQueries.getProjects,
     };
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static createProject(projectData, password) {
@@ -45,14 +45,14 @@ class ApiConnector {
       variables: { project: projectData },
       password,
     };
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static getProjectTypes() {
     const query = {
       query: GQLQueries.getTypes,
     };
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static createProjectType(typeData, password) {
@@ -62,7 +62,7 @@ class ApiConnector {
       password,
     };
 
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static sendImage(projectName, fileBlob) {
