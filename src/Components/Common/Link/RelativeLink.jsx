@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 
 const RelativeLink = (props) => {
   const toRelative = props.to ? `${window.location.pathname}/${props.to}` : '#';
-  return <Link to={toRelative} onClick={props.onClick} className={props.className}>{props.children}</Link>;
+  return (
+    <Link to={toRelative} onClick={props.onClick} className={props.className}>
+      {props.children}
+    </Link>
+  );
 };
 
 RelativeLink.propTypes = {

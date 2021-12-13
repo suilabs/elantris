@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Utils from '../../Utils';
-import ProjectWrapper from '../../Components/ProjectWrapper/ProjectWrapper';
-import { ImageBoxWithFlange as ImageBoxWF } from '../../Components/ImageBox';
+import { ImageBoxWithFlange as ImageBoxWF } from '../ImageBox';
 
-const LayoutDesign = props => (
+import ProjectWrapper from './ProjectWrapper';
+
+const LayoutDesign = (props) => (
   <ProjectWrapper>
     <div className="sui-project-detail--title">
       <h1>· {props.title} ·</h1>
@@ -17,7 +18,7 @@ const LayoutDesign = props => (
         return <ImageBoxWF key={url} img={url} alt={imageObj.url} />;
       }
       return (
-        <ImageBoxWF key={url} img={url} alt={imageObj.url} >
+        <ImageBoxWF key={url} img={url} alt={imageObj.url}>
           {imageObj.text}
         </ImageBoxWF>
       );
@@ -28,11 +29,13 @@ const LayoutDesign = props => (
 LayoutDesign.propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    text: PropTypes.string,
-    alt: PropTypes.string.isRequired,
-  })),
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      text: PropTypes.string,
+      alt: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 LayoutDesign.defaultProps = {

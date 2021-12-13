@@ -1,11 +1,10 @@
 import React from 'react';
 
 import Utils from '../../../Utils';
+
 import Spinner from './Spinner';
 
-const fakeRender = () => (
-  <Spinner />
-);
+const fakeRender = () => <Spinner />;
 
 /* eslint-disable no-param-reassign */
 export default (component, callback) => {

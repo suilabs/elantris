@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import ProjectsService from '../../Services/ProjectService';
-import TranslationService from '../../Services/TranslationService';
-import Loading from '../../Components/Common/Loading';
-import LayoutBuilder from '../../Components/ProjectWrapper/LayoutBuilder';
-import Gallery from '../../Components/ImageGallery';
+import Gallery from '../ImageGallery';
 import Utils from '../../Utils';
 import Context from '../../Services/Context';
+import Spinner from '../Common/Loading/Spinner';
+
+import LayoutBuilder from './LayoutBuilder';
 
 const createInstance = (title, descr, img, href, tags = []) => ({
   title,
@@ -17,76 +17,67 @@ const createInstance = (title, descr, img, href, tags = []) => ({
   href,
 });
 
-const createInstanceProxy = project => createInstance(
-  project.name,
-  project.description,
-  project.cover.url,
-  project.url,
-  [project.type.name],
-);
+const createInstanceProxy = (project) =>
+  createInstance(
+    project.name,
+    project.description,
+    project.cover.url,
+    project.url,
+    [project.type?.name],
+  );
 
-class ProjectList extends React.Component {
-  constructor(props) {
-    super(props);
+const ProjectList = ({ section, path, onItemClick, onProjectNotFound }) => {
+  const context = useContext(Context);
+  const [projects, setProjects] = useState(context?.projects || null);
+  const [isLoading, setIsLoading] = useState(!Utils.isSSR());
 
-    this.state = {
-      projects: [],
+  useEffect(() => {
+    const setProjectsWithFallback = (pr) => {
+      if (pr.length === 0) {
+        const project = {
+          cover: { url: Utils.getAWSImagesPath('comingSoon.jpg') },
+        };
+        projects.push(project);
+      }
+      setProjects(pr);
     };
-  }
-
-  componentWillMount() {
-    if (!this.state.projects.length) {
-      Loading(this, (finished) => {
-        ProjectsService.byLanguageAndSection(Utils.getCurrentLanguage(), this.props.section).then((pr) => {
-          finished();
-          this.setProjects(pr);
-        });
+    if (isLoading && projects === null) {
+      ProjectsService.bySection(section).then((pr) => {
+        setProjectsWithFallback(pr);
+        setIsLoading(false);
       });
     }
+  }, [section, isLoading, projects]);
+
+  if (isLoading) {
+    return <Spinner />;
   }
 
-  setProjects = (projects) => {
-    if (projects.length === 0) {
-      const translate = TranslationService();
-      const project = {
-        name: translate.coming_soon_title,
-        description: translate.coming_soon_subtitle,
-        cover: { url: Utils.getAWSImagesPath('comingSoon.jpg') },
-      };
-      projects.push(project);
-    }
-    this.setState({ projects });
-  };
-
-  static contextType = Context;
-
-  render() {
-    const projects = this.context.length > 0 ? this.context : this.state.projects;
-    const { path } = this.props;
-    if (path) {
-      const project = projects.filter(proj => proj.url === path)[0];
-      if (!project) {
-        return this.props.onProjectNotFound(path);
-      }
-      return (
-        <div>
-          <LayoutBuilder item={project} />
-        </div>
-      );
+  if (path) {
+    const project = projects.filter((proj) => proj.url === path)[0];
+    if (!project) {
+      return onProjectNotFound(path);
     }
     return (
-      <div className="sui-view-wrapper">
-        <Gallery
-          size={{ width: 284 }}
-          instances={
-            projects.map(createInstanceProxy)
-          }
-          onItemClick={this.props.onItemClick}
-        />
+      <div>
+        <LayoutBuilder item={project} />
       </div>
     );
   }
-}
+
+  // eslint-disable-next-line backpack/use-tokens
+  const size = { width: 284 };
+
+  return (
+    <div className="sui-view-wrapper">
+      <Gallery
+        size={size}
+        instances={projects.map(createInstanceProxy)}
+        onItemClick={onItemClick}
+      />
+    </div>
+  );
+};
 
 ProjectList.propTypes = {
   path: PropTypes.string,

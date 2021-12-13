@@ -23,9 +23,13 @@ const CookieService = {
     return cookie || {};
   },
   putSessionCookie(cookieName, cookieValue) {
-    document.cookie = CookieParser.serialize(cookieName, encodeURIComponent(cookieValue), {
-      path: '/',
-    });
+    document.cookie = CookieParser.serialize(
+      cookieName,
+      encodeURIComponent(cookieValue),
+      {
+        path: '/',
+      },
+    );
   },
   putSessionJSONCookie(cookieName, jsonValue) {
     this.putSessionCookie(cookieName, JSON.stringify(jsonValue));

@@ -5,17 +5,15 @@ import './navBar.scss';
 
 const NavBar = ({ children = [] }) => (
   <nav className="sui-navbar">
-    <ul>
-      {children}
-    </ul>
+    <ul>{children}</ul>
   </nav>
 );
 
 NavBar.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node]).isRequired,
+    PropTypes.node,
+  ]).isRequired,
 };
-
 
 export default NavBar;

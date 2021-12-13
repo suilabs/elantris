@@ -7,14 +7,15 @@ export default {
       'Tenim empenta, ganes de seguir aprenent i il·lusió d’afrontar nous reptes, amb honestedat i rigor perquè creiem amb la feina ben feta.',
       'Dissenyem i programem creant conceptes amb recorregut, coherència global, potenciant les fortaleses.',
       'El nostre tracte amb el client és sincer i proper. Escoltem, empatitzem i ens adaptem a les necessitats de' +
-      ' cada client i projecte.',
+        ' cada client i projecte.',
     ],
     tensUnaConsulta: 'tens una<br/>consulta?',
     followUs: 'Segueix-nos:',
     sections_design: 'Disseny',
     sections_software: 'Software',
     sections_aboutUs: 'Nosaltres',
-    about_inspiration: '“Construim una estratègia conceptual, funcional i estètica per comunicar el que es vol”',
+    about_inspiration:
+      '“Construim una estratègia conceptual, funcional i estètica per comunicar el que es vol”',
     about_serveis_titol: 'Els<br/> Nostres<br/> Serveis',
     about_serveis_col_1: [
       'Naming',
@@ -30,17 +31,11 @@ export default {
       'Consultoria',
       '',
       'Interiorisme',
-      'Senyaletica d\'Espais',
+      "Senyaletica d'Espais",
     ],
-    about_equip: 'L\'equip',
-    contact_role_anna: [
-      'Disseny Gràfic',
-      'Interiorisme',
-    ],
-    contact_role_borja: [
-      'Software Engineer',
-      '@ Skyscanner Ltd.',
-    ],
+    about_equip: "L'equip",
+    contact_role_anna: ['Disseny Gràfic', 'Interiorisme'],
+    contact_role_borja: ['Software Engineer', '@ Skyscanner Ltd.'],
     coming_soon_title: 'Encara no hi res que mostrar',
     coming_soon_subtitle: 'Estem treballant-hi',
     not_found_text: 'Pots continuar cercant el pergamí de la veritat o',
@@ -54,14 +49,15 @@ export default {
       'Tenemos empuje, ganas de seguir aprendiendo e ilusión de enfrentarnos a nuevos retos, con honestidad y rigor; porque creemos en el trabajo bien hecho',
       'Diseñamos y programamos creando conceptos con recorrido, coherencia global, potenciando las fortalezas',
       'Nuestro trato con el cliente es sincero y próximo. Escuchando, empatizando y adaptándonos a las' +
-      ' particularidades de cada cliente y proyecto',
+        ' particularidades de cada cliente y proyecto',
     ],
     tensUnaConsulta: 'tienes una<br/>consulta?',
     followUs: 'Síguenos:',
     sections_design: 'Diseño',
     sections_software: 'Software',
     sections_aboutUs: 'Nosotros',
-    about_inspiration: '“Construimos una estrategia conceptual, funcional y estética para comunicar aquello' +
+    about_inspiration:
+      '“Construimos una estrategia conceptual, funcional y estética para comunicar aquello' +
       ' que se quiere”',
     about_serveis_titol: 'Nuestros<br/> servicios',
     about_serveis_col_1: [
@@ -81,14 +77,8 @@ export default {
       'Señalética de Espacios',
     ],
     about_equip: 'El equipo',
-    contact_role_anna: [
-      'Diseño Gráfico',
-      'Interiorismo',
-    ],
-    contact_role_borja: [
-      'Software Engineer',
-      '@ Skyscanner Ltd.',
-    ],
+    contact_role_anna: ['Diseño Gráfico', 'Interiorismo'],
+    contact_role_borja: ['Software Engineer', '@ Skyscanner Ltd.'],
     coming_soon_title: 'No hay nada aun',
     coming_soon_subtitle: 'Estamos trabajando en ello',
     not_found_text: 'Puedes seguir buscando el pergamino de la verdad o',
@@ -102,14 +92,15 @@ export default {
       'We have drive, desire to continue learning and enthusiasm to face new challenges with honesty and rigor because we believe in do a job well done',
       'We design and code creating consistent concepts, enhancing each client strengths.',
       'Our relationship with the customer is sincere and close. We listen, empathize and adapt to the needs of each' +
-      ' client and project.',
+        ' client and project.',
     ],
     tensUnaConsulta: 'Get in<br/>touch',
     followUs: 'Follow us:',
     sections_design: 'Design',
     sections_software: 'Software',
     sections_aboutUs: 'About Us',
-    about_inspiration: '“We build a conceptual strategy, functional and aesthetic to communicate what is' +
+    about_inspiration:
+      '“We build a conceptual strategy, functional and aesthetic to communicate what is' +
       ' needed”',
     about_serveis_titol: 'Our<br/> services',
     about_serveis_col_1: [
@@ -129,15 +120,9 @@ export default {
       'Signage of spaces',
     ],
     about_equip: 'The Team',
-    contact_role_anna: [
-      'Graphic design',
-      'Interior design',
-    ],
-    contact_role_borja: [
-      'Software Engineer',
-      '@ Skyscanner Ltd.',
-    ],
-    coming_soon_title: 'There\'s nothing here yet.',
+    contact_role_anna: ['Graphic design', 'Interior design'],
+    contact_role_borja: ['Software Engineer', '@ Skyscanner Ltd.'],
+    coming_soon_title: "There's nothing here yet.",
     coming_soon_subtitle: 'We are working on that. :D',
     not_found_text: 'You can keep searching for the scroll of the truth or',
     not_found_link: 'go back Home',

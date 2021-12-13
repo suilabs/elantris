@@ -1,6 +1,5 @@
 import config from './config.json';
-import routeConfig from './routeConfig';
-import CookieService from './Services/CookieService';
+import routeConfig from './routeConfig.json';
 
 const getCssFromNode = (element, property) =>
   window.getComputedStyle(element).getPropertyValue(property);
@@ -79,21 +78,6 @@ const Utils = {
       return routeConfig[route];
     }
     return routeConfig.notFound;
-  },
-  getSupportedLanguages() {
-    return config.supportedLanguages;
-  },
-  getCurrentLanguage() {
-    const lang = CookieService.getPlainCookie('suiLanguage') ||
-      (window.suilabs || {}).language ||
-      ((window.location || {}).pathname || '').split('/')[1];
-    if (lang.length !== 2) {
-      return config.defaultLanguage;
-    }
-    return lang;
-  },
-  getDefaultLanguage() {
-    return config.defaultLanguage;
   },
   setIsSSR(value) {
     this.ssr = value;

@@ -9,7 +9,7 @@ const Footer = (props) => {
   }
   return (
     <div id="sui-footer" className="sui-footer">
-      © {(new Date()).getFullYear()} Suilabs
+      © {new Date().getFullYear()} Suilabs
     </div>
   );
 };

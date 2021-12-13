@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Overlay.scss';
 
 class Overlay extends React.Component {
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     const { location, keyword } = props;
     const visible = location.indexOf(keyword) !== -1;
 
@@ -24,9 +24,7 @@ class Overlay extends React.Component {
     }
     return (
       <div id="overlay" className="sui-overlay-background">
-        <div className="sui-overlay-body">
-          {children}
-        </div>
+        <div className="sui-overlay-body">{children}</div>
       </div>
     );
   }
@@ -37,7 +35,8 @@ Overlay.propTypes = {
   keyword: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node]).isRequired,
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default Overlay;

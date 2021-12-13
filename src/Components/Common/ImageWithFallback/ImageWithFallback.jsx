@@ -26,7 +26,8 @@ ImageWithFallback.propTypes = {
 };
 
 ImageWithFallback.defaultProps = {
-  fallbackSrc: 'http://maxpixel.freegreatpicture.com/static/photo/1x/Http-News-Html-Error-404-Was-Not-Found-Page-1349562.png',
+  fallbackSrc:
+    'http://maxpixel.freegreatpicture.com/static/photo/1x/Http-News-Html-Error-404-Was-Not-Found-Page-1349562.png',
 };
 
 export default ImageWithFallback;

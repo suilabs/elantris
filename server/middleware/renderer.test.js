@@ -12,12 +12,16 @@ jest.mock('react-dom/server', () => ({
 jest.mock('../../src/App', () => 'App');
 
 let mockRenderEngine;
-// eslint-disable-next-line no-undef
-jest.mock('./renderEngine', () => (...c) => mockRenderEngine(...c));
+jest.mock(
+  './renderEngine',
+  () =>
+    (...c) =>
+      mockRenderEngine(...c),
+);
 
-let mockByLanguageAndSection;
+let mockBySection;
 jest.mock('../../src/Services/ProjectService', () => ({
-  byLanguageAndSection: (...c) => mockByLanguageAndSection(...c),
+  bySection: (...c) => mockBySection(...c),
 }));
 
 jest.mock('../../src/Utils', () => ({
@@ -26,17 +30,19 @@ jest.mock('../../src/Utils', () => ({
 }));
 
 let mockIsMobile;
-jest.mock('mobile-detect', () => class {
-  // eslint-disable-next-line class-methods-use-this
-  mobile() {
-    return mockIsMobile;
-  }
-});
+jest.mock(
+  'mobile-detect',
+  () =>
+    class {
+      // eslint-disable-next-line class-methods-use-this
+      mobile() {
+        return mockIsMobile;
+      }
+    },
+);
 
-const buildExpectedClientSideParams = cSP => `
-    <script id="clientSideParams">
-      window.appParams=${JSON.stringify(cSP)}
-    </script>`;
+const buildExpectedClientSideParams = (cSP) =>
+  `window.appParams=${JSON.stringify(cSP)}`;
 
 describe('Renderer', () => {
   let req;
@@ -69,93 +75,71 @@ describe('Renderer', () => {
       featureFlags: {},
     };
     mockCreateElement = jest.fn(() => {});
-    mockByLanguageAndSection = jest.fn(() => []);
+    mockBySection = jest.fn(() => []);
     mockIsMobile = false;
     mockRenderEngine = jest.fn(() => 'template');
   });
 
   it('should return', async () => {
-    const expectedClientSideParams = buildExpectedClientSideParams(clientSideParams);
+    const expectedClientSideParams =
+      buildExpectedClientSideParams(clientSideParams);
 
     await Renderer(req, res);
 
-    expect(res.send).toHaveBeenCalledWith(
-      'template',
-    );
+    expect(res.send).toHaveBeenCalledWith('template');
+
     const engineArguments = mockRenderEngine.mock.calls[0];
-    expect(engineArguments[1]).toEqual(
-      {
-        title: '<title>pageTitle</title>',
-        metaDescription: 'metadescription',
-        clientSideParams: expectedClientSideParams,
-        root: '',
-      },
-    );
+
+    expect(engineArguments[1]).toEqual({
+      title: '<title>pageTitle</title>',
+      metaDescription: 'metadescription',
+      clientSideParams: expectedClientSideParams,
+      root: '',
+    });
   });
 
   it('should call create element with the correct props', async () => {
     await Renderer(req, res);
 
-    expect(mockCreateElement).toHaveBeenCalledWith(
-      'App',
-      {
-        ssr: true,
-        isMobile: false,
-        url: '/ca/url',
-        projects: [],
-      },
-    );
+    expect(mockCreateElement).toHaveBeenCalledWith('App', {
+      ssr: true,
+      isMobile: false,
+      url: '/ca/url',
+      projects: [],
+    });
   });
 
-  it('should get the projects specific for a language and a section', async () => {
+  it('should get the projects specific for a section', async () => {
     await Renderer(req, res);
 
-    expect(mockByLanguageAndSection).toHaveBeenCalledWith(
-      'ca',
-      'url',
-    );
+    expect(mockBySection).toHaveBeenCalledWith('ca', 'url');
   });
 
   it('should return multiple projects if there is not selection', async () => {
-    mockByLanguageAndSection.mockResolvedValue([
-      { url: 'project1' },
-      { url: 'project2' },
-    ]);
+    mockBySection.mockResolvedValue([{ url: 'project1' }, { url: 'project2' }]);
 
     await Renderer(req, res);
 
-    expect(mockCreateElement).toHaveBeenCalledWith(
-      'App',
-      {
-        ssr: true,
-        isMobile: false,
-        url: '/ca/url',
-        projects: [
-          { url: 'project1' },
-          { url: 'project2' },
-        ],
-      },
-    );
+    expect(mockCreateElement).toHaveBeenCalledWith('App', {
+      ssr: true,
+      isMobile: false,
+      url: '/ca/url',
+      projects: [{ url: 'project1' }, { url: 'project2' }],
+    });
   });
 
   it('should return a single project if there is selection', async () => {
-    mockByLanguageAndSection.mockResolvedValue([
-      { url: 'project1' },
-      { url: 'project2' },
-    ]);
+    mockBySection.mockResolvedValue([{ url: 'project1' }, { url: 'project2' }]);
 
     req.originalUrl = '/ca/url/project1';
 
     await Renderer(req, res);
 
-    expect(mockCreateElement).toHaveBeenCalledWith(
-      'App',
-      {
-        ssr: true,
-        isMobile: false,
-        url: '/ca/url/project1',
-        projects: [{ url: 'project1' }],
-      },
-    );
+    expect(mockCreateElement).toHaveBeenCalledWith('App', {
+      ssr: true,
+      isMobile: false,
+      url: '/ca/url/project1',
+      projects: [{ url: 'project1' }],
+    });
   });
 });

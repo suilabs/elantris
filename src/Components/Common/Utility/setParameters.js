@@ -16,21 +16,25 @@ class SetParameters extends React.Component {
       const params = new URLSearchParams(props.location.search.substring(1));
       let currentFeatureFlags;
       if (params.has('featureFlags')) {
-        currentFeatureFlags = params.get('featureFlags').split('&').reduce((ret, actual) => {
-          const [key, value] = actual.split(':');
-          return {
-            ...ret,
-            [key]: value,
-          };
-        }, {});
+        currentFeatureFlags = params
+          .get('featureFlags')
+          .split('&')
+          .reduce((ret, actual) => {
+            const [key, value] = actual.split(':');
+            return {
+              ...ret,
+              [key]: value,
+            };
+          }, {});
         params.delete('featureFlags');
       }
-      currentFeatureFlags = mergeWithCookie(props.cookieService, currentFeatureFlags);
-      const language = props.location.pathname.split('/')[1];
+      currentFeatureFlags = mergeWithCookie(
+        props.cookieService,
+        currentFeatureFlags,
+      );
       window.suilabs = {
         queryParams: params,
         featureFlags: currentFeatureFlags,
-        language,
         ssr: false,
       };
     }

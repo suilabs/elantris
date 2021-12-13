@@ -43,7 +43,7 @@ class Projects extends React.Component {
 Projects.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      project: PropTypes.arrayOf(PropTypes.string),
+      project: PropTypes.string,
     }),
   }).isRequired,
   eye: PropTypes.shape({

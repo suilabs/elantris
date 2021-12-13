@@ -2,16 +2,18 @@
 
 require('@babel/register')({
   ignore: [/(node_modules)/],
-  presets: [[
-    '@babel/preset-env', {
-      targets: {
-        node: 'current',
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          node: 'current',
+        },
       },
-    },
-  ], '@babel/preset-react'],
-  plugins: [
-    '@babel/plugin-proposal-class-properties',
+    ],
+    '@babel/preset-react',
   ],
+  plugins: ['@babel/plugin-proposal-class-properties'],
 });
 
 require('./index');
