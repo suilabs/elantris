@@ -32,10 +32,12 @@ export default {
     }),
   bySection: (section) =>
     APIConnector.getProjects().then(({ data }) =>
-      data.projects.filter(
-        (project) =>
-          project.section.name.toLowerCase() === section.toLowerCase(),
-      ),
+      data.projects
+        .filter(
+          (project) =>
+            project.section.name.toLowerCase() === section.toLowerCase(),
+        )
+        .reverse(),
     ),
   createProject: ({
     key,
