@@ -37,6 +37,7 @@ class Gallery extends Component {
       maxWidth: `${size.width * this.maxRowElemets + 100}px`,
     };
 
+    console.log('GALLERY');
     return (
       <div className="sui-image-gallery--wrapper" style={style}>
         {filterable && (

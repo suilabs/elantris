@@ -10,4 +10,4 @@ rsync -rpulz --verbose "${PWD}/../" "${USER}@${HOST}:./Projects/${LC_PROJECT_NAM
 ssh -tt -o SendEnv=PROJECT_NAME -o StrictHostKeyChecking=no "${USER}@${HOST}" <<< "
 cd Projects/${LC_PROJECT_NAME}
 ${LC_COMMAND}
-exit"
+exit" &

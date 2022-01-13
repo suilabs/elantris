@@ -6,13 +6,20 @@ import RelativeLink from '../Common/Link/RelativeLink';
 import './CoverImage.scss';
 
 const CoverImage = ({ src, href, onClick, className }) => {
+  console.log('COVER');
   const [isLoading, setIsLoading] = useState(true);
   const [stateSrc, setSrc] = useState(src);
+  console.log(stateSrc);
 
   const classNames = [className, 'sui-cover-image'];
 
-  const onLoad = () => setIsLoading(false);
+  const onLoad = () => {
+    console.log('onLoad');
+    setIsLoading(false);
+  };
+
   const onError = () => {
+    console.log('onError');
     setIsLoading(false);
     setSrc(
       'http://maxpixel.freegreatpicture.com/static/photo/1x/Http-News-Html-Error-404-Was-Not-Found-Page-1349562.png',
@@ -20,6 +27,7 @@ const CoverImage = ({ src, href, onClick, className }) => {
   };
 
   useEffect(() => {
+    console.log('useEffect');
     const img = new Image();
     img.src = stateSrc;
     img.onload = onLoad;
@@ -27,6 +35,7 @@ const CoverImage = ({ src, href, onClick, className }) => {
   }, [stateSrc]);
 
   if (isLoading) {
+    console.log('isLoading');
     return '';
   }
 

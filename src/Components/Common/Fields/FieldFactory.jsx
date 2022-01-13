@@ -23,7 +23,12 @@ const FieldFactory = ({ id, props, buildImageUrl }) => {
   const Component = componentTypes.find((c) => id === c.id);
   const jsonProps = JSON.parse(props);
   if (Component.id === 'image') {
-    jsonProps.image.url = buildImageUrl(jsonProps.image.filename);
+    jsonProps.image = {
+      ...jsonProps.image,
+      ...buildImageUrl(jsonProps.image.filename, {
+        thumbnail: !!jsonProps.image.thumbnail,
+      }),
+    };
   }
   return <Component {...jsonProps} />;
 };

@@ -21,14 +21,14 @@ const createInstanceProxy = (project) =>
   createInstance(
     project.name,
     project.description,
-    project.cover.url,
+    project.cover.thumbnailUrl || project.cover.url,
     project.url,
     [project.type?.name],
   );
 
 const ProjectList = ({ section, path, onItemClick, onProjectNotFound }) => {
   const context = useContext(Context);
-  const [projects, setProjects] = useState(context?.projects || null);
+  const [projects, setProjects] = useState(context?.projects || []);
   const [isLoading, setIsLoading] = useState(!Utils.isSSR());
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const ProjectList = ({ section, path, onItemClick, onProjectNotFound }) => {
       }
       setProjects(pr);
     };
-    if (isLoading && projects === null) {
+    if (isLoading && projects.length === 0) {
       ProjectsService.bySection(section).then((pr) => {
         setProjectsWithFallback(pr);
         setIsLoading(false);
@@ -53,6 +53,7 @@ const ProjectList = ({ section, path, onItemClick, onProjectNotFound }) => {
     return <Spinner />;
   }
 
+  console.log(path);
   if (path) {
     const project = projects.filter((proj) => proj.url === path)[0];
     if (!project) {
@@ -68,6 +69,7 @@ const ProjectList = ({ section, path, onItemClick, onProjectNotFound }) => {
   // eslint-disable-next-line backpack/use-tokens
   const size = { width: 284 };
 
+  console.log('pasamos', projects);
   return (
     <div className="sui-view-wrapper">
       <Gallery

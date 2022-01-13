@@ -1,7 +1,7 @@
 @import '../../base.scss';
 
 .sui-project-detail--wrapper {
-  width: $sui-page-max-width / 3;
+  width: $sui-page-max-width;
   padding: 0 $sui-spacing-base;
   animation-duration: $sui-duration-long;
   animation-name: fade-in;

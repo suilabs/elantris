@@ -39,9 +39,14 @@ const Utils = {
     const { hostname, images } = config.aws;
     return `${hostname}/${images}/${suffix}`;
   },
-  getAWSProjectImagePath(suffix = '') {
+  getAWSProjectImagePath(suffix = '', options) {
     const { hostname } = config.aws;
-    return `${hostname}/${suffix}`;
+    return {
+      url: `${hostname}/${suffix}`,
+      thumbnailUrl: options.thumbnail
+        ? `${hostname}/thumbnail/${suffix}`
+        : null,
+    };
   },
   getFeatureFlag(name, defaultValue) {
     if (!window.suilabs || !window.suilabs.featureFlags) {

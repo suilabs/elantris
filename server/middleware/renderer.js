@@ -36,7 +36,8 @@ const resolvePathProject = async (path) => {
     resolvedSection = 'photos';
   }
 
-  const projects = await ProjectService.bySection(resolvedSection);
+  console.log('PATH', path, resolvedSection);
+  const projects = (await ProjectService.bySection(resolvedSection)) || [];
 
   if (!projectPath) {
     return projects;

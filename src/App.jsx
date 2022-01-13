@@ -77,7 +77,7 @@ function App({ ssr, isMobile, url, projects }) {
   Utils.setIsMobile(isMobile);
   Utils.setIsSSR(ssr);
   return (
-    <Provider value={projects}>
+    <Provider value={{ projects }}>
       <Router location={url} context={context}>
         <div id="App">
           <SetParameters

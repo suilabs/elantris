@@ -5,6 +5,7 @@ const projectFields = `
   cover {
       name
       url
+      thumbnailUrl
       filename
   }
   description
