@@ -46,6 +46,7 @@ const Utils = {
       thumbnailUrl: options.thumbnail
         ? `${hostname}/thumbnail/${suffix}`
         : null,
+      smallUrl: `${hostname}/small/${suffix}`,
     };
   },
   getFeatureFlag(name, defaultValue) {
