@@ -1,6 +1,7 @@
 @import '../../base.scss';
 
 .sui-cover-image {
+  position: relative;
   width: 100%;
   max-width: pixels(320);
   height: pixels(320);

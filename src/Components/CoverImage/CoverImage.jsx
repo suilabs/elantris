@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import LoadingImage from '../../ComponentsLib/Image/LoadingImage';
 import RelativeLink from '../Common/Link/RelativeLink';
 
 import './CoverImage.scss';
@@ -34,11 +35,6 @@ const CoverImage = ({ src, href, onClick, className }) => {
     img.onerror = onError;
   }, [stateSrc]);
 
-  if (isLoading) {
-    console.log('isLoading');
-    return '';
-  }
-
   return (
     <RelativeLink
       to={href}
@@ -48,7 +44,9 @@ const CoverImage = ({ src, href, onClick, className }) => {
       <div
         className={classNames.join(' ')}
         style={{ backgroundImage: `url(${stateSrc})` }}
-      />
+      >
+        <LoadingImage loading={isLoading} />
+      </div>
     </RelativeLink>
   );
 };

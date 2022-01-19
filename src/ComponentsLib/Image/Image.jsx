@@ -1,49 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import LoadingImage from './LoadingImage';
 import Config from './config.json';
 
 import './Image.css';
 
-const checkImage = async (url) => {
-  if (!url) return false;
-  try {
-    const res = await fetch(url);
-    return res && res.ok;
-  } catch (e) {
-    return false;
-  }
+const loadImage = (imageUrl) =>
+  new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = imageUrl;
+    img.onload = resolve;
+    img.onerror = reject;
+  });
+
+const SIZES = {
+  THUMB: 0,
+  SMALL: 1,
+  ORIGINAL: 2,
 };
 
-const Image = (props) => {
-  const [image, setImage] = useState(
-    props.image.thumbnailUrl || props.image.url,
-  );
+const ImageComponent = ({ image, width, alt }) => {
+  const [loading, setLoading] = useState(true);
+  const [imageReady, setImageReady] = useState(null);
 
-  useEffect(
-    () =>
-      checkImage(props.image.smallUrl).then((result) => {
-        if (result) {
-          setImage(props.image.smallUrl);
-        }
-      }),
-    [props.image.smallUrl],
-  );
+  useEffect(() => {
+    const imageLoadRace = (imageUrl, size) => (result) => {
+      if (result && (!imageReady || imageReady.size < size)) {
+        console.log('YA', size);
+        setImageReady({ url: imageUrl, size });
+        setLoading(false);
+      }
+    };
+    loadImage(image.url).then(imageLoadRace(image.url, SIZES.ORIGINAL));
+    loadImage(image.smallUrl).then(imageLoadRace(image.url, SIZES.SMALL));
+  }, [image.smallUrl, image.url, imageReady]);
 
   return (
     <div
       className="sui-component-image__wrapper"
       style={{
-        width: `${props.width}%`,
+        width: `${width}%`,
       }}
     >
-      <img src={image} alt={props.alt} />
+      <LoadingImage loading={loading} />
+      {imageReady && imageReady.url ? (
+        <img src={imageReady.url} alt={alt} />
+      ) : (
+        ''
+      )}
     </div>
   );
 };
 
-Image.id = Config.id;
-Image.propTypes = {
+ImageComponent.id = Config.id;
+ImageComponent.propTypes = {
   image: PropTypes.shape({
     url: PropTypes.string,
     thumbnailUrl: PropTypes.string,
@@ -53,9 +64,9 @@ Image.propTypes = {
   width: PropTypes.number,
 };
 
-Image.defaultProps = {
+ImageComponent.defaultProps = {
   // eslint-disable-next-line backpack/use-tokens
   width: 100,
 };
 
-export default Image;
+export default ImageComponent;
