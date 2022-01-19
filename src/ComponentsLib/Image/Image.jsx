@@ -9,7 +9,7 @@ const checkImage = async (url) => {
   if (!url) return false;
   try {
     const res = await fetch(url);
-    return !!res;
+    return res && res.ok;
   } catch (e) {
     return false;
   }
