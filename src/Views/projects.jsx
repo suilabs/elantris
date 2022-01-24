@@ -27,7 +27,7 @@ class Projects extends React.Component {
       <ProjectList
         section={section}
         onItemClick={(event, projectName) => {
-          window.scrollTo(0, 0);
+          if (window.scrollTo) window.scrollTo(0, 0);
           eye.seeClick('Project', 'Open', projectName);
         }}
         path={match.params.project}
