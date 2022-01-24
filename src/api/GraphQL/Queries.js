@@ -5,6 +5,7 @@ const projectFields = `
   cover {
       name
       url
+      thumbnailUrl
       filename
   }
   description
@@ -20,22 +21,9 @@ const projectFields = `
     componentId
     propsJson
   }
-  languages
 `;
 
 const Queries = {
-  getProjectByLanguage: lang => ({
-    query: `
-      query projects($language: String) {
-          projectsByLanguage(lang: $language) {
-            ${projectFields}
-          }
-      }
-    `,
-    variables: {
-      language: lang,
-    },
-  }),
   getProjects: `
     {
       projects {

@@ -1,0 +1,20 @@
+@import '../../base.scss';
+
+.sui-cover-image {
+  position: relative;
+  width: 100%;
+  max-width: pixels(320);
+  height: pixels(320);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @include break-on(mobile) {
+    max-width: inherit;
+    margin-bottom: $sui-spacing-base;
+  }
+}
+
+.sui-cover-image-link {
+  display: contents;
+}

@@ -6,4 +6,9 @@
   animation-duration: $sui-duration-long;
   animation-name: fade-in;
   animation-timing-function: ease-out;
+
+  @include break-on(mobile) {
+    width: 100%;
+    padding: 0;
+  }
 }

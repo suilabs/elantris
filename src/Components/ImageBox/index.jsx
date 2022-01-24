@@ -4,4 +4,3 @@ import WithFlange from './ImageBoxWithFlange';
 export const ImageBoxWithFlange = WithFlange;
 
 export default Component;
-

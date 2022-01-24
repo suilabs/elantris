@@ -1,16 +1,17 @@
+import pathHelper from 'path';
+
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import MobileDetect from 'mobile-detect';
-import pathHelper from 'path';
 
 import Utils from '../../src/Utils';
 import ProjectService from '../../src/Services/ProjectService';
-import render from './renderEngine';
-
 import App from '../../src/App';
 
+import render from './renderEngine';
+
 const captureParams = (req) => {
-// eslint-disable-next-line prefer-const
+  // eslint-disable-next-line prefer-const
   let { featureFlags, ...otherParams } = req.query;
   if (featureFlags) {
     featureFlags = featureFlags.split('|').reduce((ret, actual) => {
@@ -29,18 +30,20 @@ const captureParams = (req) => {
 
 const resolvePathProject = async (path) => {
   // eslint-disable-next-line no-unused-vars
-  const [_, language, section, projectPath] = path.split('/');
-  if (language.length !== 2 || !section) {
-    return null;
+  const [_, section, projectPath] = path.split('/');
+  let resolvedSection = section;
+  if (!section) {
+    resolvedSection = 'photos';
   }
 
-  const projects = await ProjectService.byLanguageAndSection(language, section);
+  console.log('PATH', path, resolvedSection);
+  const projects = (await ProjectService.bySection(resolvedSection)) || [];
 
   if (!projectPath) {
     return projects;
   }
 
-  return projects.filter(proj => proj.url === projectPath);
+  return projects.filter((proj) => proj.url === projectPath);
 };
 
 export default async (req, res) => {
@@ -77,13 +80,13 @@ export default async (req, res) => {
   const vars = {
     title: `<title>${Utils.getPageTitle(pagePath)}</title>`,
     metaDescription: Utils.getMetaDescription(pagePath),
-    clientSideParams: `
-    <script id="clientSideParams">
-      window.appParams=${JSON.stringify(clientSideParams)}
-    </script>`,
+    clientSideParams: `window.appParams=${JSON.stringify(clientSideParams)}`,
     root: `${html}`,
   };
-  const htmlString = await render(pathHelper.join(__dirname, '..', '..', 'build/index.html'), vars);
+  const htmlString = await render(
+    pathHelper.join(__dirname, '..', '..', 'build/index.html'),
+    vars,
+  );
   res.type('html');
   return res.send(htmlString);
 };

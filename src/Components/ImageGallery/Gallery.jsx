@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ImageBox from '../ImageBox';
-import { VFlexBox } from '../Common/FlexBoxes';
 
+import { VFlexBox } from '../Common/FlexBoxes';
 import './Gallery.scss';
+import CoverImage from '../CoverImage';
 
 class Gallery extends Component {
   static filterInstances(instances, filter) {
-    return instances.filter(instance => instance.title.toLowerCase().indexOf(filter) !== -1);
+    return instances.filter(
+      (instance) => instance.title.toLowerCase().indexOf(filter) !== -1,
+    );
   }
 
   constructor(props) {
@@ -29,37 +31,39 @@ class Gallery extends Component {
   }
 
   render() {
-    const {
-      filterable, instances, size, onItemClick,
-    } = this.props;
+    const { filterable, instances, size, onItemClick } = this.props;
 
     const style = {
-      maxWidth: `${(size.width * this.maxRowElemets) + 100}px`,
+      maxWidth: `${size.width * this.maxRowElemets + 100}px`,
     };
 
+    console.log('GALLERY');
     return (
       <div className="sui-image-gallery--wrapper" style={style}>
-        {
-          filterable &&
+        {filterable && (
           <div className="sui-form-field">
             <label htmlFor="filter-input">
-              <input id="filter-input" type="text" onChange={this.onFilterChange} />
+              <input
+                id="filter-input"
+                type="text"
+                onChange={this.onFilterChange}
+              />
               Search
             </label>
           </div>
-        }
+        )}
         <VFlexBox>
-          {
-            Gallery.filterInstances(instances, this.state.filter).map(instance => (
-              <ImageBox
+          {Gallery.filterInstances(instances, this.state.filter).map(
+            (instance) => (
+              <CoverImage
                 key={instance.title}
                 {...instance}
                 width={size.width}
                 className="sui-add-margins"
                 onClick={onItemClick}
               />
-            ))
-          }
+            ),
+          )}
         </VFlexBox>
       </div>
     );
@@ -67,10 +71,12 @@ class Gallery extends Component {
 }
 
 Gallery.propTypes = {
-  instances: PropTypes.arrayOf(PropTypes.shape({
-    ...ImageBox.propTypes,
-    tag: PropTypes.arrayOf(PropTypes.string),
-  })),
+  instances: PropTypes.arrayOf(
+    PropTypes.shape({
+      ...CoverImage.propTypes,
+      tag: PropTypes.arrayOf(PropTypes.string),
+    }),
+  ),
   filterable: PropTypes.bool,
   size: PropTypes.shape({
     width: String.number,
@@ -82,6 +88,7 @@ Gallery.propTypes = {
 Gallery.defaultProps = {
   instances: [],
   filterable: false,
+  // eslint-disable-next-line backpack/use-tokens
   size: { width: 200, height: 200 },
   onItemClick: () => {},
 };

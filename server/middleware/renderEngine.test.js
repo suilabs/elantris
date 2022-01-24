@@ -11,6 +11,7 @@ describe('RenderEngine', () => {
     const filePath = '/tmp/test.html';
     fs.writeFileSync(filePath, str);
     const resp = await render(filePath, params);
+
     expect(resp).toMatchSnapshot();
   });
 });

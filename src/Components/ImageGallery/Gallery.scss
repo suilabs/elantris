@@ -12,9 +12,13 @@
 .sui-add-margins {
   margin: $sui-spacing-base 0 0 $sui-spacing-base;
 
-  @media only screen and (max-width: $dwidth-double) {
-    margin: $sui-spacing-base;
+  @include break-on(mobile) {
+    margin: 0;
   }
+
+  // @media only screen and (max-width: $dwidth-double) {
+  //  margin: $sui-spacing-base;
+  // }
 }
 
 .sui-form-field {

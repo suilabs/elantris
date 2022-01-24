@@ -17,7 +17,6 @@ const DropdownMenuItem = (props) => {
   );
 };
 
-
 DropdownMenuItem.propTypes = {
   to: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

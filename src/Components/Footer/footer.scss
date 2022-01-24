@@ -2,11 +2,13 @@
 @import '../../base.scss';
 
 .sui-footer {
+  background: $sui-color-primary;
+  color: $sui-color-white;
   position: relative;
   width: 100%;
   max-width: $sui-page-max-width;
-  margin-top: $sui-spacing-xxxlarge;
-  padding: 0 10% $sui-spacing-base 10%;
+  //margin-top: $sui-spacing-xxxlarge;
+  padding: 1rem;
   font-size: 1rem;
   box-sizing: border-box;
 
@@ -18,64 +20,5 @@
 
   p {
     margin: 0;
-  }
-
-  &__contact {
-    position: relative;
-    float: left;
-    margin-left: -1rem;
-    padding-left: 1.6em;
-    border-left: 3 * $sui-pixel $sui-color-primary solid;
-    line-height: 3em;
-    text-align: left;
-    box-sizing: border-box;
-
-    @include break-on(desktop) {
-      width: $dwidth;
-    }
-  }
-
-  &__consulta {
-    color: $sui-color-primary;
-    font-size: 3em;
-    font-weight: 200;
-  }
-
-  &__telephone {
-    margin-bottom: 0;
-    font-size: 1.375em;
-
-    a {
-      color: black;
-    }
-  }
-
-  &__mail {
-    margin-bottom: 0;
-    color: $sui-color-primary;
-    font-size: 1.375em;
-    line-height: 1.5em;
-    direction: rtl;
-    unicode-bidi: bidi-override;
-  }
-
-  &__social {
-    display: none;
-
-    @include break-on(mobile) {
-      display: inherit;
-    }
-  }
-}
-
-.email {
-  &-input {
-    width: 100%;
-    border: 0;
-    background: none;
-    color: inherit;
-    font-family: inherit;
-    font-size: inherit;
-    text-align: left;
   }
 }

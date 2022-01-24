@@ -40,7 +40,7 @@ const generateSiteMap = (host, projects) => {
           url,
           changefreq: 'weekly',
           links: [
-            ...project.languages.map(lang => ({
+            ...project.languages.map((lang) => ({
               lang,
               url: `/${lang}${url}`,
             })),
@@ -53,11 +53,10 @@ const generateSiteMap = (host, projects) => {
 };
 
 const sitemap = (req, res) => {
-  ProjectService.getProjects()
-    .then((projects) => {
-      res.set('Content-Type', 'application/xml');
-      res.send(generateSiteMap(req.hostname, projects));
-    });
+  ProjectService.getProjects().then((projects) => {
+    res.set('Content-Type', 'application/xml');
+    res.send(generateSiteMap(req.hostname, projects));
+  });
 };
 
 export default sitemap;

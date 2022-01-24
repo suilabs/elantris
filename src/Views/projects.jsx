@@ -27,7 +27,7 @@ class Projects extends React.Component {
       <ProjectList
         section={section}
         onItemClick={(event, projectName) => {
-          window.scrollTo(0, 0);
+          if (window.scrollTo) window.scrollTo(0, 0);
           eye.seeClick('Project', 'Open', projectName);
         }}
         path={match.params.project}
@@ -43,7 +43,7 @@ class Projects extends React.Component {
 Projects.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      project: PropTypes.arrayOf(PropTypes.string),
+      project: PropTypes.string,
     }),
   }).isRequired,
   eye: PropTypes.shape({

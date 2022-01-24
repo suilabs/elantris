@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const ImageArray = ({ className, content }) => (
   <div className={`sui-project__image-strip ${className}`}>
-    {content.split(';').map(image =>
-      <img key={image} src={image} alt="wip" />)
-    }
+    {content.split(';').map((image) => (
+      <img key={image} src={image} alt="wip" />
+    ))}
   </div>
 );
 

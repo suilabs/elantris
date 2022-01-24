@@ -1,6 +1,7 @@
+import Utils from '../Utils';
+
 import GQLQueries from './GraphQL/Queries';
 import GQLMutations from './GraphQL/Mutations';
-import Utils from '../Utils';
 
 const postApi = (url, form) => {
   const headers = new Headers({
@@ -11,11 +12,11 @@ const postApi = (url, form) => {
     body: form,
     headers,
   };
-  return fetch(url, fetchConf).then(resp => resp.json());
+  return fetch(url, fetchConf).then((resp) => resp.json());
 };
 
 class ApiConnector {
-  static _fetchApi = (query) => {
+  static fetchApi = (query) => {
     const headers = new Headers({
       'content-type': 'application/json',
       Accept: 'application/json',
@@ -28,19 +29,14 @@ class ApiConnector {
       mode: 'cors',
       body: data,
     };
-    return fetch(url, fetchConf).then(resp => resp.json());
+    return fetch(url, fetchConf).then((resp) => resp.json());
   };
 
   static getProjects() {
     const query = {
       query: GQLQueries.getProjects,
     };
-    return this._fetchApi(query);
-  }
-
-  static getProjectsByLanguage(lang) {
-    const query = GQLQueries.getProjectByLanguage(lang);
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static createProject(projectData, password) {
@@ -49,14 +45,14 @@ class ApiConnector {
       variables: { project: projectData },
       password,
     };
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static getProjectTypes() {
     const query = {
       query: GQLQueries.getTypes,
     };
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static createProjectType(typeData, password) {
@@ -66,14 +62,18 @@ class ApiConnector {
       password,
     };
 
-    return this._fetchApi(query);
+    return this.fetchApi(query);
   }
 
   static sendImage(projectName, fileBlob) {
     const formData = new FormData();
     formData.append('data', fileBlob);
 
-    return postApi(Utils.getStaticImagesPath(projectName), formData, fileBlob.type);
+    return postApi(
+      Utils.getStaticImagesPath(projectName),
+      formData,
+      fileBlob.type,
+    );
   }
 }
 

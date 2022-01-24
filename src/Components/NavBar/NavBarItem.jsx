@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+
 import withEye from '../../Views/HoC/withEyes';
 
 import './NavBarItem.scss';
 
 const NavBarItem = (props) => {
-  const {
-    to, label, className, history, eye,
-  } = props;
+  const { to, label, className, history, eye } = props;
   const root = history.location.pathname.split('/')[1];
   const active = `/${root}` === to ? '--active' : '';
   const classname = `sui-navbar__item${active} ${className}`;

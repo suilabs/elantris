@@ -5,7 +5,7 @@ import FlexBoxV from '../Common/FlexBoxes/VFlexBox';
 
 import './ProjectWrapper.scss';
 
-const ProjectWrapper = props => (
+const ProjectWrapper = (props) => (
   <FlexBoxV>
     <div className="sui-project-detail--wrapper">
       {props.children.length ? props.children : [props.children]}
